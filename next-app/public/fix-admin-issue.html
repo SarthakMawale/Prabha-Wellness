@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fix Manage Admins Access</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+            authDomain: "prabha-wellness.firebaseapp.com",
+            projectId: "prabha-wellness",
+            storageBucket: "prabha-wellness.firebasestorage.app",
+            messagingSenderId: "555332322398",
+            appId: "1:555332322398:web:57e29182b8693c35ef60cf",
+            measurementId: "G-EQ36VYT215"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        async function fixAccess() {
+            const email = "sarthakbhawsar8@gmail.com";
+            const password = prompt("Enter password for " + email + ":");
+            
+            if (!password) return;
+            
+            try {
+                // Step 1: Sign in
+                console.log("Signing in...");
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                console.log("Signed in:", userCredential.user.email);
+                
+                // Step 2: Check Firestore
+                console.log("Checking Firestore...");
+                
+                // Check if adminUsers collection exists
+                try {
+                    const testQuery = await db.collection("adminUsers").limit(1).get();
+                    console.log("adminUsers collection exists:", !testQuery.empty);
+                } catch (err) {
+                    console.log("Error checking collection:", err);
+                }
+                
+                // Step 3: Create/Update sarthakbhawsar8@gmail.com as super admin
+                console.log("Creating/updating admin...");
+                
+                const adminData = {
+                    email: email,
+                    name: "Sarthak Mawale",
+                    role: "super_admin",
+                    createdBy: "system",
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    isActive: true,
+                    permissions: ["all"],
+                    lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
+                    isSystemAdmin: true
+                };
+                
+                await db.collection("adminUsers").doc(email).set(adminData, { merge: true });
+                
+                console.log("Admin data saved");
+                
+                // Step 4: Verify
+                const verifyDoc = await db.collection("adminUsers").doc(email).get();
+                if (verifyDoc.exists) {
+                    const data = verifyDoc.data();
+                    console.log("Verified admin data:", data);
+                    
+                    alert(`✅ SUPER ADMIN ACCESS FIXED!\n\nEmail: ${email}\nRole: ${data.role}\n\nYou can now:\n1. Login to admin-login.html\n2. Access manage-admins.html\n3. Create other admins`);
+                    
+                    // Redirect to manage-admins
+                    setTimeout(() => {
+                        window.location.href = "manage-admins.html";
+                    }, 2000);
+                } else {
+                    alert("Error: Could not verify admin creation");
+                }
+                
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Fix failed:\n\n" + error.message + "\n\nCode: " + error.code);
+            }
+        }
+
+        async function checkCurrentStatus() {
+            try {
+                const email = "sarthakbhawsar8@gmail.com";
+                const adminDoc = await db.collection("adminUsers").doc(email).get();
+                
+                if (adminDoc.exists) {
+                    const data = adminDoc.data();
+                    console.log("Current admin status:", data);
+                    alert(`Current Status:\n\nEmail: ${email}\nRole: ${data.role || 'Not set'}\nActive: ${data.isActive || 'Not set'}\nPermissions: ${JSON.stringify(data.permissions)}`);
+                } else {
+                    alert("❌ sarthakbhawsar8@gmail.com NOT FOUND in adminUsers collection!");
+                }
+            } catch (error) {
+                alert("Check failed: " + error.message);
+            }
+        }
+
+        window.onload = function() {
+            // Auto-fix
+            fixAccess();
+        };
+    </script>
+</head>
+<body>
+    <h2>Fixing Manage Admins Access...</h2>
+    <p>Making sarthakbhawsar8@gmail.com the only super admin...</p>
+</body>
+</html>

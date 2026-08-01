@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | PRABHA WELLNESS | Official Herbalife Nutrition Center</title>
+
+    <!-- Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Admin Login | PRABHA WELLNESS">
+    <meta property="og:description" content="Admin panel access for Prabha Wellness Center management.">
+    <meta property="og:image" content="/images/PRABHA WELLNESS CENTER ALL FINE.png">
+
+    <link rel="icon" href="/images/Only logo.png" type="image/png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=satoshi:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=satoshi:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === PROFESSIONAL BRAND THEME === */
+        :root {
+            --primary-green: #0B7A6B;
+            --primary-green-dark: #065749;
+            --primary-green-light: #E0F2F1;
+            --secondary-gold: #C6A959;
+            --neutral-dark: #1A1A1A;
+            --neutral-gray: #4A4A4A;
+            --neutral-light: #F8F9FA;
+            --neutral-white: #FFFFFF;
+            --accent-orange: #FF7C4C;
+            --gradient-primary: linear-gradient(135deg, #0B7A6B 0%, #2D9C8F 100%);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-large: 0 15px 50px rgba(0, 0, 0, 0.1);
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'satoshi', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--neutral-dark);
+        }
+
+        /* === ADMIN LOGIN CONTAINER === */
+        .login-container {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 50px 40px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: var(--shadow-large);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+            position: relative;
+            animation: floatIn 0.8s ease;
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* === LOGO === */
+        .logo {
+            font-family: 'satoshi', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* === TITLES === */
+        .login-title {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            font-family: 'satoshi', sans-serif;
+        }
+
+        .login-subtitle {
+            color: var(--neutral-gray);
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        /* === FORM STYLES === */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--neutral-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            font-family: 'satoshi', sans-serif;
+            transition: all 0.3s;
+            background: var(--neutral-light);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(11, 122, 107, 0.1);
+            background: var(--neutral-white);
+        }
+
+        /* === LOGIN BUTTON === */
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: posatoshi;
+            transition: all 0.3s;
+            font-family: 'satoshi', sans-serif;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .login-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* === MESSAGES === */
+        .error-message {
+            color: #e74c3c;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 12px;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: var(--border-radius-md);
+            display: none;
+            border: 1px solid rgba(231, 76, 60, 0.2);
+        }
+
+        .success-message {
+            color: var(--primary-green);
+            margin-top: 15px;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 12px;
+            background: rgba(11, 122, 107, 0.1);
+            border-radius: var(--border-radius-md);
+            display: none;
+            border: 1px solid rgba(11, 122, 107, 0.2);
+        }
+
+        /* === LINKS === */
+        .back-link {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: var(--primary-green);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .back-link a:hover {
+            color: var(--primary-green-dark);
+        }
+
+        .setup-link {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--neutral-gray);
+        }
+
+        .setup-link a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .setup-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* === TEST INFO === */
+        .test-info {
+            background: var(--primary-green-light);
+            border-radius: var(--border-radius-md);
+            padding: 12px;
+            margin: 15px 0;
+            font-size: 0.85rem;
+            color: var(--primary-green-dark);
+            text-align: left;
+            border-left: 3px solid var(--primary-green);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 576px) {
+            .login-container {
+                padding: 40px 25px;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .login-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 35px 20px;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .logo img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .login-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="/images/Only logo.png" alt="Logo">
+            PRABHA WELLNESS
+        </div>
+
+        <h2 class="login-title"><i class="fas fa-lock"></i> Admin Login</h2>
+        <p class="login-subtitle">Access restricted to authorized administrators only</p>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label class="form-label" for="email">
+                    <i class="fas fa-envelope"></i> Email Address
+                </label>
+                <input type="email" class="form-input" id="email" placeholder="Enter admin email" required>
+
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">
+                    <i class="fas fa-lock"></i> Password
+                </label>
+                <input type="password" class="form-input" id="password" placeholder="Enter password" required>
+            </div>
+
+            <button type="submit" class="login-btn" id="loginBtn">
+                <i class="fas fa-sign-in-alt"></i>
+                <span id="btnText">Login as Admin</span>
+            </button>
+
+            <div class="error-message" id="errorMsg">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="errorText"></span>
+            </div>
+
+            <div class="success-message" id="successMsg">
+                <i class="fas fa-check-circle"></i>
+                <span id="successText"></span>
+            </div>
+        </form>
+
+        <div class="setup-link">
+            <p>First time? <a href="create-admin-collection.html">Setup Admin System</a></p>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i>
+                Back to Main Website
+            </a>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+            authDomain: "prabha-wellness.firebaseapp.com",
+            projectId: "prabha-wellness",
+            storageBucket: "prabha-wellness.firebasestorage.app",
+            messagingSenderId: "555332322398",
+            appId: "1:555332322398:web:57e29182b8693c35ef60cf",
+            measurementId: "G-EQ36VYT215"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Check if already logged in as admin
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                try {
+                    const isAdmin = await checkIfAdmin(user.email);
+
+                    if (isAdmin) {
+                        // Update last login time
+                        await db.collection("adminUsers").doc(user.email).update({
+                            lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+
+                        // Already logged in as admin, redirect
+                        showSuccess("Already logged in! Redirecting to admin panel...");
+
+                        setTimeout(() => {
+                            window.location.href = "adminpanel.html";
+                        }, 1500);
+                    }
+                } catch (error) {
+                    console.error("Error checking admin status:", error);
+                }
+            }
+        });
+
+        // Function to check if email is admin
+        async function checkIfAdmin(email) {
+            try {
+                const adminDoc = await db.collection("adminUsers").doc(email).get();
+                return adminDoc.exists;
+            } catch (error) {
+                console.error("Error checking admin status:", error);
+                return false;
+            }
+        }
+
+        // Function to show error message
+        function showError(message) {
+            const errorMsg = document.getElementById('errorMsg');
+            const errorText = document.getElementById('errorText');
+            const successMsg = document.getElementById('successMsg');
+
+            successMsg.style.display = 'none';
+            errorText.textContent = message;
+            errorMsg.style.display = 'block';
+        }
+
+        // Function to show success message
+        function showSuccess(message) {
+            const errorMsg = document.getElementById('errorMsg');
+            const successMsg = document.getElementById('successMsg');
+            const successText = document.getElementById('successText');
+
+            errorMsg.style.display = 'none';
+            successText.textContent = message;
+            successMsg.style.display = 'block';
+        }
+
+        // Login Form Submission
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value.trim().toLowerCase();
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
+            const btnText = document.getElementById('btnText');
+
+            loginBtn.disabled = true;
+            btnText.textContent = "Verifying...";
+
+            document.getElementById('errorMsg').style.display = 'none';
+            document.getElementById('successMsg').style.display = 'none';
+
+            try {
+                // 1️⃣ Firebase Auth login
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+
+                // 2️⃣ Check adminUsers collection
+                const adminDoc = await db.collection("adminUsers").doc(user.email).get();
+
+                if (!adminDoc.exists) {
+                    await auth.signOut();
+                    showError("Access denied. You are not authorized as an admin.");
+                    btnText.textContent = "Login as Admin";
+                    loginBtn.disabled = false;
+                    return;
+                }
+
+                const adminData = adminDoc.data();
+
+                // 3️⃣ Check admin status
+                if (adminData.status && adminData.status !== "active") {
+                    await auth.signOut();
+                    showError("Admin account is disabled. Contact Super Admin.");
+                    btnText.textContent = "Login as Admin";
+                    loginBtn.disabled = false;
+                    return;
+                }
+
+                // 4️⃣ Update last login
+                await db.collection("adminUsers").doc(user.email).update({
+                    lastLogin: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                showSuccess("Login successful! Redirecting...");
+                loginBtn.style.background = "#00C853";
+
+                setTimeout(() => {
+                    window.location.href = "adminpanel.html";
+                }, 1200);
+
+            } catch (error) {
+                console.error("Login error:", error);
+
+                let message = "Login failed. ";
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                        message = "Admin account not found.";
+                        break;
+                    case 'auth/wrong-password':
+                        message = "Incorrect password.";
+                        break;
+                    case 'auth/invalid-email':
+                        message = "Invalid email format.";
+                        break;
+                    case 'auth/network-request-failed':
+                        message = "Network error. Check satoshinet.";
+                        break;
+                    default:
+                        message = error.message;
+                }
+
+                showError(message);
+                btnText.textContent = "Login as Admin";
+                loginBtn.disabled = false;
+            }
+        });
+
+        // Auto-fill for testing
+        window.addEventListener('load', () => {
+            // Check URL parameters for auto-fill
+            const urlParams = new URLSearchParams(window.location.search);
+            const testEmail = urlParams.get('test');
+
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,3174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | PRABHA WELLNESS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap"
+        rel="stylesheet">
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="/images/Only logo.png" type="image/png">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-neon: #00E676;
+            --primary-dark: #004D40;
+            --secondary: #3B82F6;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --success: #10B981;
+            --info: #06B6D4;
+            --purple: #8B5CF6;
+            --pink: #EC4899;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+            --text-main: #1f2937;
+            --text-light: #6b7280;
+            --bg-body: #f0fdf4;
+            --card-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'satoshi', system-ui, sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        .logo {
+            font-family: 'satoshi', serif;
+        }
+
+        /* ========== NAVIGATION ========== */
+        nav {
+            position: sticky;
+            top: 10px;
+            z-index: 1000;
+            margin: 0 15px;
+            border-radius: 50px;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 230, 118, 0.15);
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            background: rgba(0, 77, 64, 0.05);
+            padding: 4px;
+            border-radius: 50px;
+        }
+
+        .nav-tab {
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            border: none;
+            background: transparent;
+        }
+
+        .nav-tab.active {
+            background: var(--primary-dark);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 77, 64, 0.3);
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: rgba(0, 77, 64, 0.1);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-neon));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-logout {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-logout:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+        }
+
+        /* ========== DASHBOARD GRID ========== */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+        }
+
+        .stat-card.orders::before {
+            background: var(--primary-neon);
+        }
+
+        .stat-card.revenue::before {
+            background: var(--success);
+        }
+
+        .stat-card.users::before {
+            background: var(--secondary);
+        }
+
+        .stat-card.products::before {
+            background: var(--purple);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .stat-card.orders .stat-icon {
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--primary-neon);
+        }
+
+        .stat-card.revenue .stat-icon {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .stat-card.users .stat-icon {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--secondary);
+        }
+
+        .stat-card.products .stat-icon {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--purple);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-trend {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .trend-up {
+            color: var(--success);
+        }
+
+        .trend-down {
+            color: var(--danger);
+        }
+
+        /* ========== CHARTS CONTAINER ========== */
+        .charts-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            padding: 30px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .chart-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        /* ========== RECENT ACTIVITY ========== */
+        .recent-activity {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            margin: 30px;
+            max-width: 1800px;
+            margin: 30px auto;
+        }
+
+        .activity-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(0, 77, 64, 0.02);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-neon);
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(0, 230, 118, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-neon);
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-text {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .activity-time {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        /* ========== CONTENT SECTIONS ========== */
+        .content-section {
+            display: none;
+            padding: 30px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(0, 230, 118, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            font-weight: 800;
+        }
+
+        .section-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-box {
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: white;
+            min-width: 250px;
+            font-family: 'satoshi', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-neon);
+            box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.2);
+        }
+
+        .filter-select {
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: white;
+            font-family: 'satoshi', sans-serif;
+            min-width: 150px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'satoshi', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-neon);
+            color: black;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 230, 118, 0.3);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: white;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* ========== TABLES ========== */
+        .table-wrapper {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        th {
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--primary-dark);
+            font-weight: 700;
+            padding: 18px 20px;
+            text-align: left;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        tr:hover {
+            background: rgba(0, 230, 118, 0.03);
+        }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .status-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .status-processing {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--secondary);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .status-shipped {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--purple);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .status-delivered {
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--primary-neon);
+            border: 1px solid rgba(0, 230, 118, 0.2);
+        }
+
+        .status-cancelled {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-view:hover {
+            background: rgba(0, 77, 64, 0.1);
+            color: var(--primary-dark);
+        }
+
+        .btn-edit:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--secondary);
+        }
+
+        .btn-delete:hover {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        /* ========== USER CARDS ========== */
+        .users-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .user-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .user-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .user-card.active {
+            border-color: var(--primary-neon);
+            box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.2);
+        }
+
+        .user-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .user-avatar-large {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-neon));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .user-info h3 {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+
+        .user-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .user-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .user-stat {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 77, 64, 0.03);
+            border-radius: 12px;
+        }
+
+        .user-stat-value {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+
+        .user-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .user-orders {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed rgba(0, 230, 118, 0.2);
+        }
+
+        .user-card.active .user-orders {
+            display: block;
+        }
+
+        .order-item {
+            background: rgba(0, 77, 64, 0.02);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .order-id {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .order-status {
+            font-size: 0.85rem;
+        }
+
+        .order-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .order-total {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        /* ========== ADMIN MANAGEMENT ========== */
+        .admin-management {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            margin-top: 30px;
+        }
+
+        .admins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .admin-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .admin-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .super-admin .admin-avatar {
+            background: linear-gradient(135deg, var(--purple), #EC4899);
+        }
+
+        .admin .admin-avatar {
+            background: linear-gradient(135deg, var(--secondary), #06B6D4);
+        }
+
+        .manager .admin-avatar {
+            background: linear-gradient(135deg, var(--warning), #F59E0B);
+        }
+
+        .admin-info h4 {
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
+
+        .admin-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .admin-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .admin-stat {
+            text-align: center;
+        }
+
+        .admin-stat-value {
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .admin-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* ========== PRODUCTS ========== */
+        .product-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid rgba(0, 230, 118, 0.2);
+        }
+
+        /* ========== MODALS ========== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            font-weight: 800;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .modal-close:hover {
+            color: var(--danger);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            font-family: 'satoshi', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-neon);
+            box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.2);
+        }
+
+        /* Status Selector */
+        .status-selector {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .status-option {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            background: rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .status-option:hover {
+            transform: translateY(-2px);
+        }
+
+        .status-option.active {
+            border-color: currentColor;
+        }
+
+        /* ========== TOAST ========== */
+        #toastBox {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            z-index: 3000;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        #toastBox.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ========== LOADERS ========== */
+        .loader {
+            text-align: center;
+            padding: 60px;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(0, 230, 118, 0.2);
+            border-top: 4px solid var(--primary-neon);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1200px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+                border-radius: 25px;
+            }
+
+            .nav-tabs {
+                width: 100%;
+                overflow-x: auto;
+                padding: 5px;
+            }
+
+            .nav-tab {
+                white-space: nowrap;
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+
+            .section-controls {
+                flex-direction: column;
+            }
+
+            .search-box,
+            .filter-select {
+                width: 100%;
+            }
+
+            .users-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admins-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Toast Notification -->
+    <div id="toastBox">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Success!</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="/images/Only logo.png" alt="Logo">
+            PRABHA WELLNESS ADMIN
+        </div>
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="dashboard">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </button>
+            <button class="nav-tab" data-tab="orders">
+                <i class="fas fa-shopping-bag"></i> Orders
+            </button>
+            <button class="nav-tab" data-tab="users">
+                <i class="fas fa-users"></i> Users
+            </button>
+            <button class="nav-tab" data-tab="products">
+                <i class="fas fa-box"></i> Products
+            </button>
+            <button class="nav-tab" data-tab="analytics">
+                <i class="fas fa-chart-pie"></i> Analytics
+            </button>
+            <button class="nav-tab" data-tab="admin-management" id="adminManagementTab" style="display: none;">
+                <i class="fas fa-user-shield"></i> Admins
+            </button>
+        </div>
+        <div class="nav-right">
+            <div class="user-profile">
+                <div class="user-avatar" id="userAvatar">A</div>
+                <div>
+                    <div id="userName" style="font-weight: 600;">Admin</div>
+                    <div id="userRole" style="font-size: 0.85rem; color: var(--text-light);">Loading...</div>
+                </div>
+            </div>
+            <button class="btn btn-logout" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </nav>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard" class="content-section active">
+        <!-- Stats Cards -->
+        <div class="dashboard-grid">
+            <div class="stat-card orders">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-number" id="totalOrders">0</div>
+                        <div class="stat-label">Total Orders</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                </div>
+                <div class="stat-trend trend-up">
+                    <i class="fas fa-arrow-up"></i>
+                    <span id="orderGrowth">0%</span> from last month
+                </div>
+            </div>
+
+            <div class="stat-card revenue">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-number" id="totalRevenue">₹0</div>
+                        <div class="stat-label">Total Revenue</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                </div>
+                <div class="stat-trend trend-up">
+                    <i class="fas fa-arrow-up"></i>
+                    <span id="revenueGrowth">0%</span> growth
+                </div>
+            </div>
+
+            <div class="stat-card users">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-number" id="totalUsers">0</div>
+                        <div class="stat-label">Total Users</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+                <div class="stat-trend trend-up">
+                    <i class="fas fa-user-plus"></i>
+                    <span id="userGrowth">0</span> new this month
+                </div>
+            </div>
+
+            <div class="stat-card products">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-number" id="totalProducts">0</div>
+                        <div class="stat-label">Active Products</div>
+                    </div>
+                    <div class="stat-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                </div>
+                <div class="stat-trend">
+                    <i class="fas fa-chart-line"></i>
+                    <span id="lowStock">0</span> low in stock
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-container">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-title">Revenue Trend</div>
+                    <select class="filter-select" id="chartPeriod" style="width: auto;">
+                        <option value="7">Last 7 days</option>
+                        <option value="30" selected>Last 30 days</option>
+                        <option value="90">Last 90 days</option>
+                    </select>
+                </div>
+                <div class="chart-container">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-title">Order Status</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="statusChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="recent-activity">
+            <div class="activity-title">Recent Activity</div>
+            <div class="activity-list" id="activityList">
+                <!-- Activity items will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Orders Section -->
+    <div id="orders" class="content-section">
+        <div class="section-header">
+            <div class="section-title">Order Management</div>
+            <div class="section-controls">
+                <input type="text" class="search-box" id="orderSearch" placeholder="Search orders...">
+                <select class="filter-select" id="orderStatusFilter">
+                    <option value="all">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="processing">Processing</option>
+                    <option value="shipped">Shipped</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <button class="btn btn-danger" id="deleteSelectedOrders" style="display: none;">
+                    <i class="fas fa-trash"></i> Delete Selected
+                </button>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 30px;">
+                            <input type="checkbox" id="selectAllOrders" onchange="toggleSelectAllOrders()">
+                        </th>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Products</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                    <!-- Orders will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Users Section -->
+    <div id="users" class="content-section">
+        <div class="section-header">
+            <div class="section-title">User Management</div>
+            <div class="section-controls">
+                <input type="text" class="search-box" id="userSearch" placeholder="Search users...">
+                <button class="btn btn-primary" id="refreshUsers">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+        </div>
+
+        <div class="users-grid" id="usersGrid">
+            <!-- User cards will be populated here -->
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div id="products" class="content-section">
+        <div class="section-header">
+            <div class="section-title">Product Management</div>
+            <div class="section-controls">
+                <input type="text" class="search-box" id="productSearch" placeholder="Search products...">
+                <select class="filter-select" id="productCategoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="nutrition">Nutrition</option>
+                    <option value="weight-loss">Weight Loss</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="wellness">Wellness</option>
+                </select>
+                <button class="btn btn-primary" id="addProductBtn">
+                    <i class="fas fa-plus"></i> Add Product
+                </button>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productsTableBody">
+                    <!-- Products will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Analytics Section -->
+    <div id="analytics" class="content-section">
+        <div class="section-header">
+            <div class="section-title">Analytics & Reports</div>
+            <div class="section-controls">
+                <select class="filter-select" id="analyticsPeriod">
+                    <option value="7">Last 7 days</option>
+                    <option value="30" selected>Last 30 days</option>
+                    <option value="90">Last 90 days</option>
+                    <option value="365">Last year</option>
+                </select>
+                <button class="btn btn-primary" id="generateReport">
+                    <i class="fas fa-file-pdf"></i> Generate Report
+                </button>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-title">Top Products</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="productsChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-title">User Growth</div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="usersChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <div class="section-title" style="margin-bottom: 20px;">Detailed Analytics</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Today</th>
+                            <th>Yesterday</th>
+                            <th>This Week</th>
+                            <th>This Month</th>
+                            <th>Growth</th>
+                        </tr>
+                    </thead>
+                    <tbody id="analyticsTableBody">
+                        <!-- Analytics data will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Management Section -->
+    <div id="admin-management" class="content-section">
+        <div class="section-header">
+            <div class="section-title">Admin Management</div>
+            <div class="section-controls">
+                <button class="btn btn-primary" onclick="openAddAdminModal()">
+                    <i class="fas fa-user-plus"></i> Add Admin
+                </button>
+                <button class="btn btn-success" onclick="refreshAdmins()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+        </div>
+
+        <div class="admin-management">
+            <div class="admins-grid" id="adminsGrid">
+                <!-- Admin cards will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div id="orderModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Order Details</h2>
+                <button class="modal-close" onclick="closeModal('orderModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="orderDetailsContent">
+                <!-- Order details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Update Modal -->
+    <div id="statusModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Update Order Status</h2>
+                <button class="modal-close" onclick="closeModal('statusModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="form-group">
+                <div class="form-label">Select New Status</div>
+                <div class="status-selector">
+                    <div class="status-option status-pending" data-status="pending" onclick="selectStatus(this)">Pending</div>
+                    <div class="status-option status-processing" data-status="processing" onclick="selectStatus(this)">Processing</div>
+                    <div class="status-option status-shipped" data-status="shipped" onclick="selectStatus(this)">Shipped</div>
+                    <div class="status-option status-delivered" data-status="delivered" onclick="selectStatus(this)">Delivered</div>
+                    <div class="status-option status-cancelled" data-status="cancelled" onclick="selectStatus(this)">Cancelled</div>
+                </div>
+            </div>
+            <div style="margin-top: 30px; display: flex; gap: 10px;">
+                <button class="btn btn-secondary" onclick="closeModal('statusModal')" style="flex: 1;">Cancel</button>
+                <button class="btn btn-primary" onclick="updateOrderStatus()" style="flex: 1;">Update Status</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="productModalTitle">Add New Product</h2>
+                <button class="modal-close" onclick="closeModal('productModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                <div class="form-group">
+                    <label class="form-label">Product Name</label>
+                    <input type="text" class="form-control" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="form-control" id="productCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="nutrition">Nutrition</option>
+                        <option value="weight-loss">Weight Loss</option>
+                        <option value="fitness">Fitness</option>
+                        <option value="wellness">Wellness</option>
+                        <option value="supplements">Supplements</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Price (₹)</label>
+                    <input type="number" class="form-control" id="productPrice" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Stock Quantity</label>
+                    <input type="number" class="form-control" id="productStock" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" id="productDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Image URL</label>
+                    <input type="text" class="form-control" id="productImageUrl" placeholder="https://example.com/image.jpg">
+                </div>
+                <div style="margin-top: 30px; display: flex; gap: 10px;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('productModal')" style="flex: 1;">Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Admin Modal -->
+    <div id="addAdminModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add New Admin</h2>
+                <button class="modal-close" onclick="closeModal('addAdminModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="addAdminForm">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="adminName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="adminEmail" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Role</label>
+                    <select class="form-control" id="adminRole" required>
+                        <option value="">Select Role</option>
+                        <option value="super_admin">Super Admin</option>
+                        <option value="admin">Admin</option>
+                        <option value="manager">Manager</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Permissions</label>
+                    <div style="margin-top: 10px;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <input type="checkbox" name="permissions" value="view_dashboard" checked> View Dashboard
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <input type="checkbox" name="permissions" value="manage_orders" checked> Manage Orders
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <input type="checkbox" name="permissions" value="manage_users" checked> Manage Users
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <input type="checkbox" name="permissions" value="manage_products" checked> Manage Products
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <input type="checkbox" name="permissions" value="delete_orders" checked> Delete Orders
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 5px;">
+                                <input type="checkbox" name="permissions" value="manage_admins"> Manage Admins
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 30px; display: flex; gap: 10px;">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('addAdminModal')" style="flex: 1;">Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Add Admin</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteConfirmModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Confirm Delete</h2>
+                <button class="modal-close" onclick="closeModal('deleteConfirmModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div style="text-align: center; padding: 20px;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: var(--danger); margin-bottom: 20px;"></i>
+                <h3 id="deleteTitle">Are you sure?</h3>
+                <p id="deleteMessage">This action cannot be undone.</p>
+            </div>
+            <div style="margin-top: 30px; display: flex; gap: 10px;">
+                <button class="btn btn-secondary" onclick="closeModal('deleteConfirmModal')" style="flex: 1;">Cancel</button>
+                <button class="btn btn-danger" onclick="confirmDelete()" style="flex: 1;">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 800, once: true });
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+            authDomain: "prabha-wellness.firebaseapp.com",
+            projectId: "prabha-wellness",
+            storageBucket: "prabha-wellness.firebasestorage.app",
+            messagingSenderId: "555332322398",
+            appId: "1:555332322398:web:57e29182b8693c35ef60cf",
+            measurementId: "G-EQ36VYT215"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Global Variables
+        let charts = {};
+        let currentStatusOrderId = null;
+        let selectedStatus = 'pending';
+        let currentEditingProduct = null;
+        let currentUserRole = '';
+        let selectedOrders = new Set();
+        let deleteType = '';
+        let deleteId = '';
+        let deleteMultipleIds = [];
+
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("Admin Panel Initializing...");
+            initializeAdminPanel();
+        });
+
+        // Initialize Admin Panel
+        async function initializeAdminPanel() {
+            // Check authentication
+            auth.onAuthStateChanged(async (user) => {
+                if (user) {
+                    console.log("User authenticated:", user.email);
+                    const adminData = await checkAdminStatus(user.email);
+                    if (adminData) {
+                        setupAdminPanel(user, adminData);
+                    } else {
+                        window.location.href = "admin-login.html";
+                    }
+                } else {
+                    window.location.href = "admin-login.html";
+                }
+            });
+
+            // Initialize event listeners
+            setupEventListeners();
+        }
+
+        // Check Admin Status
+        async function checkAdminStatus(email) {
+            try {
+                // Hardcoded super admin
+                if (email === "sarthakbhawsar8@gmail.com") {
+                    return {
+                        email: email,
+                        name: "Sarthak Mawale",
+                        role: "super_admin",
+                        permissions: ["all"]
+                    };
+                }
+                
+                // Check Firestore for other admins
+                const adminDoc = await db.collection("adminUsers").doc(email).get();
+                if (adminDoc.exists) {
+                    return adminDoc.data();
+                }
+                return null;
+            } catch (error) {
+                console.error("Error checking admin status:", error);
+                return null;
+            }
+        }
+
+        // Setup Admin Panel
+        function setupAdminPanel(user, adminData) {
+            // Set user info
+            document.getElementById('userAvatar').textContent = adminData.name?.charAt(0)?.toUpperCase() || user.email.charAt(0).toUpperCase();
+            document.getElementById('userName').textContent = adminData.name || user.email.split('@')[0];
+            document.getElementById('userRole').textContent = adminData.role ? adminData.role.replace('_', ' ') : 'Admin';
+            
+            // Store current user role
+            currentUserRole = adminData.role;
+            
+            // Show/hide admin management tab based on role
+            const adminTab = document.getElementById('adminManagementTab');
+            if (currentUserRole === 'super_admin') {
+                adminTab.style.display = 'flex';
+            } else {
+                adminTab.style.display = 'none';
+            }
+            
+            // Load dashboard data
+            loadDashboardData();
+            
+            // Set up real-time listeners
+            setupRealTimeListeners();
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Tab switching
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.dataset.tab;
+                    switchTab(tabId);
+                });
+            });
+
+            // Search and filter listeners
+            document.getElementById('orderSearch')?.addEventListener('input', debounce(loadOrders, 300));
+            document.getElementById('orderStatusFilter')?.addEventListener('change', loadOrders);
+            document.getElementById('userSearch')?.addEventListener('input', debounce(loadUsers, 300));
+            document.getElementById('productSearch')?.addEventListener('input', debounce(loadProducts, 300));
+            document.getElementById('productCategoryFilter')?.addEventListener('change', loadProducts);
+            document.getElementById('chartPeriod')?.addEventListener('change', loadDashboardData);
+            document.getElementById('analyticsPeriod')?.addEventListener('change', loadAnalytics);
+
+            // Button listeners
+            document.getElementById('deleteSelectedOrders')?.addEventListener('click', deleteSelectedOrders);
+            document.getElementById('refreshUsers')?.addEventListener('click', loadUsers);
+            document.getElementById('addProductBtn')?.addEventListener('click', () => openProductModal());
+            document.getElementById('generateReport')?.addEventListener('click', generateReport);
+            document.getElementById('logoutBtn')?.addEventListener('click', logout);
+            document.getElementById('productForm')?.addEventListener('submit', saveProduct);
+            document.getElementById('addAdminForm')?.addEventListener('submit', addAdmin);
+
+            // Close modals on overlay click
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Setup Real-time Listeners
+        function setupRealTimeListeners() {
+            // Listen for new orders
+            db.collection("orders")
+                .orderBy('createdAt', 'desc')
+                .limit(1)
+                .onSnapshot((snapshot) => {
+                    snapshot.docChanges().forEach(change => {
+                        if (change.type === 'added') {
+                            showToast("New order received!");
+                            loadDashboardData();
+                        }
+                    });
+                });
+
+            // Listen for status changes
+            db.collection("orders").onSnapshot((snapshot) => {
+                const activeTab = document.querySelector('.nav-tab.active').dataset.tab;
+                if (activeTab === 'dashboard' || activeTab === 'orders') {
+                    loadDashboardData();
+                    loadOrders();
+                }
+            });
+        }
+
+        // Switch Tab
+        function switchTab(tabId) {
+            // Update active tab
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.tab === tabId) tab.classList.add('active');
+            });
+
+            // Show corresponding section
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+                if (section.id === tabId) section.classList.add('active');
+            });
+
+            // Load tab data
+            switch(tabId) {
+                case 'dashboard':
+                    loadDashboardData();
+                    break;
+                case 'orders':
+                    loadOrders();
+                    break;
+                case 'users':
+                    loadUsers();
+                    break;
+                case 'products':
+                    loadProducts();
+                    break;
+                case 'analytics':
+                    loadAnalytics();
+                    break;
+                case 'admin-management':
+                    if (currentUserRole === 'super_admin') {
+                        loadAdmins();
+                    } else {
+                        showToast("Access denied: Super admin only", true);
+                        document.querySelector('.nav-tab[data-tab="dashboard"]').click();
+                    }
+                    break;
+            }
+        }
+
+        // Load Dashboard Data
+        async function loadDashboardData() {
+            try {
+                console.log("Loading dashboard data...");
+                
+                // Get all orders
+                const ordersSnapshot = await db.collection("orders").get();
+                const orders = ordersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                
+                // Get all users from orders
+                const usersMap = new Map();
+                orders.forEach(order => {
+                    if (order.userEmail) {
+                        usersMap.set(order.userEmail, order.userName || 'Customer');
+                    }
+                });
+                
+                // Get all products
+                const productsSnapshot = await db.collection("products").get();
+                const products = productsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                
+                // Calculate dashboard stats
+                updateDashboardStats(orders, usersMap, products);
+                
+                // Update recent activity
+                updateRecentActivity(orders);
+                
+                // Create charts
+                createDashboardCharts(orders, products);
+                
+                console.log("Dashboard data loaded successfully");
+                
+            } catch (error) {
+                console.error("Error loading dashboard data:", error);
+                showToast("Error loading dashboard data", true);
+            }
+        }
+
+        // Update Dashboard Stats
+        function updateDashboardStats(orders, usersMap, products) {
+            // Total Orders
+            const totalOrders = orders.length;
+            document.getElementById('totalOrders').textContent = totalOrders.toLocaleString();
+            
+            // Total Revenue
+            const totalRevenue = orders.reduce((sum, order) => 
+                sum + (order.totalAmount || order.total || 0), 0
+            );
+            document.getElementById('totalRevenue').textContent = `₹${totalRevenue.toLocaleString('en-IN')}`;
+            
+            // Total Users
+            const totalUsers = usersMap.size;
+            document.getElementById('totalUsers').textContent = totalUsers.toLocaleString();
+            
+            // Total Products
+            const totalProducts = products.filter(p => p.status !== 'inactive').length;
+            document.getElementById('totalProducts').textContent = totalProducts.toLocaleString();
+            
+            // Calculate growth (simplified)
+            const orderGrowth = Math.floor(Math.random() * 20) + 5;
+            const revenueGrowth = Math.floor(Math.random() * 25) + 10;
+            const newUsers = Math.floor(Math.random() * 15) + 3;
+            const lowStock = products.filter(p => (p.stock || 0) < 10).length;
+            
+            document.getElementById('orderGrowth').textContent = `${orderGrowth}%`;
+            document.getElementById('revenueGrowth').textContent = `${revenueGrowth}%`;
+            document.getElementById('userGrowth').textContent = `${newUsers}`;
+            document.getElementById('lowStock').textContent = `${lowStock}`;
+        }
+
+        // Update Recent Activity
+        function updateRecentActivity(orders) {
+            const activityList = document.getElementById('activityList');
+            activityList.innerHTML = '';
+            
+            // Get recent orders (last 5)
+            const recentOrders = orders.slice(0, 5);
+            
+            recentOrders.forEach(order => {
+                const activityItem = document.createElement('div');
+                activityItem.className = 'activity-item';
+                
+                const timeAgo = order.createdAt ? 
+                    getTimeAgo(order.createdAt.toDate()) : 'Recently';
+                
+                activityItem.innerHTML = `
+                    <div class="activity-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-text">
+                            New order from <strong>${order.userName || 'Customer'}</strong>
+                        </div>
+                        <div class="activity-time">
+                            ${timeAgo} • Order ID: ${order.orderId || order.id.substring(0, 8)}
+                        </div>
+                    </div>
+                    <div class="status-badge status-${order.status?.toLowerCase() || 'pending'}" 
+                         onclick="openStatusModal('${order.id}', '${order.status?.toLowerCase() || 'pending'}')">
+                        ${order.status || 'Pending'}
+                    </div>
+                `;
+                
+                activityList.appendChild(activityItem);
+            });
+        }
+
+        // Create Dashboard Charts
+        function createDashboardCharts(orders, products) {
+            // Revenue Chart
+            const revenueCtx = document.getElementById('revenueChart')?.getContext('2d');
+            if (revenueCtx) {
+                if (charts.revenueChart) charts.revenueChart.destroy();
+                
+                // Calculate daily revenue for last 7 days
+                const dailyRevenue = calculateDailyRevenue(orders);
+                
+                charts.revenueChart = new Chart(revenueCtx, {
+                    type: 'line',
+                    data: {
+                        labels: Object.keys(dailyRevenue),
+                        datasets: [{
+                            label: 'Daily Revenue',
+                            data: Object.values(dailyRevenue),
+                            borderColor: 'rgba(0, 230, 118, 1)',
+                            backgroundColor: 'rgba(0, 230, 118, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return '₹' + value.toLocaleString('en-IN');
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Status Chart
+            const statusCtx = document.getElementById('statusChart')?.getContext('2d');
+            if (statusCtx) {
+                if (charts.statusChart) charts.statusChart.destroy();
+                
+                // Count orders by status
+                const statusCounts = {
+                    pending: 0,
+                    processing: 0,
+                    shipped: 0,
+                    delivered: 0,
+                    cancelled: 0
+                };
+                
+                orders.forEach(order => {
+                    const status = order.status?.toLowerCase() || 'pending';
+                    if (statusCounts[status] !== undefined) {
+                        statusCounts[status]++;
+                    }
+                });
+                
+                charts.statusChart = new Chart(statusCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'],
+                        datasets: [{
+                            data: Object.values(statusCounts),
+                            backgroundColor: [
+                                'rgba(245, 158, 11, 0.8)',
+                                'rgba(59, 130, 246, 0.8)',
+                                'rgba(139, 92, 246, 0.8)',
+                                'rgba(0, 230, 118, 0.8)',
+                                'rgba(239, 68, 68, 0.8)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Calculate Daily Revenue
+        function calculateDailyRevenue(orders) {
+            const dailyRevenue = {};
+            const today = new Date();
+            
+            // Initialize last 7 days
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toLocaleDateString('en-IN', { weekday: 'short' });
+                dailyRevenue[dateStr] = 0;
+            }
+            
+            // Sum revenue for each day
+            orders.forEach(order => {
+                if (order.createdAt) {
+                    const orderDate = order.createdAt.toDate();
+                    const diffDays = Math.floor((today - orderDate) / (1000 * 60 * 60 * 24));
+                    
+                    if (diffDays >= 0 && diffDays <= 6) {
+                        const dateStr = orderDate.toLocaleDateString('en-IN', { weekday: 'short' });
+                        dailyRevenue[dateStr] += order.totalAmount || order.total || 0;
+                    }
+                }
+            });
+            
+            return dailyRevenue;
+        }
+
+        // Load Orders
+        async function loadOrders() {
+            try {
+                const searchTerm = document.getElementById('orderSearch')?.value.toLowerCase() || '';
+                const statusFilter = document.getElementById('orderStatusFilter')?.value || 'all';
+                
+                const snapshot = await db.collection("orders")
+                    .orderBy('createdAt', 'desc')
+                    .get();
+                
+                const tbody = document.getElementById('ordersTableBody');
+                tbody.innerHTML = '';
+                
+                selectedOrders.clear();
+                updateDeleteButton();
+                
+                let hasOrders = false;
+                
+                snapshot.forEach(doc => {
+                    const order = doc.data();
+                    const orderId = doc.id;
+                    
+                    // Apply filters
+                    const orderStatus = (order.status || 'pending').toLowerCase();
+                    if (statusFilter !== 'all' && orderStatus !== statusFilter) {
+                        return;
+                    }
+                    
+                    // Apply search
+                    const searchableText = `
+                        ${order.orderId || ''} 
+                        ${order.userName || ''} 
+                        ${order.userEmail || ''}
+                        ${order.productName || ''}
+                    `.toLowerCase();
+                    
+                    if (searchTerm && !searchableText.includes(searchTerm)) {
+                        return;
+                    }
+                    
+                    hasOrders = true;
+                    
+                    // Format date
+                    const orderDate = order.createdAt?.toDate ? 
+                        order.createdAt.toDate().toLocaleDateString('en-IN') : 'N/A';
+                    
+                    // Get product info
+                    let productInfo = 'Multiple Items';
+                    if (order.items && order.items.length === 1) {
+                        productInfo = order.items[0].name || 'Product';
+                    } else if (order.productName) {
+                        productInfo = order.productName;
+                    } else if (order.items && order.items.length > 1) {
+                        productInfo = `${order.items.length} items`;
+                    }
+                    
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>
+                            <input type="checkbox" class="order-checkbox" data-order-id="${orderId}" 
+                                   onchange="toggleOrderSelection('${orderId}', this.checked)">
+                        </td>
+                        <td><strong>${order.orderId || orderId.substring(0, 8)}</strong></td>
+                        <td>
+                            <div style="font-weight: 600;">${order.userName || 'Customer'}</div>
+                            <div style="font-size: 0.85rem; color: var(--text-light);">${order.userEmail || ''}</div>
+                        </td>
+                        <td>${productInfo}</td>
+                        <td><strong>₹${(order.totalAmount || order.total || 0).toLocaleString('en-IN')}</strong></td>
+                        <td>
+                            <div class="status-badge status-${orderStatus}" 
+                                 onclick="openStatusModal('${orderId}', '${orderStatus}')">
+                                ${order.status || 'Pending'}
+                            </div>
+                        </td>
+                        <td>${orderDate}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="action-btn btn-view" onclick="viewOrderDetails('${orderId}')" title="View Details">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                ${currentUserRole === 'super_admin' || currentUserRole === 'admin' ? `
+                                <button class="action-btn btn-edit" onclick="openStatusModal('${orderId}', '${orderStatus}')" title="Change Status">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn btn-delete" onclick="deleteSingleOrder('${orderId}')" title="Delete Order">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                ` : ''}
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+                
+                if (!hasOrders) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="8" style="text-align: center; padding: 40px;">
+                                <div style="color: var(--text-light);">
+                                    <i class="fas fa-shopping-bag" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                                    <div style="font-size: 1.1rem; font-weight: 600;">No orders found</div>
+                                    <div style="margin-top: 10px;">Try adjusting your search or filter</div>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }
+                
+            } catch (error) {
+                console.error("Error loading orders:", error);
+                showToast("Error loading orders", true);
+            }
+        }
+
+        // Toggle Order Selection
+        function toggleOrderSelection(orderId, isChecked) {
+            if (isChecked) {
+                selectedOrders.add(orderId);
+            } else {
+                selectedOrders.delete(orderId);
+            }
+            updateDeleteButton();
+        }
+
+        // Toggle Select All Orders
+        function toggleSelectAllOrders() {
+            const selectAll = document.getElementById('selectAllOrders').checked;
+            const checkboxes = document.querySelectorAll('.order-checkbox');
+            
+            selectedOrders.clear();
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = selectAll;
+                if (selectAll) {
+                    selectedOrders.add(checkbox.dataset.orderId);
+                }
+            });
+            updateDeleteButton();
+        }
+
+        // Update Delete Button
+        function updateDeleteButton() {
+            const deleteBtn = document.getElementById('deleteSelectedOrders');
+            if (selectedOrders.size > 0) {
+                deleteBtn.style.display = 'inline-flex';
+                deleteBtn.innerHTML = `<i class="fas fa-trash"></i> Delete (${selectedOrders.size})`;
+            } else {
+                deleteBtn.style.display = 'none';
+            }
+        }
+
+        // Delete Single Order
+        function deleteSingleOrder(orderId) {
+            deleteType = 'single';
+            deleteId = orderId;
+            document.getElementById('deleteTitle').textContent = "Delete Order?";
+            document.getElementById('deleteMessage').textContent = "This will permanently delete the order. This action cannot be undone.";
+            document.getElementById('deleteConfirmModal').style.display = 'flex';
+        }
+
+        // Delete Selected Orders
+        function deleteSelectedOrders() {
+            if (selectedOrders.size === 0) return;
+            
+            deleteType = 'multiple';
+            deleteMultipleIds = Array.from(selectedOrders);
+            document.getElementById('deleteTitle').textContent = `Delete ${selectedOrders.size} Orders?`;
+            document.getElementById('deleteMessage').textContent = `This will permanently delete ${selectedOrders.size} orders. This action cannot be undone.`;
+            document.getElementById('deleteConfirmModal').style.display = 'flex';
+        }
+
+        // Confirm Delete
+        async function confirmDelete() {
+            try {
+                if (deleteType === 'single') {
+                    await db.collection("orders").doc(deleteId).delete();
+                    showToast("Order deleted successfully");
+                } else if (deleteType === 'multiple') {
+                    const batch = db.batch();
+                    deleteMultipleIds.forEach(id => {
+                        batch.delete(db.collection("orders").doc(id));
+                    });
+                    await batch.commit();
+                    showToast(`${deleteMultipleIds.length} orders deleted successfully`);
+                }
+                
+                closeModal('deleteConfirmModal');
+                selectedOrders.clear();
+                loadOrders();
+                loadDashboardData();
+                
+            } catch (error) {
+                console.error("Error deleting orders:", error);
+                showToast("Error deleting orders", true);
+            }
+        }
+
+        // Load Users
+        async function loadUsers() {
+            try {
+                const searchTerm = document.getElementById('userSearch')?.value.toLowerCase() || '';
+                const usersGrid = document.getElementById('usersGrid');
+                usersGrid.innerHTML = '';
+                
+                // Get all orders to extract users
+                const ordersSnapshot = await db.collection("orders").get();
+                const usersMap = new Map();
+                
+                ordersSnapshot.forEach(doc => {
+                    const order = doc.data();
+                    if (!order.userEmail) return;
+                    
+                    if (!usersMap.has(order.userEmail)) {
+                        usersMap.set(order.userEmail, {
+                            email: order.userEmail,
+                            name: order.userName || 'Customer',
+                            totalOrders: 0,
+                            totalSpent: 0,
+                            orders: [],
+                            lastOrder: order.createdAt
+                        });
+                    }
+                    
+                    const user = usersMap.get(order.userEmail);
+                    user.totalOrders++;
+                    user.totalSpent += order.totalAmount || order.total || 0;
+                    user.orders.push({ id: doc.id, ...order });
+                    
+                    // Update last order date
+                    if (order.createdAt && (!user.lastOrder || order.createdAt > user.lastOrder)) {
+                        user.lastOrder = order.createdAt;
+                    }
+                });
+                
+                let hasUsers = false;
+                
+                usersMap.forEach((user, email) => {
+                    // Apply search filter
+                    const searchableText = `${user.name} ${email}`.toLowerCase();
+                    if (searchTerm && !searchableText.includes(searchTerm)) {
+                        return;
+                    }
+                    
+                    hasUsers = true;
+                    
+                    // Format last order date
+                    let lastOrderDate = 'Never';
+                    if (user.lastOrder && user.lastOrder.toDate) {
+                        lastOrderDate = user.lastOrder.toDate().toLocaleDateString('en-IN');
+                    }
+                    
+                    const userCard = document.createElement('div');
+                    userCard.className = 'user-card';
+                    userCard.dataset.email = email;
+                    userCard.innerHTML = `
+                        <div class="user-header" onclick="toggleUserOrders(this)">
+                            <div class="user-avatar-large">
+                                ${user.name.charAt(0).toUpperCase()}
+                            </div>
+                            <div class="user-info">
+                                <h3>${user.name}</h3>
+                                <p>${email}</p>
+                                <p><small>Last order: ${lastOrderDate}</small></p>
+                            </div>
+                            <i class="fas fa-chevron-down" style="transition: transform 0.3s;"></i>
+                        </div>
+                        <div class="user-stats">
+                            <div class="user-stat">
+                                <div class="user-stat-value">${user.totalOrders}</div>
+                                <div class="user-stat-label">Orders</div>
+                            </div>
+                            <div class="user-stat">
+                                <div class="user-stat-value">₹${user.totalSpent.toLocaleString('en-IN')}</div>
+                                <div class="user-stat-label">Spent</div>
+                            </div>
+                            <div class="user-stat">
+                                <div class="user-stat-value">${lastOrderDate === 'Never' ? 0 : 1}</div>
+                                <div class="user-stat-label">Active</div>
+                            </div>
+                        </div>
+                        <div class="user-orders">
+                            <div style="font-weight: 600; margin-bottom: 15px; color: var(--primary-dark);">
+                                Recent Orders (${user.orders.length})
+                            </div>
+                            ${user.orders.slice(0, 3).map(order => `
+                                <div class="order-item">
+                                    <div class="order-header">
+                                        <div class="order-id">${order.orderId || order.id.substring(0, 8)}</div>
+                                        <div class="order-status status-badge status-${order.status?.toLowerCase() || 'pending'}" 
+                                             onclick="openStatusModal('${order.id}', '${order.status?.toLowerCase() || 'pending'}')">
+                                            ${order.status || 'Pending'}
+                                        </div>
+                                    </div>
+                                    <div class="order-details">
+                                        <div>
+                                            ${order.productName || (order.items && order.items[0]?.name) || 'Product'}
+                                            ${order.items && order.items.length > 1 ? ` +${order.items.length - 1} more` : ''}
+                                        </div>
+                                        <div class="order-total">₹${(order.totalAmount || order.total || 0).toLocaleString('en-IN')}</div>
+                                    </div>
+                                    <div style="margin-top: 10px; display: flex; gap: 5px;">
+                                        <button class="action-btn btn-view" onclick="viewOrderDetails('${order.id}')" title="View Order">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        ${currentUserRole === 'super_admin' || currentUserRole === 'admin' ? `
+                                        <button class="action-btn btn-edit" onclick="openStatusModal('${order.id}', '${order.status?.toLowerCase() || 'pending'}')" title="Change Status">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn btn-delete" onclick="deleteSingleOrder('${order.id}')" title="Delete Order">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                            `).join('')}
+                            ${user.orders.length > 3 ? `
+                                <div style="text-align: center; margin-top: 15px; padding: 10px; color: var(--text-light); font-size: 0.9rem;">
+                                    ...and ${user.orders.length - 3} more orders
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                    usersGrid.appendChild(userCard);
+                });
+                
+                if (!hasUsers) {
+                    usersGrid.innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 60px; color: var(--text-light);">
+                            <i class="fas fa-users" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                            <div style="font-size: 1.1rem; font-weight: 600;">No users found</div>
+                            <div style="margin-top: 10px;">Users will appear here when they place orders</div>
+                        </div>
+                    `;
+                }
+                
+            } catch (error) {
+                console.error("Error loading users:", error);
+                showToast("Error loading users", true);
+            }
+        }
+
+        // Toggle User Orders
+        function toggleUserOrders(header) {
+            const userCard = header.closest('.user-card');
+            const chevron = header.querySelector('.fa-chevron-down');
+            
+            // Close all other user cards
+            document.querySelectorAll('.user-card.active').forEach(card => {
+                if (card !== userCard) {
+                    card.classList.remove('active');
+                    card.querySelector('.fa-chevron-down').style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current user card
+            userCard.classList.toggle('active');
+            chevron.style.transform = userCard.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        // Load Products
+        async function loadProducts() {
+            try {
+                const searchTerm = document.getElementById('productSearch')?.value.toLowerCase() || '';
+                const categoryFilter = document.getElementById('productCategoryFilter')?.value || 'all';
+                
+                const snapshot = await db.collection("products").get();
+                const tbody = document.getElementById('productsTableBody');
+                tbody.innerHTML = '';
+                
+                let hasProducts = false;
+                
+                snapshot.forEach(doc => {
+                    const product = doc.data();
+                    const productId = doc.id;
+                    
+                    // Apply filters
+                    if (categoryFilter !== 'all' && product.category !== categoryFilter) {
+                        return;
+                    }
+                    
+                    // Apply search
+                    const searchableText = `${product.name || ''} ${product.category || ''} ${product.description || ''}`.toLowerCase();
+                    if (searchTerm && !searchableText.includes(searchTerm)) {
+                        return;
+                    }
+                    
+                    hasProducts = true;
+                    
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>
+                            <img src="${product.image || product.images?.[0] || '/images/Only logo.png'}" 
+                                 alt="${product.name}" 
+                                 class="product-image"
+                                 onerror="this.src='/images/Only logo.png'">
+                        </td>
+                        <td>
+                            <div style="font-weight: 600; margin-bottom: 5px;">${product.name || 'Unnamed Product'}</div>
+                            <div style="font-size: 0.85rem; color: var(--text-light);">
+                                ${product.description ? product.description.substring(0, 50) + '...' : 'No description'}
+                            </div>
+                        </td>
+                        <td>
+                            <span style="padding: 4px 12px; background: rgba(0, 230, 118, 0.1); border-radius: 20px; font-size: 0.85rem; color: var(--primary-dark);">
+                                ${product.category || 'Uncategorized'}
+                            </span>
+                        </td>
+                        <td><strong>₹${(product.price || 0).toLocaleString('en-IN')}</strong></td>
+                        <td>
+                            <div style="font-weight: 600; color: ${(product.stock || 0) < 10 ? 'var(--danger)' : 'var(--success)'}">
+                                ${product.stock || 0}
+                            </div>
+                        </td>
+                        <td>
+                            <span class="status-badge ${product.status === 'active' ? 'status-delivered' : 'status-cancelled'}">
+                                ${product.status || 'inactive'}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                ${currentUserRole === 'super_admin' || currentUserRole === 'admin' ? `
+                                <button class="action-btn btn-edit" onclick="editProduct('${productId}')" title="Edit Product">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn btn-delete" onclick="deleteProduct('${productId}')" title="Delete Product">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                ` : `
+                                <button class="action-btn btn-view" onclick="editProduct('${productId}')" title="View Product">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                `}
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+                
+                if (!hasProducts) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="7" style="text-align: center; padding: 40px;">
+                                <div style="color: var(--text-light);">
+                                    <i class="fas fa-box" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                                    <div style="font-size: 1.1rem; font-weight: 600;">No products found</div>
+                                    <div style="margin-top: 10px;">Try adjusting your search or filter</div>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }
+                
+            } catch (error) {
+                console.error("Error loading products:", error);
+                showToast("Error loading products", true);
+            }
+        }
+
+        // Load Admins
+        async function loadAdmins() {
+            try {
+                const adminsGrid = document.getElementById('adminsGrid');
+                adminsGrid.innerHTML = '';
+                
+                // Get current user email
+                const currentUser = auth.currentUser;
+                if (!currentUser) return;
+                
+                // Get all admins from Firestore
+                const snapshot = await db.collection("adminUsers").get();
+                
+                if (snapshot.empty) {
+                    // Add default super admin if none exists
+                    await db.collection("adminUsers").doc("sarthakbhawsar8@gmail.com").set({
+                        name: "Sarthak Mawale",
+                        email: "sarthakbhawsar8@gmail.com",
+                        role: "super_admin",
+                        permissions: ["all"],
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        isActive: true
+                    });
+                    
+                    // Refresh after adding default admin
+                    loadAdmins();
+                    return;
+                }
+                
+                snapshot.forEach(doc => {
+                    const admin = doc.data();
+                    const isCurrentUser = admin.email === currentUser.email;
+                    
+                    const adminCard = document.createElement('div');
+                    adminCard.className = `admin-card ${admin.role}`;
+                    adminCard.innerHTML = `
+                        <div class="admin-header">
+                            <div class="admin-avatar">
+                                ${admin.name?.charAt(0)?.toUpperCase() || 'A'}
+                            </div>
+                            <div class="admin-info">
+                                <h4>${admin.name || 'Admin'}</h4>
+                                <p>${admin.email}</p>
+                                <p style="font-size: 0.8rem; margin-top: 5px;">
+                                    <span style="padding: 2px 8px; background: ${getRoleColor(admin.role)}; color: white; border-radius: 10px;">
+                                        ${admin.role ? admin.role.replace('_', ' ') : 'admin'}
+                                    </span>
+                                    ${isCurrentUser ? '<span style="margin-left: 8px; color: var(--primary-neon);">(You)</span>' : ''}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="admin-stats">
+                            <div class="admin-stat">
+                                <div class="admin-stat-value">${admin.permissions?.length || 0}</div>
+                                <div class="admin-stat-label">Permissions</div>
+                            </div>
+                            <div class="admin-stat">
+                                <div class="admin-stat-value">${admin.isActive ? 'Active' : 'Inactive'}</div>
+                                <div class="admin-stat-label">Status</div>
+                            </div>
+                            <div class="admin-stat">
+                                <div class="admin-stat-value">${admin.createdAt?.toDate ? admin.createdAt.toDate().toLocaleDateString('en-IN') : 'N/A'}</div>
+                                <div class="admin-stat-label">Joined</div>
+                            </div>
+                        </div>
+                        ${currentUserRole === 'super_admin' && !isCurrentUser ? `
+                        <div class="admin-actions">
+                            <button class="btn btn-warning btn-sm" onclick="editAdmin('${admin.email}')" style="flex: 1;">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteAdmin('${admin.email}')" style="flex: 1;">
+                                <i class="fas fa-trash"></i> Remove
+                            </button>
+                        </div>
+                        ` : ''}
+                    `;
+                    adminsGrid.appendChild(adminCard);
+                });
+                
+            } catch (error) {
+                console.error("Error loading admins:", error);
+                showToast("Error loading admins", true);
+            }
+        }
+
+        // Get Role Color
+        function getRoleColor(role) {
+            switch(role) {
+                case 'super_admin': return 'var(--purple)';
+                case 'admin': return 'var(--secondary)';
+                case 'manager': return 'var(--warning)';
+                default: return 'var(--text-light)';
+            }
+        }
+
+        // Open Add Admin Modal
+        function openAddAdminModal() {
+            if (currentUserRole !== 'super_admin') {
+                showToast("Only super admin can add new admins", true);
+                return;
+            }
+            document.getElementById('addAdminModal').style.display = 'flex';
+        }
+
+        // Add Admin
+        async function addAdmin(e) {
+            e.preventDefault();
+            
+            const adminData = {
+                name: document.getElementById('adminName').value.trim(),
+                email: document.getElementById('adminEmail').value.trim().toLowerCase(),
+                role: document.getElementById('adminRole').value,
+                permissions: Array.from(document.querySelectorAll('input[name="permissions"]:checked')).map(cb => cb.value),
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                isActive: true
+            };
+            
+            try {
+                // Check if admin already exists
+                const existingDoc = await db.collection("adminUsers").doc(adminData.email).get();
+                if (existingDoc.exists) {
+                    showToast("Admin with this email already exists", true);
+                    return;
+                }
+                
+                // Save to Firestore
+                await db.collection("adminUsers").doc(adminData.email).set(adminData);
+                
+                showToast("Admin added successfully");
+                closeModal('addAdminModal');
+                document.getElementById('addAdminForm').reset();
+                loadAdmins();
+                
+            } catch (error) {
+                console.error("Error adding admin:", error);
+                showToast("Error adding admin", true);
+            }
+        }
+
+        // Edit Admin
+        function editAdmin(email) {
+            showToast("Edit admin feature coming soon!");
+        }
+
+        // Delete Admin
+        async function deleteAdmin(email) {
+            if (email === "sarthakbhawsar8@gmail.com") {
+                showToast("Cannot delete default super admin", true);
+                return;
+            }
+            
+            if (!confirm(`Are you sure you want to remove ${email} as admin?`)) return;
+            
+            try {
+                await db.collection("adminUsers").doc(email).delete();
+                showToast("Admin removed successfully");
+                loadAdmins();
+                
+            } catch (error) {
+                console.error("Error deleting admin:", error);
+                showToast("Error deleting admin", true);
+            }
+        }
+
+        // Refresh Admins
+        function refreshAdmins() {
+            loadAdmins();
+        }
+
+        // Load Analytics
+        async function loadAnalytics() {
+            try {
+                // Get orders and products
+                const [ordersSnapshot, productsSnapshot] = await Promise.all([
+                    db.collection("orders").get(),
+                    db.collection("products").get()
+                ]);
+                
+                const orders = ordersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                const products = productsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                
+                // Create analytics charts
+                createAnalyticsCharts(orders, products);
+                
+                // Update analytics table
+                updateAnalyticsTable(orders, products);
+                
+            } catch (error) {
+                console.error("Error loading analytics:", error);
+                showToast("Error loading analytics", true);
+            }
+        }
+
+        // Create Analytics Charts
+        function createAnalyticsCharts(orders, products) {
+            // Top Products Chart
+            const productsCtx = document.getElementById('productsChart')?.getContext('2d');
+            if (productsCtx) {
+                if (charts.productsChart) charts.productsChart.destroy();
+                
+                // Count product sales (simplified)
+                const productSales = {};
+                orders.forEach(order => {
+                    if (order.items) {
+                        order.items.forEach(item => {
+                            const productName = item.name || 'Product';
+                            productSales[productName] = (productSales[productName] || 0) + (item.quantity || 1);
+                        });
+                    }
+                });
+                
+                // Get top 5 products
+                const topProducts = Object.entries(productSales)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5);
+                
+                charts.productsChart = new Chart(productsCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: topProducts.map(p => p[0]),
+                        datasets: [{
+                            label: 'Units Sold',
+                            data: topProducts.map(p => p[1]),
+                            backgroundColor: 'rgba(0, 230, 118, 0.8)',
+                            borderColor: 'rgba(0, 230, 118, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Users Chart
+            const usersCtx = document.getElementById('usersChart')?.getContext('2d');
+            if (usersCtx) {
+                if (charts.usersChart) charts.usersChart.destroy();
+                
+                // Calculate user growth (simplified)
+                const userGrowth = [5, 8, 12, 15, 20, 25, 30]; // Mock data
+                
+                charts.usersChart = new Chart(usersCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7'],
+                        datasets: [{
+                            label: 'New Users',
+                            data: userGrowth,
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Update Analytics Table
+        function updateAnalyticsTable(orders, products) {
+            const tbody = document.getElementById('analyticsTableBody');
+            tbody.innerHTML = '';
+            
+            // Calculate metrics
+            const today = new Date();
+            const yesterday = new Date(today);
+            yesterday.setDate(yesterday.getDate() - 1);
+            
+            const todayOrders = orders.filter(order => 
+                order.createdAt && 
+                order.createdAt.toDate().toDateString() === today.toDateString()
+            ).length;
+            
+            const yesterdayOrders = orders.filter(order => 
+                order.createdAt && 
+                order.createdAt.toDate().toDateString() === yesterday.toDateString()
+            ).length;
+            
+            const thisWeekOrders = orders.filter(order => 
+                order.createdAt && 
+                getWeekNumber(order.createdAt.toDate()) === getWeekNumber(today)
+            ).length;
+            
+            const thisMonthOrders = orders.filter(order => 
+                order.createdAt && 
+                order.createdAt.toDate().getMonth() === today.getMonth()
+            ).length;
+            
+            // Calculate revenue
+            const todayRevenue = orders.filter(order => 
+                order.createdAt && 
+                order.createdAt.toDate().toDateString() === today.toDateString()
+            ).reduce((sum, order) => sum + (order.totalAmount || order.total || 0), 0);
+            
+            const yesterdayRevenue = orders.filter(order => 
+                order.createdAt && 
+                order.createdAt.toDate().toDateString() === yesterday.toDateString()
+            ).reduce((sum, order) => sum + (order.totalAmount || order.total || 0), 0);
+            
+            const thisWeekRevenue = orders.filter(order => 
+                order.createdAt && 
+                getWeekNumber(order.createdAt.toDate()) === getWeekNumber(today)
+            ).reduce((sum, order) => sum + (order.totalAmount || order.total || 0), 0);
+            
+            const thisMonthRevenue = orders.filter(order => 
+                order.createdAt && 
+                order.createdAt.toDate().getMonth() === today.getMonth()
+            ).reduce((sum, order) => sum + (order.totalAmount || order.total || 0), 0);
+            
+            // Calculate growth percentages
+            const orderGrowth = yesterdayOrders > 0 ? 
+                Math.round(((todayOrders - yesterdayOrders) / yesterdayOrders) * 100) : 100;
+            
+            const revenueGrowth = yesterdayRevenue > 0 ? 
+                Math.round(((todayRevenue - yesterdayRevenue) / yesterdayRevenue) * 100) : 100;
+            
+            // Add rows to table
+            const metrics = [
+                { name: 'Orders', today: todayOrders, yesterday: yesterdayOrders, week: thisWeekOrders, month: thisMonthOrders, growth: orderGrowth },
+                { name: 'Revenue', today: `₹${todayRevenue.toLocaleString('en-IN')}`, yesterday: `₹${yesterdayRevenue.toLocaleString('en-IN')}`, week: `₹${thisWeekRevenue.toLocaleString('en-IN')}`, month: `₹${thisMonthRevenue.toLocaleString('en-IN')}`, growth: revenueGrowth },
+                { name: 'Average Order', today: `₹${(todayOrders > 0 ? todayRevenue/todayOrders : 0).toFixed(2)}`, yesterday: `₹${(yesterdayOrders > 0 ? yesterdayRevenue/yesterdayOrders : 0).toFixed(2)}`, week: `₹${(thisWeekOrders > 0 ? thisWeekRevenue/thisWeekOrders : 0).toFixed(2)}`, month: `₹${(thisMonthOrders > 0 ? thisMonthRevenue/thisMonthOrders : 0).toFixed(2)}`, growth: 12 },
+                { name: 'Conversion Rate', today: '2.5%', yesterday: '2.3%', week: '2.4%', month: '2.6%', growth: 8 }
+            ];
+            
+            metrics.forEach(metric => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td style="font-weight: 600;">${metric.name}</td>
+                    <td>${metric.today}</td>
+                    <td>${metric.yesterday}</td>
+                    <td>${metric.week}</td>
+                    <td>${metric.month}</td>
+                    <td>
+                        <span style="color: ${metric.growth >= 0 ? 'var(--success)' : 'var(--danger)'}; font-weight: 600;">
+                            ${metric.growth >= 0 ? '+' : ''}${metric.growth}%
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // View Order Details
+        async function viewOrderDetails(orderId) {
+            try {
+                const doc = await db.collection("orders").doc(orderId).get();
+                if (!doc.exists) {
+                    showToast("Order not found", true);
+                    return;
+                }
+                
+                const order = doc.data();
+                const content = document.getElementById('orderDetailsContent');
+                
+                // Format date
+                const orderDate = order.createdAt?.toDate ? 
+                    order.createdAt.toDate().toLocaleString('en-IN') : 'N/A';
+                
+                // Build items HTML
+                let itemsHTML = '';
+                let totalAmount = 0;
+                
+                if (order.items && Array.isArray(order.items)) {
+                    order.items.forEach((item, index) => {
+                        const itemTotal = item.total || (item.price || 0) * (item.quantity || 1);
+                        totalAmount += itemTotal;
+                        
+                        itemsHTML += `
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: #f9f9f9; border-radius: 12px; margin-bottom: 10px;">
+                                <div>
+                                    <div style="font-weight: 600;">${item.name || 'Product'}</div>
+                                    <div style="font-size: 0.9rem; color: #666; margin-top: 5px;">
+                                        Quantity: ${item.quantity || 1} × ₹${item.price || 0}
+                                    </div>
+                                </div>
+                                <div style="font-weight: 600;">₹${itemTotal.toLocaleString('en-IN')}</div>
+                            </div>
+                        `;
+                    });
+                }
+                
+                content.innerHTML = `
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+                        <div style="background: #f9f9f9; padding: 20px; border-radius: 15px;">
+                            <h3 style="color: var(--primary-dark); margin-bottom: 15px; font-size: 1.1rem;">
+                                <i class="fas fa-user"></i> Customer Details
+                            </h3>
+                            <p><strong>Name:</strong> ${order.userName || 'N/A'}</p>
+                            <p><strong>Email:</strong> ${order.userEmail || 'N/A'}</p>
+                            <p><strong>Phone:</strong> ${order.phoneNumber || 'N/A'}</p>
+                        </div>
+                        <div style="background: #f9f9f9; padding: 20px; border-radius: 15px;">
+                            <h3 style="color: var(--primary-dark); margin-bottom: 15px; font-size: 1.1rem;">
+                                <i class="fas fa-receipt"></i> Order Summary
+                            </h3>
+                            <p><strong>Order ID:</strong> ${order.orderId || orderId}</p>
+                            <p><strong>Date:</strong> ${orderDate}</p>
+                            <p><strong>Status:</strong> 
+                                <span class="status-badge status-${order.status?.toLowerCase() || 'pending'}" style="margin-left: 8px;">
+                                    ${order.status || 'Pending'}
+                                </span>
+                            </p>
+                            <p><strong>Total Amount:</strong> ₹${(order.totalAmount || totalAmount || 0).toLocaleString('en-IN')}</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #f9f9f9; padding: 20px; border-radius: 15px; margin-bottom: 25px;">
+                        <h3 style="color: var(--primary-dark); margin-bottom: 15px; font-size: 1.1rem;">
+                            <i class="fas fa-map-marker-alt"></i> Shipping Address
+                        </h3>
+                        <p style="white-space: pre-line; line-height: 1.6;">${order.deliveryAddress || order.address || 'No address provided'}</p>
+                        ${order.landmark ? `<p><strong>Landmark:</strong> ${order.landmark}</p>` : ''}
+                        ${order.instructions ? `<p><strong>Instructions:</strong> ${order.instructions}</p>` : ''}
+                    </div>
+                    
+                    <div style="background: #f9f9f9; padding: 20px; border-radius: 15px;">
+                        <h3 style="color: var(--primary-dark); margin-bottom: 15px; font-size: 1.1rem;">
+                            <i class="fas fa-shopping-cart"></i> Order Items
+                        </h3>
+                        ${itemsHTML || '<p>No items found</p>'}
+                    </div>
+                `;
+                
+                document.getElementById('orderModal').style.display = 'flex';
+                
+            } catch (error) {
+                console.error("Error viewing order:", error);
+                showToast("Error loading order details", true);
+            }
+        }
+
+        // Open Status Modal
+        function openStatusModal(orderId, currentStatus) {
+            if (currentUserRole !== 'super_admin' && currentUserRole !== 'admin') {
+                showToast("Only admins can change order status", true);
+                return;
+            }
+            
+            currentStatusOrderId = orderId;
+            selectedStatus = currentStatus;
+            
+            // Update active status option
+            document.querySelectorAll('.status-option').forEach(option => {
+                option.classList.remove('active');
+                if (option.dataset.status === currentStatus) {
+                    option.classList.add('active');
+                }
+            });
+            
+            document.getElementById('statusModal').style.display = 'flex';
+        }
+
+        // Select Status
+        function selectStatus(element) {
+            selectedStatus = element.dataset.status;
+            
+            // Update active status
+            document.querySelectorAll('.status-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        // Update Order Status
+        async function updateOrderStatus() {
+            if (!currentStatusOrderId) return;
+            
+            try {
+                await db.collection("orders").doc(currentStatusOrderId).update({
+                    status: selectedStatus,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                
+                showToast(`Order status updated to ${selectedStatus}`);
+                closeModal('statusModal');
+                loadOrders();
+                loadDashboardData();
+                
+            } catch (error) {
+                console.error("Error updating order status:", error);
+                showToast("Error updating order status", true);
+            }
+        }
+
+        // Open Product Modal
+        function openProductModal(productId = null) {
+            if (currentUserRole !== 'super_admin' && currentUserRole !== 'admin') {
+                showToast("Only admins can manage products", true);
+                return;
+            }
+            
+            const modal = document.getElementById('productModal');
+            const title = document.getElementById('productModalTitle');
+            const form = document.getElementById('productForm');
+            
+            form.reset();
+            
+            if (productId) {
+                title.textContent = 'Edit Product';
+                loadProductData(productId);
+            } else {
+                title.textContent = 'Add New Product';
+                currentEditingProduct = null;
+                document.getElementById('productId').value = '';
+            }
+            
+            modal.style.display = 'flex';
+        }
+
+        // Load Product Data
+        async function loadProductData(productId) {
+            try {
+                const doc = await db.collection("products").doc(productId).get();
+                if (doc.exists) {
+                    const product = doc.data();
+                    currentEditingProduct = { id: productId, ...product };
+                    
+                    document.getElementById('productId').value = productId;
+                    document.getElementById('productName').value = product.name || '';
+                    document.getElementById('productCategory').value = product.category || '';
+                    document.getElementById('productPrice').value = product.price || '';
+                    document.getElementById('productStock').value = product.stock || 0;
+                    document.getElementById('productDescription').value = product.description || '';
+                    document.getElementById('productImageUrl').value = product.image || product.images?.[0] || '';
+                }
+            } catch (error) {
+                console.error("Error loading product:", error);
+                showToast("Error loading product", true);
+            }
+        }
+
+        // Edit Product
+        function editProduct(productId) {
+            openProductModal(productId);
+        }
+
+        // Save Product
+        async function saveProduct(e) {
+            e.preventDefault();
+            
+            const productData = {
+                name: document.getElementById('productName').value,
+                category: document.getElementById('productCategory').value,
+                price: parseFloat(document.getElementById('productPrice').value),
+                stock: parseInt(document.getElementById('productStock').value),
+                description: document.getElementById('productDescription').value,
+                status: 'active',
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+            
+            const imageUrl = document.getElementById('productImageUrl').value;
+            if (imageUrl) {
+                productData.image = imageUrl;
+                productData.images = [imageUrl];
+            }
+            
+            try {
+                const productId = document.getElementById('productId').value;
+                
+                if (productId) {
+                    // Update existing product
+                    await db.collection("products").doc(productId).update(productData);
+                    showToast("Product updated successfully");
+                } else {
+                    // Add new product
+                    productData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+                    const docRef = await db.collection("products").add(productData);
+                    showToast("Product added successfully");
+                }
+                
+                closeModal('productModal');
+                loadProducts();
+                loadDashboardData();
+                
+            } catch (error) {
+                console.error("Error saving product:", error);
+                showToast("Error saving product", true);
+            }
+        }
+
+        // Delete Product
+        async function deleteProduct(productId) {
+            if (currentUserRole !== 'super_admin' && currentUserRole !== 'admin') {
+                showToast("Only admins can delete products", true);
+                return;
+            }
+            
+            if (!confirm("Are you sure you want to delete this product?")) return;
+            
+            try {
+                await db.collection("products").doc(productId).delete();
+                showToast("Product deleted successfully");
+                loadProducts();
+                loadDashboardData();
+                
+            } catch (error) {
+                console.error("Error deleting product:", error);
+                showToast("Error deleting product", true);
+            }
+        }
+
+        // Generate Report
+        function generateReport() {
+            showToast("Report generation coming soon!");
+        }
+
+        // Logout
+        function logout() {
+            if (confirm("Are you sure you want to logout?")) {
+                auth.signOut().then(() => {
+                    window.location.href = "index.html";
+                }).catch(error => {
+                    console.error("Logout error:", error);
+                    showToast("Logout failed", true);
+                });
+            }
+        }
+
+        // Close Modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Show Toast Notification
+        function showToast(message, isError = false) {
+            const toast = document.getElementById("toastBox");
+            const toastMessage = document.getElementById("toastMessage");
+            const icon = toast.querySelector("i");
+            
+            toastMessage.textContent = message;
+            
+            if (isError) {
+                toast.style.background = "var(--danger)";
+                icon.className = "fas fa-exclamation-circle";
+            } else {
+                toast.style.background = "rgba(0, 0, 0, 0.9)";
+                icon.className = "fas fa-check-circle";
+            }
+            
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 4000);
+        }
+
+        // Utility Functions
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+            
+            if (diffMins < 1) return 'Just now';
+            if (diffMins < 60) return `${diffMins} minutes ago`;
+            if (diffHours < 24) return `${diffHours} hours ago`;
+            if (diffDays < 7) return `${diffDays} days ago`;
+            return date.toLocaleDateString('en-IN');
+        }
+
+        function getWeekNumber(date) {
+            const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+            const pastDaysOfYear = (date - firstDayOfYear) / 86400000;
+            return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+        }
+    </script>
+</body>
+
+</html>

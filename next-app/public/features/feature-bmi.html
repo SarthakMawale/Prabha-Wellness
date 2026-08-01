@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered BMI Calculator - Prabha Wellness</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" 
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" 
+          rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../images/Only logo.png" type="image/png">
+    
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* === PROFESSIONAL BRAND THEME === */
+        :root {
+            --primary-green: #0B7A6B;
+            --primary-green-dark: #065749;
+            --primary-green-light: #E0F2F1;
+            --secondary-gold: #C6A959;
+            --neutral-dark: #1A1A1A;
+            --neutral-gray: #4A4A4A;
+            --neutral-light: #F8F9FA;
+            --neutral-white: #FFFFFF;
+            --accent-teal: #2D9C8F;
+            --accent-blue: #4A90E2;
+            --accent-orange: #FF7C4C;
+            --gradient-primary: linear-gradient(135deg, #0B7A6B 0%, #2D9C8F 100%);
+            --gradient-secondary: linear-gradient(135deg, #C6A959 0%, #E8D9A0 100%);
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-large: 0 15px 50px rgba(0, 0, 0, 0.1);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+            --border-radius-xl: 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--neutral-light);
+            color: var(--neutral-dark);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--neutral-dark);
+            line-height: 1.2;
+        }
+
+        /* === PAGE LOADER === */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--neutral-white);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .loader-logo {
+            width: 80px;
+            height: auto;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        /* === NAVIGATION === */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--neutral-white);
+            box-shadow: var(--shadow-subtle);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--neutral-gray);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-md);
+        }
+
+        .back-link:hover {
+            color: var(--primary-green);
+            background: var(--primary-green-light);
+        }
+
+        /* === BREADCRUMB === */
+        .breadcrumb-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .breadcrumb {
+            list-style: none;
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--neutral-gray);
+        }
+
+        .breadcrumb li a {
+            text-decoration: none;
+            color: var(--neutral-gray);
+            transition: color 0.3s;
+        }
+
+        .breadcrumb li a:hover {
+            color: var(--primary-green);
+        }
+
+        .breadcrumb li::after {
+            content: '›';
+            margin-left: 0.5rem;
+            color: #ccc;
+        }
+
+        .breadcrumb li:last-child::after {
+            content: '';
+        }
+
+        .breadcrumb li.active {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        /* === MAIN CONTAINER === */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* === CALCULATOR CARD === */
+        .calculator-card {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-green-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+        }
+
+        .card-header h1 {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            color: var(--neutral-gray);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* === INPUT STYLES === */
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            font-size: 0.95rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 1px solid #E5E7EB;
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+            background: var(--neutral-light);
+        }
+
+        .input-wrapper input:focus {
+            border-color: var(--primary-green);
+            background: var(--neutral-white);
+            box-shadow: 0 0 0 3px rgba(11, 122, 107, 0.1);
+        }
+
+        .unit {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--neutral-gray);
+            font-weight: 500;
+        }
+
+        /* === BUTTON === */
+        .calc-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1rem;
+            box-shadow: 0 6px 18px rgba(11, 122, 107, 0.25);
+        }
+
+        .calc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(11, 122, 107, 0.35);
+        }
+
+        .calc-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* === RESULT BOX === */
+        .result-card {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .result-header h2 {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* BMI VALUE DISPLAY */
+        .bmi-display {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--primary-green-light);
+            border-radius: var(--border-radius-lg);
+            border: 2px solid var(--primary-green);
+        }
+
+        .bmi-label {
+            font-size: 0.9rem;
+            color: var(--neutral-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .bmi-value {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .bmi-status {
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--border-radius-xl);
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .status-underweight { background: #FFF3CD; color: #856404; }
+        .status-normal { background: #D4EDDA; color: #155724; }
+        .status-overweight { background: #FFF3CD; color: #856404; }
+        .status-obese { background: #F8D7DA; color: #721C24; }
+
+        /* BMI SCALE */
+        .bmi-scale {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--neutral-light);
+            border-radius: var(--border-radius-md);
+        }
+
+        .scale-bar {
+            height: 10px;
+            background: linear-gradient(90deg, 
+                #3498db 0%, 
+                #2ecc71 25%, 
+                #f1c40f 50%, 
+                #e74c3c 75%, 
+                #c0392b 100%);
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .scale-marker {
+            position: absolute;
+            top: -5px;
+            width: 20px;
+            height: 20px;
+            background: var(--neutral-white);
+            border: 3px solid var(--primary-green);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            transition: left 0.5s ease;
+        }
+
+        .scale-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--neutral-gray);
+        }
+
+        /* AI ANALYSIS SECTION */
+        .ai-analysis {
+            background: var(--neutral-light);
+            border-radius: var(--border-radius-md);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--secondary-gold);
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .ai-header h3 {
+            color: var(--primary-green);
+            font-size: 1.1rem;
+        }
+
+        .ai-response {
+            color: var(--neutral-dark);
+            line-height: 1.6;
+        }
+
+        .ai-loading {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--neutral-gray);
+            font-style: italic;
+        }
+
+        /* RECOMMENDATIONS */
+        .recommendations {
+            margin-top: 2rem;
+        }
+
+        .recommendations h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .rec-list {
+            list-style: none;
+        }
+
+        .rec-list li {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-sm);
+            border-left: 3px solid var(--secondary-gold);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .rec-list i {
+            color: var(--secondary-gold);
+        }
+
+        /* ACTION BUTTONS */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .action-btn {
+            padding: 1rem;
+            border-radius: var(--border-radius-md);
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+        }
+
+        .btn-secondary {
+            background: var(--neutral-light);
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* LOCK SCREEN */
+        #guest-lock-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 99998;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #guest-lock-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lock-box {
+            background: var(--neutral-white);
+            padding: 3rem;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: var(--shadow-large);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        #guest-lock-overlay.active .lock-box {
+            transform: scale(1);
+        }
+
+        .lock-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .lock-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .lock-desc {
+            color: var(--neutral-gray);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .lock-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-login {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+        }
+
+        .btn-signup {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .lock-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+            
+            .container {
+                padding: 0 1rem 2rem;
+            }
+            
+            .calculator-card,
+            .result-card {
+                padding: 1.5rem;
+            }
+            
+            .bmi-value {
+                font-size: 3rem;
+            }
+            
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .bmi-value {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Page Loader -->
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-content">
+            <img src="../images/Only logo.png" alt="Prabha Wellness" class="loader-logo">
+            <div style="font-family: 'Montserrat'; font-weight: 700; color: var(--primary-green);">
+                PRABHA WELLNESS
+            </div>
+        </div>
+    </div>
+
+    <!-- Guest Lock Overlay -->
+    <div id="guest-lock-overlay">
+        <div class="lock-box">
+            <div class="lock-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2 class="lock-title">Premium Feature Locked</h2>
+            <p class="lock-desc">
+                Unlock AI-powered BMI analysis and personalized recommendations by logging into your Prabha Wellness account.
+            </p>
+            <a href="../login.html" class="lock-btn btn-login">
+                <i class="fas fa-sign-in-alt"></i> Login to Continue
+            </a>
+            <a href="../login.html?signup=true" class="lock-btn btn-signup">
+                <i class="fas fa-user-plus"></i> Create Account
+            </a>
+            <a href="../index.html" style="font-size: 0.9rem; color: var(--neutral-gray); text-decoration: none; margin-top: 1rem; display: inline-block;">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="../index.html" class="logo">
+            <img src="../images/Only logo.png" alt="Prabha Wellness">
+            <div>
+                <span style="color: var(--primary-green);">PRABHA</span> WELLNESS<br>
+                <small style="font-size: 0.7rem; color: var(--neutral-gray); font-weight: 500;">
+                    Official Herbalife Nutrition Center
+                </small>
+            </div>
+        </a>
+
+        <a href="../features.html" class="back-link" onclick="triggerPageTransition(event, '../features.html')">
+            <i class="fas fa-arrow-left"></i> Back to Features
+        </a>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+        <ul class="breadcrumb">
+            <li><a href="../index.html" onclick="triggerPageTransition(event, '../index.html')">Home</a></li>
+            <li><a href="../features.html" onclick="triggerPageTransition(event, '../features.html')">Features</a></li>
+            <li class="active">AI BMI Calculator</li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Calculator Card -->
+        <div class="calculator-card" data-aos="fade-right">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div>
+                    <h1>AI-Powered BMI Calculator</h1>
+                    <p class="card-subtitle">
+                        Calculate your Body Mass Index and get personalized AI analysis with Herbalife nutrition recommendations.
+                    </p>
+                </div>
+            </div>
+
+            <form id="bmiForm" onsubmit="calculateBMI(event)">
+                <div class="input-group">
+                    <label>Your Weight (in kilograms)</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="weight" placeholder="Enter your weight" required min="20" max="300" step="0.1">
+                        <span class="unit">kg</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Your Height (in centimeters)</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="height" placeholder="Enter your height" required min="50" max="250" step="0.1">
+                        <span class="unit">cm</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Age (optional)</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="age" placeholder="Enter your age" min="10" max="120">
+                        <span class="unit">years</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Activity Level (optional)</label>
+                    <select id="activityLevel" style="width: 100%; padding: 1rem; border: 1px solid #E5E7EB; border-radius: var(--border-radius-md); background: var(--neutral-light);">
+                        <option value="sedentary">Sedentary (little or no exercise)</option>
+                        <option value="light">Light (exercise 1-3 days/week)</option>
+                        <option value="moderate" selected>Moderate (exercise 3-5 days/week)</option>
+                        <option value="active">Active (exercise 6-7 days/week)</option>
+                        <option value="very_active">Very Active (hard exercise daily)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="calc-btn" id="calculateBtn">
+                    <i class="fas fa-brain"></i> Calculate with AI Analysis
+                </button>
+            </form>
+
+            <div style="margin-top: 2rem; padding: 1rem; background: var(--primary-green-light); border-radius: var(--border-radius-md);">
+                <h3 style="color: var(--primary-green); margin-bottom: 0.5rem; font-size: 1rem;">
+                    <i class="fas fa-info-circle"></i> What is BMI?
+                </h3>
+                <p style="color: var(--neutral-gray); font-size: 0.9rem;">
+                    Body Mass Index (BMI) is a simple calculation using your height and weight. It helps assess whether you have a healthy body weight for your height.
+                </p>
+            </div>
+        </div>
+
+        <!-- Result Card -->
+        <div class="result-card" data-aos="fade-left">
+            <div class="result-header">
+                <h2>Your Health Analysis</h2>
+                <p style="color: var(--neutral-gray);">Personalized insights based on your BMI</p>
+            </div>
+
+            <div id="resultPlaceholder" style="text-align: center; padding: 3rem 1rem;">
+                <div style="font-size: 4rem; color: var(--primary-green-light); margin-bottom: 1rem;">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">Calculate Your BMI</h3>
+                <p style="color: var(--neutral-gray);">
+                    Enter your weight and height on the left to see your personalized health analysis, AI recommendations, and Herbalife nutrition plan.
+                </p>
+            </div>
+
+            <div id="resultContent" style="display: none;">
+                <!-- BMI Display -->
+                <div class="bmi-display">
+                    <div class="bmi-label">Your BMI Score</div>
+                    <div class="bmi-value" id="bmiValue">--</div>
+                    <div class="bmi-status" id="bmiStatus">Normal</div>
+                    <div style="font-size: 0.9rem; color: var(--neutral-gray);" id="bmiCategory">
+                        Healthy Weight Range
+                    </div>
+                </div>
+
+                <!-- BMI Scale -->
+                <div class="bmi-scale">
+                    <div class="scale-bar">
+                        <div class="scale-marker" id="scaleMarker"></div>
+                    </div>
+                    <div class="scale-labels">
+                        <span>Underweight<br>&lt;18.5</span>
+                        <span>Normal<br>18.5-24.9</span>
+                        <span>Overweight<br>25-29.9</span>
+                        <span>Obese<br>≥30</span>
+                    </div>
+                </div>
+
+                <!-- AI Analysis -->
+                <div class="ai-analysis">
+                    <div class="ai-header">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI Health Analysis</h3>
+                    </div>
+                    <div class="ai-response" id="aiResponse">
+                        <div class="ai-loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            Analyzing your health data...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Herbalife Recommendations -->
+                <div class="recommendations">
+                    <h3><i class="fas fa-prescription-bottle-alt"></i> Herbalife Recommendations</h3>
+                    <ul class="rec-list" id="recommendationsList">
+                        <li><i class="fas fa-check"></i> Personalized nutrition plan will appear here</li>
+                    </ul>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="./diet-plan.html" id="dietPlanLink" class="action-btn btn-primary" onclick="triggerPageTransition(event, this.href)">
+                        <i class="fas fa-utensils"></i> Get Diet Plan
+                    </a>
+                    <a href="../products.html?category=weight-management" class="action-btn btn-secondary">
+                        <i class="fas fa-shopping-cart"></i> View Products
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    
+    <!-- Local Perplexity API Key for Testing -->
+    <script>
+        // Local API key for testing
+      
+    </script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 800, once: true });
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+            authDomain: "prabha-wellness.firebaseapp.com",
+            projectId: "prabha-wellness",
+            storageBucket: "prabha-wellness.firebasestorage.app",
+            messagingSenderId: "555332322398",
+            appId: "1:555332322398:web:57e29182b8693c35ef60cf",
+            measurementId: "G-EQ36VYT215"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Page Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('pageLoader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 800);
+        });
+
+        // Auth State Listener
+        auth.onAuthStateChanged(user => {
+            if (!user) {
+                // Show lock screen if not logged in
+                setTimeout(() => {
+                    document.getElementById('guest-lock-overlay').classList.add('active');
+                }, 1000);
+            } else {
+                // Hide lock screen if logged in
+                document.getElementById('guest-lock-overlay').classList.remove('active');
+            }
+        });
+
+        // Page Transition Function
+        function triggerPageTransition(e, targetUrl) {
+            if (e && targetUrl && targetUrl !== "#") {
+                e.preventDefault();
+                const loader = document.getElementById('pageLoader');
+                loader.classList.remove('hidden');
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 400);
+            }
+        }
+
+        // BMI Calculation with AI Analysis
+        async function calculateBMI(e) {
+            e.preventDefault();
+            
+            const weight = parseFloat(document.getElementById('weight').value);
+            const heightCm = parseFloat(document.getElementById('height').value);
+            const age = document.getElementById('age').value;
+            const activityLevel = document.getElementById('activityLevel').value;
+            
+            if (!weight || !heightCm) {
+                alert('Please enter weight and height');
+                return;
+            }
+
+            // Show loading state
+            const calculateBtn = document.getElementById('calculateBtn');
+            calculateBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+            calculateBtn.disabled = true;
+
+            // Calculate BMI
+            const heightM = heightCm / 100;
+            const bmi = (weight / (heightM * heightM)).toFixed(1);
+
+            // Determine BMI category
+            let category, statusClass, planType;
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                statusClass = 'status-underweight';
+                planType = 'gain';
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                category = 'Normal Weight';
+                statusClass = 'status-normal';
+                planType = 'maintain';
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                category = 'Overweight';
+                statusClass = 'status-overweight';
+                planType = 'loss';
+            } else {
+                category = 'Obese';
+                statusClass = 'status-obese';
+                planType = 'fat-loss';
+            }
+
+            // Update UI
+            document.getElementById('resultPlaceholder').style.display = 'none';
+            document.getElementById('resultContent').style.display = 'block';
+            
+            document.getElementById('bmiValue').textContent = bmi;
+            document.getElementById('bmiStatus').textContent = category;
+            document.getElementById('bmiStatus').className = `bmi-status ${statusClass}`;
+            document.getElementById('bmiCategory').textContent = `BMI Range: ${category}`;
+
+            // Update scale marker
+            let markerPosition = 0;
+            if (bmi < 18.5) markerPosition = (bmi / 18.5) * 25;
+            else if (bmi < 25) markerPosition = 25 + ((bmi - 18.5) / 6.4) * 25;
+            else if (bmi < 30) markerPosition = 50 + ((bmi - 25) / 5) * 25;
+            else markerPosition = 75 + (Math.min(bmi - 30, 20) / 20) * 25;
+            
+            document.getElementById('scaleMarker').style.left = `${markerPosition}%`;
+
+            // Generate recommendations based on BMI
+            const recommendations = generateRecommendations(bmi, weight, heightCm, category);
+            displayRecommendations(recommendations);
+
+            // Update diet plan link
+            document.getElementById('dietPlanLink').href = `../diet-plan.html?type=${planType}&bmi=${bmi}&weight=${weight}&height=${heightCm}`;
+
+            // Get AI Analysis
+            await getAIAnalysis(bmi, category, weight, heightCm, age, activityLevel);
+
+            // Reset button
+            calculateBtn.innerHTML = '<i class="fas fa-brain"></i> Calculate with AI Analysis';
+            calculateBtn.disabled = false;
+
+            // Scroll to results
+            document.getElementById('resultContent').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function generateRecommendations(bmi, weight, height, category) {
+            const recs = [];
+            
+            if (category === 'Underweight') {
+                recs.push(
+                    'Herbalife Formula 1 Nutritional Shake Mix for healthy weight gain',
+                    'Protein-rich snacks every 2-3 hours',
+                    'Strength training 3 times per week',
+                    'Herbalife24 Rebuild Strength for muscle recovery'
+                );
+            } else if (category === 'Normal Weight') {
+                recs.push(
+                    'Herbalife Formula 1 for maintaining healthy nutrition',
+                    'Regular exercise 5 times per week',
+                    'Herbalife Tea Concentrate for metabolism',
+                    'Adequate protein intake for muscle maintenance'
+                );
+            } else if (category === 'Overweight') {
+                recs.push(
+                    'Herbalife Formula 1 Meal Replacement for calorie control',
+                    'Herbalife Thermo Complete for metabolism support',
+                    'Cardio exercise 5-6 times per week',
+                    'High protein, low carb diet plan'
+                );
+            } else {
+                recs.push(
+                    'Herbalife Total Control for appetite management',
+                    'Formula 1 + Formula 2 for comprehensive nutrition',
+                    'Daily cardio + strength training combination',
+                    'Herbalife Cell Activator for cellular metabolism'
+                );
+            }
+
+            // Add general recommendations
+            recs.push(
+                'Drink 3-4 liters of water daily',
+                '7-8 hours of quality sleep',
+                'Regular health check-ups'
+            );
+
+            return recs;
+        }
+
+        function displayRecommendations(recommendations) {
+            const list = document.getElementById('recommendationsList');
+            list.innerHTML = '';
+            
+            recommendations.forEach(rec => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check-circle" style="color: var(--secondary-gold);"></i> ${rec}`;
+                list.appendChild(li);
+            });
+        }
+
+        async function getAIAnalysis(bmi, category, weight, height, age, activityLevel) {
+            const aiResponse = document.getElementById('aiResponse');
+            
+            // Show loading
+            aiResponse.innerHTML = `
+                <div class="ai-loading">
+                    <i class="fas fa-spinner fa-spin"></i> AI is analyzing your health data...
+                </div>
+            `;
+
+            try {
+                // For local testing, use mock AI responses
+                // In production, replace with actual Perplexity API call
+                
+                const mockAIResponses = {
+                    'Underweight': `Based on your BMI of ${bmi}, you're in the underweight category. This can indicate insufficient calorie intake or high metabolism. I recommend increasing your calorie intake by 300-500 calories daily with nutrient-dense foods like Herbalife Formula 1 shakes. Focus on strength training to build healthy muscle mass rather than just weight gain.`,
+                    
+                    'Normal Weight': `Excellent! Your BMI of ${bmi} falls in the healthy range. Your weight is appropriate for your height. To maintain this healthy status, continue with balanced nutrition using Herbalife products and regular exercise. Consider incorporating Herbalife24 sports nutrition for optimal performance.`,
+                    
+                    'Overweight': `Your BMI of ${bmi} indicates you're overweight. This suggests an imbalance between calorie intake and expenditure. A sustainable weight loss plan with Herbalife meal replacements could help. Aim for 1-2 pounds of weight loss per week through a combination of calorie deficit and increased physical activity.`,
+                    
+                    'Obese': `Your BMI of ${bmi} falls in the obese category, which increases health risks. I strongly recommend a comprehensive weight management program. Herbalife's weight loss products combined with regular exercise and dietary changes can help. Start with small, sustainable changes and track your progress weekly.`
+                };
+
+                // Simulate API delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                let analysis = mockAIResponses[category] || 
+                    `Your BMI is ${bmi} (${category}). For personalized AI analysis, we would typically analyze your age (${age || 'not provided'}) and activity level (${activityLevel}).`;
+
+                // Add personalized touch
+                if (age) {
+                    analysis += ` At ${age} years old, your metabolism is likely ${age < 30 ? 'higher' : age < 50 ? 'moderate' : 'slower'}, affecting calorie needs.`;
+                }
+
+                analysis += ` Based on your activity level (${activityLevel}), you should adjust your calorie intake accordingly.`;
+
+                aiResponse.innerHTML = `
+                    <div style="color: var(--neutral-dark);">
+                        <p>${analysis}</p>
+                        <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(11, 122, 107, 0.1); border-radius: var(--border-radius-sm);">
+                            <strong><i class="fas fa-lightbulb"></i> Pro Tip:</strong> Book a free consultation with our Herbalife coaches for a personalized plan.
+                        </div>
+                    </div>
+                `;
+
+            } catch (error) {
+                console.error('AI Analysis Error:', error);
+                aiResponse.innerHTML = `
+                    <div style="color: var(--accent-orange);">
+                        <p><i class="fas fa-exclamation-triangle"></i> AI analysis temporarily unavailable.</p>
+                        <p>Your BMI is ${bmi} (${category}). For ${category.toLowerCase()}, we recommend consulting with our Herbalife wellness coaches for personalized guidance.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Optional: Uncomment and use this for actual Perplexity API integration
+
+        async function callPerplexityAPI(prompt) {
+            try {
+                const response = await fetch('https://api.perplexity.ai/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${PERPLEXITY_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: 'llama-3.1-sonar-small-128k-online',
+                        messages: [
+                            {
+                                role: 'system',
+                                content: 'You are a Herbalife nutrition expert. Provide concise, practical advice.'
+                            },
+                            {
+                                role: 'user',
+                                content: prompt
+                            }
+                        ],
+                        max_tokens: 500,
+                        temperature: 0.7
+                    })
+                });
+
+                const data = await response.json();
+                return data.choices[0]?.message?.content || 'No response from AI';
+            } catch (error) {
+                console.error('Perplexity API Error:', error);
+                throw error;
+            }
+        }
+
+    </script>
+</body>
+</html>

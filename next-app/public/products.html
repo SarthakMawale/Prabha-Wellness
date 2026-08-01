@@ -1,0 +1,3627 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | PRABHA WELLNESS - Health and Nutrition Center</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/images/Only logo.png" type="image/png">
+
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* === PROFESSIONAL BRAND THEME === */
+        :root {
+            --primary-green: #0B7A6B;
+            --primary-green-dark: #065749;
+            --primary-green-light: #E0F2F1;
+            --secondary-gold: #C6A959;
+            --neutral-dark: #1A1A1A;
+            --neutral-gray: #4A4A4A;
+            --neutral-light: #F8F9FA;
+            --neutral-white: #FFFFFF;
+            --accent-teal: #2D9C8F;
+            --accent-blue: #4A90E2;
+            --accent-orange: #FF7C4C;
+            --gradient-primary: linear-gradient(135deg, #0B7A6B 0%, #2D9C8F 100%);
+            --gradient-secondary: linear-gradient(135deg, #C6A959 0%, #E8D9A0 100%);
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-large: 0 15px 50px rgba(0, 0, 0, 0.1);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+            --border-radius-xl: 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'satoshi', sans-serif;
+            background-color: var(--neutral-light);
+            color: var(--neutral-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 700;
+            color: var(--neutral-dark);
+            line-height: 1.2;
+        }
+
+        .logo {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 800;
+        }
+
+        /* === PROFESSIONAL NAVBAR === */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--neutral-white);
+            box-shadow: var(--shadow-subtle);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+        }
+
+        .logo span {
+            color: var(--secondary-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-left: auto;
+        }
+
+
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--neutral-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-green);
+            bottom: 0;
+            left: 0;
+        }
+
+        .cta-btn {
+            background: var(--gradient-primary);
+            color: var(--neutral-white) !important;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .login-btn {
+
+            color: black !important;
+
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            text-decoration: none;
+
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-1px);
+
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        /* === USER PROFILE === */
+        .user-profile {
+            position: relative;
+        }
+
+        .profile-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid var(--neutral-white);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            top: 120%;
+            right: 0;
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-large);
+            min-width: 250px;
+            display: none;
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        .profile-dropdown.active {
+            display: block;
+        }
+
+        .profile-header {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .profile-email {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .profile-menu {
+            padding: 1rem 0;
+        }
+
+        .profile-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1.5rem;
+            color: var(--neutral-gray);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .profile-menu a:hover {
+            background: var(--neutral-light);
+            color: var(--primary-green);
+        }
+
+        .profile-menu i {
+            width: 20px;
+            color: var(--primary-green);
+        }
+
+        /* === PRODUCTS HEADER === */
+        .products-header {
+            background: linear-gradient(rgba(11, 122, 107, 0.9), rgba(11, 122, 107, 0.85)), url("./images/workout.png") center/cover no-repeat;
+            color: var(--neutral-white);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .products-header h1 {
+            font-size: 3.5rem;
+            color: var(--neutral-white);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .products-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .official-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius-xl);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+        }
+
+        /* === SEARCH & FILTER === */
+        .search-filter-container {
+            background: var(--neutral-white);
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-medium);
+            max-width: 1200px;
+            margin: -3rem auto 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-green);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3.5rem;
+            border: 2px solid var(--primary-green-light);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            color: var(--neutral-dark);
+            transition: all 0.3s;
+            font-family: 'satoshi', sans-serif;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(11, 122, 107, 0.1);
+        }
+
+        .filter-select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--primary-green-light);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            color: var(--neutral-dark);
+            background: var(--neutral-white);
+            cursor: pointer;
+            font-family: 'satoshi', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(11, 122, 107, 0.1);
+        }
+
+        /* === PRODUCTS GRID === */
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-large);
+            border-color: var(--primary-green-light);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--primary-green);
+            color: var(--neutral-white);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-image {
+            position: relative;
+            padding: 2rem;
+            background: var(--neutral-light);
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--neutral-dark);
+        }
+
+        .product-description {
+            color: var(--neutral-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .product-benefits {
+            margin-bottom: 1.5rem;
+        }
+
+        .benefits-title {
+            font-size: 0.9rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .benefits-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--neutral-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .product-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            border: none;
+            padding: 0.8rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+            padding: 0.8rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-green-light);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.cart-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1;
+        }
+
+        /* Badge fix */
+        .cart-badge {
+            margin-left: 0;
+            transform: translateY(-2px);
+            background: var(--accent-orange);
+            color: var(--neutral-white);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.1rem;
+        }
+
+        /* === TOAST NOTIFICATION === */
+        #toastBox {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--neutral-dark);
+            color: var(--neutral-white);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-large);
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        #toastBox.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--neutral-white);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .loader-logo {
+            width: 100px;
+            height: auto;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .loader-text {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        /* === RESPONSIVE APPROVAL MODAL === */
+        .approval-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100000;
+            padding: 15px;
+            backdrop-filter: blur(8px);
+            overflow-y: auto;
+        }
+
+        .approval-modal-content {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 25px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-large);
+            animation: modalSlideIn 0.4s ease-out;
+            margin: auto;
+            position: relative;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .approval-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .approval-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        .approval-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--neutral-dark);
+        }
+
+        .approval-header p {
+            color: var(--neutral-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .approval-form-group {
+            margin-bottom: 18px;
+        }
+
+        .approval-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            font-size: 0.9rem;
+        }
+
+        .approval-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--neutral-light);
+            border-radius: var(--border-radius-md);
+            font-family: 'satoshi', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: var(--neutral-white);
+        }
+
+        .approval-input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(11, 122, 107, 0.15);
+        }
+
+        .approval-textarea {
+            min-height: 100px;
+            resize: vertical;
+            line-height: 1.5;
+        }
+
+        .approval-select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--neutral-light);
+            border-radius: var(--border-radius-md);
+            font-family: 'satoshi', sans-serif;
+            font-size: 1rem;
+            background: var(--neutral-white);
+            color: var(--neutral-dark);
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B7A6B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+        }
+
+        .approval-select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(11, 122, 107, 0.15);
+        }
+
+        .approval-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .approval-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 14px 20px;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            text-align: center;
+            border: none;
+            font-family: 'satoshi', sans-serif;
+        }
+
+        .approval-btn-cancel {
+            background: var(--neutral-light);
+            border: 2px solid var(--neutral-light);
+            color: var(--neutral-gray);
+        }
+
+        .approval-btn-cancel:hover {
+            background: #e8e8e8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .approval-btn-submit {
+            background: var(--gradient-primary);
+            border: none;
+            color: var(--neutral-white);
+            min-width: 140px;
+        }
+
+        .approval-btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(11, 122, 107, 0.3);
+        }
+
+        /* Info Box Styling */
+        .info-box {
+            background: linear-gradient(135deg, rgba(11, 122, 107, 0.08) 0%, rgba(45, 156, 143, 0.08) 100%);
+            padding: 20px;
+            border-radius: var(--border-radius-md);
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-green);
+            backdrop-filter: blur(10px);
+        }
+
+        .info-box-title {
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 8px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-box-title i {
+            font-size: 1.1rem;
+        }
+
+        .info-box-text {
+            font-size: 0.9rem;
+            color: var(--neutral-gray);
+            line-height: 1.6;
+        }
+
+        /* Close Button */
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--neutral-light);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--neutral-gray);
+            font-size: 1.2rem;
+            z-index: 10;
+        }
+
+        .modal-close-btn:hover {
+            background: #e8e8e8;
+            color: var(--neutral-dark);
+            transform: rotate(90deg);
+        }
+
+        /* Modal Form Field Icons */
+        .form-field-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-green);
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        .form-field-with-icon {
+            position: relative;
+        }
+
+        .form-field-with-icon .approval-input {
+            padding-left: 48px;
+        }
+
+        /* Success Message */
+        .approval-success {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .approval-success .approval-icon {
+            font-size: 3.5rem;
+            color: #10B981;
+            animation: successPulse 1s ease-in-out;
+        }
+
+        @keyframes successPulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            70% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Loading State */
+        .approval-btn.loading {
+            position: relative;
+            color: transparent;
+        }
+
+        .approval-btn.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neutral-white);
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* === RESPONSIVE BREAKPOINTS === */
+
+        /* Tablets and small desktops */
+        @media (max-width: 768px) {
+            .approval-modal-content {
+                padding: 20px;
+                max-height: 85vh;
+            }
+
+            .approval-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .approval-icon {
+                font-size: 2.2rem;
+            }
+
+            .approval-input {
+                padding: 12px 14px;
+                font-size: 0.95rem;
+            }
+
+            .approval-btn {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+                min-width: 110px;
+            }
+
+            .info-box {
+                padding: 16px;
+            }
+
+            .approval-actions {
+                gap: 10px;
+            }
+        }
+
+        /* Mobile phones */
+        @media (max-width: 576px) {
+            .approval-modal {
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.92);
+            }
+
+            .approval-modal-content {
+                padding: 20px 16px;
+                border-radius: var(--border-radius-md);
+                max-height: 92vh;
+            }
+
+            .approval-header h2 {
+                font-size: 1.25rem;
+                margin-bottom: 8px;
+            }
+
+            .approval-header p {
+                font-size: 0.9rem;
+            }
+
+            .approval-form-group {
+                margin-bottom: 16px;
+            }
+
+            .approval-input {
+                padding: 12px;
+                font-size: 0.92rem;
+            }
+
+            .approval-select {
+                padding: 12px 36px 12px 12px;
+                background-position: right 12px center;
+            }
+
+            .approval-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .approval-btn {
+                width: 100%;
+                padding: 14px;
+                min-width: auto;
+            }
+
+            .approval-btn-submit {
+                order: -1;
+                /* Submit button first on mobile */
+            }
+
+            .form-field-with-icon .approval-input {
+                padding-left: 44px;
+            }
+
+            .form-field-icon {
+                left: 14px;
+                font-size: 1rem;
+            }
+
+            .modal-close-btn {
+                top: 12px;
+                right: 12px;
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Very small phones */
+        @media (max-width: 360px) {
+            .approval-modal-content {
+                padding: 16px 14px;
+            }
+
+            .approval-header h2 {
+                font-size: 1.2rem;
+            }
+
+            .approval-icon {
+                font-size: 2rem;
+            }
+
+            .approval-input {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+
+            .approval-label {
+                font-size: 0.85rem;
+            }
+
+            .info-box {
+                padding: 14px;
+                font-size: 0.85rem;
+            }
+
+            .info-box-text {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Landscape orientation */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .approval-modal-content {
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+
+            .approval-header {
+                margin-bottom: 15px;
+            }
+
+            .approval-form-group {
+                margin-bottom: 12px;
+            }
+
+            .approval-input {
+                padding: 10px 12px;
+            }
+
+            .approval-textarea {
+                min-height: 80px;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .approval-modal-content {
+                background: #1a1a1a;
+                color: #ffffff;
+            }
+
+            .approval-header h2 {
+                color: #ffffff;
+            }
+
+            .approval-label {
+                color: #e0e0e0;
+            }
+
+            .approval-input {
+                background: #2a2a2a;
+                border-color: #3a3a3a;
+                color: #ffffff;
+            }
+
+            .approval-input:focus {
+                border-color: var(--primary-green);
+            }
+
+            .info-box {
+                background: rgba(11, 122, 107, 0.15);
+            }
+
+            .approval-btn-cancel {
+                background: #2a2a2a;
+                border-color: #3a3a3a;
+                color: #b0b0b0;
+            }
+
+            .approval-btn-cancel:hover {
+                background: #333;
+            }
+
+            .modal-close-btn {
+                background: #2a2a2a;
+                color: #b0b0b0;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .approval-modal {
+                position: static;
+                background: white;
+                padding: 0;
+            }
+
+            .approval-modal-content {
+                box-shadow: none;
+                max-height: none;
+                overflow: visible;
+            }
+
+            .modal-close-btn,
+            .approval-btn-cancel {
+                display: none;
+            }
+        }
+
+        /* === GUEST LOCK OVERLAY === */
+        #guest-lock-overlay {
+            pointer-events: auto;
+        }
+
+        nav {
+            position: relative;
+            z-index: 100000;
+        }
+
+        .lock-card {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow-large);
+        }
+
+        .lock-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .lock-card h2 {
+            margin-bottom: 1rem;
+            color: var(--neutral-dark);
+        }
+
+        .lock-card p {
+            color: var(--neutral-gray);
+            margin-bottom: 2rem;
+        }
+
+        .lock-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* === APPROVAL MODAL STYLES === */
+        .approval-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100000;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .approval-modal-content {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: var(--shadow-large);
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .approval-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .approval-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        .approval-form-group {
+            margin-bottom: 20px;
+        }
+
+        .approval-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--neutral-dark);
+        }
+
+        .approval-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--neutral-light);
+            border-radius: var(--border-radius-md);
+            font-family: 'satoshi', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .approval-input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(11, 122, 107, 0.1);
+        }
+
+        .approval-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .approval-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .approval-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .approval-btn-cancel {
+            background: var(--neutral-light);
+            border: 2px solid var(--neutral-light);
+            color: var(--neutral-gray);
+        }
+
+        .approval-btn-cancel:hover {
+            background: #e0e0e0;
+        }
+
+        .approval-btn-submit {
+            background: var(--gradient-primary);
+            border: none;
+            color: var(--neutral-white);
+        }
+
+        .approval-btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--primary-green-light);
+            padding: 20px;
+            border-radius: var(--border-radius-md);
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .info-box-title {
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 5px;
+        }
+
+        .info-box-text {
+            font-size: 0.9rem;
+            color: var(--neutral-gray);
+            line-height: 1.5;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--neutral-white);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                box-shadow: var(--shadow-medium);
+                display: none;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .products-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .products-header p {
+                font-size: 1.1rem;
+            }
+
+            .section-container {
+                padding: 2rem 1rem;
+            }
+
+            .search-filter-container {
+                margin: -2rem auto 2rem;
+                padding: 1.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .lock-actions {
+                flex-direction: column;
+            }
+
+            .approval-modal-content {
+                padding: 20px;
+            }
+
+            .approval-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .logo img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .products-header {
+                padding: 3rem 1rem;
+            }
+
+            .products-header h1 {
+                font-size: 2rem;
+            }
+
+            .official-badge {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .product-content {
+                padding: 1.5rem;
+            }
+
+            .lock-card {
+                padding: 2rem;
+            }
+
+            .approval-modal-content {
+                padding: 15px;
+            }
+        }
+
+        /* === UTILITY CLASSES === */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-1 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 3rem;
+        }
+
+        .mt-1 {
+            margin-top: 1rem;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+
+        .mt-3 {
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-content">
+            <img src="/images/Only logo.png" alt="Prabha Wellness" class="loader-logo">
+            <div class="loader-text">PRABHA WELLNESS</div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toastBox"><i class="fas fa-check-circle"></i> <span id="toastMessage">Success</span></div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="/images/Only logo.png" alt="Prabha Wellness">
+                <div>
+                    <span>PRABHA</span> WELLNESS<br>
+                    <small style="font-size: 0.7rem; color: var(--neutral-gray); font-weight: 500;">Official Herbalife
+                        Nutrition Center</small>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="products.html" class="active">Products</a>
+                <a href="features.html">Features</a>
+                <a href="cart.html" class="cart-link">
+                    <span>Cart</span>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+
+                <a href="contact.html">Contact</a>
+
+                <!-- User Profile -->
+                <div class="user-profile" id="userProfileBox" style="display: none;">
+                    <div class="profile-icon" onclick="toggleProfileMenu()">
+                        <span id="userInitial">U</span>
+                    </div>
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <div class="profile-header">
+                            <div id="displayEmail" class="profile-email"></div>
+                        </div>
+                        <div class="profile-menu">
+                            <a href="profile.html">
+                                <i class="fas fa-shopping-bag"></i> My Profile
+                            </a>
+                            <div id="adminPanelLink" style="display: none;">
+                                <a href="adminpanel.html">
+                                    <i class="fas fa-cog"></i> Admin Panel
+                                </a>
+                            </div>
+                            <a href="#" onclick="logoutUser()">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="login.html" id="loginBtnNav" class="login-btn">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Header -->
+    <section class="products-header">
+        <!-- <div class="official-badge">
+            <i class="fas fa-certificate"></i> Official Herbalife Products
+        </div> -->
+        <h1> Herbalife Products</h1>
+        <p>Discover our range of scientifically formulated Herbalife nutrition products to help you achieve your
+            wellness goals. All products are 100% genuine and certified.</p>
+    </section>
+
+    <!-- Search & Filter -->
+    <div class="search-filter-container" data-aos="fade-up">
+        <div class="filter-grid">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search for products...">
+            </div>
+            <div>
+                <select id="categoryFilter" class="filter-select">
+                    <option value="all">All Categories</option>
+                    <option value="Weight Management">Weight Management</option>
+                    <option value="Energy & Fitness">Energy & Fitness</option>
+                    <option value="Targeted Nutrition">Targeted Nutrition</option>
+                    <option value="Ayurvedic Beauty">Business Essential</option>
+                    <option value="Daily Nutrition">Daily Nutrition</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <section class="section-container">
+        <div class="products-grid" id="productsList">
+            <!-- All your product cards remain exactly the same -->
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Core Nutrition">
+                <div class="product-image">
+                    <span class="product-badge">Core Nutrition</span>
+                    <img src="/images/formula 1.png" alt="Herbalife Formula 1 Nutritional Shake Mix" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Formula 1 Nutritional shake mix Vanilla 500 g</h3>
+                    <p class="product-description" itemprop="description">Formula 1 ek balanced nutritional shake hai jo
+                        daily body
+                        ko essential nutrients deta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Key Benefits:</div>
+                        <ul class="benefits-list">
+                            <li>Healthy breakfast meal replacement</li>
+                            <li>Weight management support</li>
+                            <li>Energy aur stamina maintain karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('formula1500g', 'Formula 1 Shake Mix 500g')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('formula1500g', 'Formula 1 Shake Mix 500g', 1200, '/images/formula 1.png')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Muscle Health">
+                <div class="product-image">
+                    <span class="product-badge">Muscle Health</span>
+                    <img src="/images/ppp.webp" alt="Herbalife Personalized Protein Powder" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Personalized Protein Powder 200 g</h3>
+                    <p class="product-description" itemprop="description">Body ki daily protein requirement ko complete
+                        karne mein
+                        help karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Key Benefits:</div>
+                        <ul class="benefits-list">
+                            <li>Muscle repair aur recovery</li>
+                            <li>Lean muscle maintenance</li>
+                            <li>Hunger control</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('ppp200g', 'Personalized Protein Powder 200g')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('ppp200g', 'Personalized Protein Powder 200g', 1200, '/images/ppp.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Energy">
+                <div class="product-image">
+                    <span class="product-badge">Energy</span>
+                    <img src="/images/afresh.webp" alt="Herbalife Afresh Energy Drink Mix" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Afresh Energy Drink</h3>
+                    <p class="product-description" itemprop="description">Afresh ek refreshing energy drink hai jo bina
+                        extra sugar ke instant energy deta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Tiredness (thakan) kam karta hai</li>
+                            <li>Focus aur alertness badhata hai</li>
+                            <li>Metabolism boost karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('afresh', 'Afresh Energy Drink')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('afresh', 'Afresh Energy Drink', 1200, '/images/afresh.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Digestive Health">
+                <div class="product-image">
+                    <span class="product-badge">Digestive Health</span>
+                    <img src="/images/aloe.webp" alt="Herbalife Herbal Aloe Concentrate" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbal Aloe Concentrate</h3>
+                    <p class="product-description" itemprop="description">Digestion ko support karta hai aur gut health
+                        improve karne mein madad karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Acidity aur bloating se relief</li>
+                            <li>Pet (stomach) ke liye soothing</li>
+                            <li>Better nutrient absorption</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('aloe', 'Herbal Aloe Concentrate')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('aloe', 'Herbal Aloe Concentrate', 1200, '/images/aloe.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Heart Health">
+                <div class="product-image">
+                    <span class="product-badge">Heart Health</span>
+                    <img src="/images/nightwork.webp" alt="Herbalife Nightworks" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Niteworks</h3>
+                    <p class="product-description" itemprop="description">Niteworks raat ke time body recovery aur blood
+                        circulation support ke liye use hota hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Blood flow support</li>
+                            <li>Workout recovery</li>
+                            <li>Heart health support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('niteworks', 'Niteworks')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('niteworks', 'Niteworks', 1200, '/images/nightwork.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Mental Focus">
+                <div class="product-image">
+                    <span class="product-badge">Mental Focus</span>
+                    <img src="/images/brain.webp" alt="Herbalife N-R-G Brain Boost" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Brain Boost (N-R-G)</h3>
+                    <p class="product-description" itemprop="description">N-R-G focus aur mental alertness improve karne
+                        mein madad karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Concentration improve karta hai</li>
+                            <li>Mental fatigue kam karta hai</li>
+                            <li>Daily productivity support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('brainboost', 'Brain Boost (N-R-G)')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('brainboost', 'Brain Boost (N-R-G)', 1200, '/images/brain.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Gut Health">
+                <div class="product-image">
+                    <span class="product-badge">Gut Health</span>
+                    <img src="/images/probiotic.jpg" alt="Herbalife Simply Probiotic" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Simply Probiotic</h3>
+                    <p class="product-description" itemprop="description">Digestion aur immunity ke liye good bacteria
+                        provide karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Gut balance improve karta hai</li>
+                            <li>Digestion better banata hai</li>
+                            <li>Immunity support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('probiotic', 'Simply Probiotic')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('probiotic', 'Simply Probiotic', 1200, '/images/probiotic.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Skin Booster">
+                <div class="product-image">
+                    <span class="product-badge">Skin Booster</span>
+                    <img src="/images/Collagen.webp" alt="Herbalife SKIN Collagen Beauty Booster" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbalife SKIN Collagen</h3>
+                    <p class="product-description" itemprop="description">Collagen Skin Booster skin elasticity aur glow
+                        support karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Skin hydration</li>
+                            <li>Glow aur firmness</li>
+                            <li>Anti-aging support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('Collagen', 'Herbalife SKIN Collagen')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('Collagen', 'Herbalife SKIN Collagen', 1200, '/images/Collagen.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Vitamin C">
+                <div class="product-image">
+                    <span class="product-badge">Vitamin C</span>
+                    <img src="/images/Radiant C.jpg" alt="Herbalife Radiant C Serum" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Radiant C Serum</h3>
+                    <p class="product-description" itemprop="description">Skin aur immunity ke liye Vitamin C provide
+                        karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Skin brightness</li>
+                            <li>Immunity support</li>
+                            <li>Antioxidant protection</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('radiantC', 'Radiant C Serum')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('radiantC', 'Radiant C Serum', 1200, '/images/Radiant C.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Sports">
+                <div class="product-image">
+                    <span class="product-badge">Sports</span>
+                    <img src="/images/Hydrate.webp" alt="Herbalife Hydrate" loading="lazy" width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbalife Hydrate</h3>
+                    <p class="product-description" itemprop="description">Body ko quick hydration aur electrolytes deta
+                        hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Dehydration se bachata hai</li>
+                            <li>Workout ke baad recovery</li>
+                            <li>Energy maintain karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('hydrate', 'Herbalife Hydrate')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('hydrate', 'Herbalife Hydrate', 1200, '/images/Hydrate.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Performance">
+                <div class="product-image">
+                    <span class="product-badge">Performance</span>
+                    <img src="/images/CR7 Drive.webp" alt="Herbalife CR7 Drive" loading="lazy" width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">CR7 Drive</h3>
+                    <p class="product-description" itemprop="description">Athletes aur active lifestyle ke liye
+                        hydration drink hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Endurance improve karta hai</li>
+                            <li>Electrolyte balance</li>
+                            <li>Sports performance support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('cr7drive', 'CR7 Drive')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('cr7drive', 'CR7 Drive', 1200, '/images/CR7 Drive.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Metabolism">
+                <div class="product-image">
+                    <span class="product-badge">Metabolism</span>
+                    <img src="/images/Herbal Tea.jfif" alt="Herbalife Herbal Tea Concentrate" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbal Tea Concentrate</h3>
+                    <p class="product-description" itemprop="description">Metabolism aur digestion support karta hai.
+                    </p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Metabolism support</li>
+                            <li>Fatigue kam karta hai</li>
+                            <li>Refreshing energy</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('herbaltea', 'Herbal Tea Concentrate')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('herbaltea', 'Herbal Tea Concentrate', 1200, '/images/Herbal Tea.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Stress Relief">
+                <div class="product-image">
+                    <span class="product-badge">Stress Relief</span>
+                    <img src="/images/Relax Tea.webp" alt="Herbalife Relaxation Tea" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Relaxation Tea</h3>
+                    <p class="product-description" itemprop="description">Stress relief aur better sleep ke liye helpful
+                        hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Stress kam karta hai</li>
+                            <li>Calm feeling deta hai</li>
+                            <li>Better sleep support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('relaxtea', 'Relaxation Tea')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('relaxtea', 'Relaxation Tea ', 1200, '/images/Relax Tea.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Kids Nutrition">
+                <div class="product-image">
+                    <span class="product-badge">Kids Nutrition</span>
+                    <img src="/images/Junior Shake.webp" alt="Herbalife Junior Shake" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbalife Junior Shake / Shakemate</h3>
+                    <p class="product-description" itemprop="description">Bachchon ke growth aur daily nutrition ke liye
+                        bana hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Growth support</li>
+                            <li>Energy aur focus</li>
+                            <li>Balanced nutrition</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('shakemate', 'Herbalife Junior Shake / Shakemate')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('shakemate', 'Shakemate', 1200, '/images/Junior Shake.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="High Protein">
+                <div class="product-image">
+                    <span class="product-badge">High Protein</span>
+                    <img src="/images/PDM.webp" alt="Herbalife Protein Drink Mix" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Protein Drink Mix (PDM)</h3>
+                    <p class="product-description" itemprop="description">Tasty chocolate protein option daily intake ke
+                        liye.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Protein intake increase karta hai</li>
+                            <li>Muscle support</li>
+                            <li>Healthy taste</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('pdm', 'Protein Drink Mix (PDM)')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('pdm', 'Protein Drink Mix (PDM)', 1200, '/images/PDM.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Daily Nutrition">
+                <div class="product-image">
+                    <span class="product-badge">Daily Nutrition</span>
+                    <img src="/images/Formula 2 Multivitamin.webp" alt="Herbalife Formula 2 Multivitamin" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Formula 2 Multivitamin</h3>
+                    <p class="product-description" itemprop="description">Zaroori vitamins aur minerals jo daily diet
+                        mein miss ho jate hain.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Immunity system strong karta hai</li>
+                            <li>Energy aur vitality badhata hai</li>
+                            <li>Overall health maintain karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('multivitamin', 'Formula 2 Multivitamin')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('multivitamin', 'Formula 2 Multivitamin', 1200, '/images/Formula 2 Multivitamin.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Nutrient Absorption">
+                <div class="product-image">
+                    <span class="product-badge">Nutrient Absorption</span>
+                    <img src="/images/Cell Activator.png" alt="Herbalife Cell Activator" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Cell Activator</h3>
+                    <p class="product-description" itemprop="description">Khane ke nutrients ko body mein absorb hone
+                        mein madad karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Nutrient absorption improve karta hai</li>
+                            <li>Cellular energy boost karta hai</li>
+                            <li>Aging signs ko slow karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('cellactivator', 'Cell Activator')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('cellactivator', 'Cell Activator', 1200, '/images/Cell Activator.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Weight Management">
+                <div class="product-image">
+                    <span class="product-badge">Weight Management</span>
+                    <img src="/images/Cell-U-Loss.jfif" alt="Herbalife Cell-U-Loss" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Cell-U-Loss</h3>
+                    <p class="product-description" itemprop="description">Body se excess water aur inches kam karne ke
+                        liye best hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Water retention kam karta hai</li>
+                            <li>Inch loss mein madad karta hai</li>
+                            <li>Cellulite reduction support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('celluloss', 'Cell-U-Loss')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('celluloss', 'Cell-U-Loss', 1200, '/images/Cell-U-Loss.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Metabolism Booster">
+                <div class="product-image">
+                    <span class="product-badge">Metabolism Booster</span>
+                    <img src="/images/Herbal Control.jfif" alt="Herbalife Herbal Control" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbal Control</h3>
+                    <p class="product-description" itemprop="description">Metabolism tez karke fat burn karne mein help
+                        karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Metabolism boost karta hai</li>
+                            <li>Energy level badhata hai</li>
+                            <li>Weight loss process fast karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('herbalcontrol', 'Herbal Control')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('herbalcontrol', 'Herbal Control', 1200, '/images/Herbal Control.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Digestive Health">
+                <div class="product-image">
+                    <span class="product-badge">Digestive Health</span>
+                    <img src="/images/Activated Fiber.jfif" alt="Herbalife Activated Fiber" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Activated Fiber</h3>
+                    <p class="product-description" itemprop="description">Khane ke fat ko body se bahar nikalne mein
+                        madad karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Dietary fat absorption kam karta hai</li>
+                            <li>Digestion improve karta hai</li>
+                            <li>Hunger control mein helpful</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('activatedfiber', 'Activated Fiber')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('activatedfiber', 'Activated Fiber', 1200, '/images/Activated Fiber.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Gut Health">
+                <div class="product-image">
+                    <span class="product-badge">Gut Health</span>
+                    <img src="/images/Active Fiber Complex.jfif" alt="Herbalife Active Fiber Complex" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Active Fiber Complex</h3>
+                    <p class="product-description" itemprop="description">Powder form mein fiber jo gut health aur
+                        regular bowel movement support karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Healthy digestion support</li>
+                            <li>Regularity maintain karta hai</li>
+                            <li>Good bacteria growth support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('activefibercomplex', 'Active Fiber Complex')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('activefibercomplex', 'Active Fiber Complex', 1200, '/images/Active Fiber Complex.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Heart Health">
+                <div class="product-image">
+                    <span class="product-badge">Heart Health</span>
+                    <img src="/images/Herbalifeline (Omega-3).webp" alt="Herbalifeline Omega 3" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbalifeline (Omega-3)</h3>
+                    <p class="product-description" itemprop="description">Premium Omega-3 capsules heart, brain aur
+                        joints ke liye.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Cholesterol manage karta hai</li>
+                            <li>Joint flexibility improve karta hai</li>
+                            <li>Brain health support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('Omega-3', 'Herbalifeline (Omega-3)')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('Omega-3', 'Herbalifeline (Omega-3)', 1200, '/images/Herbalifeline (Omega-3).webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Bone Health">
+                <div class="product-image">
+                    <span class="product-badge">Bone Health</span>
+                    <img src="/images/Calcium Tablets.jfif" alt="Herbalife Calcium Tablets" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Calcium Tablets</h3>
+                    <p class="product-description" itemprop="description">Strong bones aur teeth ke liye Calcium aur
+                        Vitamin D.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Bones ko strong banata hai</li>
+                            <li>Osteoporosis risk kam karta hai</li>
+                            <li>Teeth health maintain karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('calciumtablets', 'Calcium Tablets')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('calciumtablets', 'Calcium Tablets', 1200, '/images/Calcium Tablets.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Core Nutrition">
+                <div class="product-image">
+                    <span class="product-badge">Core Nutrition</span>
+                    <img src="images/formula 1 750g.png" alt="Herbalife Formula 1 Nutritional Shake Mix" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Formula 1 Nutritional shake mix Vanilla 750 g</h3>
+                    <p class="product-description" itemprop="description">Formula 1 ek balanced nutritional shake hai jo
+                        daily body ko essential nutrients deta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Healthy breakfast meal replacement</li>
+                            <li>Weight management support</li>
+                            <li>Energy aur stamina maintain karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('formula1750g', 'Formula 1 Shake Mix 750g')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('formula1750g', 'Formula 1 Shake Mix 750g', 1200, 'images/formula 1 750g.png')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Joint Health">
+                <div class="product-image">
+                    <span class="product-badge">Joint Health</span>
+                    <img src="/images/Joint Support.jfif" alt="Herbalife Joint Support" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Joint Support</h3>
+                    <p class="product-description" itemprop="description">Glucosamine ke sath, joints pain aur
+                        flexibility ke liye.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Joints pain relief</li>
+                            <li>Cartilage health support</li>
+                            <li>Easy movement mein madad</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('jointsupport', 'Joint Support')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('jointsupport', 'Joint Support', 1200, '/images/Joint Support.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Heart Care">
+                <div class="product-image">
+                    <span class="product-badge">Heart Care</span>
+                    <img src="/images/Beta Heart.webp" alt="Herbalife Beta Heart" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Beta Heart</h3>
+                    <p class="product-description" itemprop="description">Oat Beta-Glucan powder jo cholesterol kam
+                        karne mein clinically proven hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Bad cholesterol kam karta hai</li>
+                            <li>Heart arteries clean rakhta hai</li>
+                            <li>Tasty vanilla flavor</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('betaheart', 'Beta Heart')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('betaheart', 'Beta Heart', 1200, '/images/Beta Heart.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Sports Recovery">
+                <div class="product-image">
+                    <span class="product-badge">Sports Recovery</span>
+                    <img src="/images/H24 Rebuild Strength.jfif" alt="Herbalife H24 Rebuild Strength" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">H24 Rebuild Strength</h3>
+                    <p class="product-description" itemprop="description">Heavy workout ke baad muscle recovery ke liye
+                        advanced protein.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Muscle mass increase karta hai</li>
+                            <li>Fast workout recovery</li>
+                            <li>24g protein per serving</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('h24rebuildstrength', 'H24 Rebuild Strength')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('h24rebuildstrength', 'H24 Rebuild Strength', 1200, '/images/H24 Rebuild Strength.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Ayurvedic Nutrition">
+                <div class="product-image">
+                    <span class="product-badge">Ayurvedic Nutrition</span>
+                    <img src="/images/Vritilife Immune Health.webp" alt="Vritilife Immune Health" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Vritilife Immune Health</h3>
+                    <p class="product-description" itemprop="description">Tulsi aur Kalmegh ki shakti se bani immunity
+                        booster tablets.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Natural immunity badhata hai</li>
+                            <li>Seasonal bimariyon se bachata hai</li>
+                            <li>Respiratory health support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('immunehealth', 'Vritilife Immune Health')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('immunehealth', 'Vritilife Immune Health', 1200, '/images/Vritilife Immune Health.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Ayurvedic Nutrition">
+                <div class="product-image">
+                    <span class="product-badge">Ayurvedic Nutrition</span>
+                    <img src="/images/Vritilife Brain Health.jfif" alt="Vritilife Brain Health" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Vritilife Brain Health</h3>
+                    <p class="product-description" itemprop="description">Brahmi herb se bana supplement jo memory aur
+                        focus badhata hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Memory sharp karta hai</li>
+                            <li>Focus aur concentration badhata hai</li>
+                            <li>Mental stress kam karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('brainhealth', 'Vritilife Brain Health')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('brainhealth', 'Vritilife Brain Health', 1200, '/images/Vritilife Brain Health.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Women's Health">
+                <div class="product-image">
+                    <span class="product-badge">Women's Health</span>
+                    <img src="/images/Woman's Choice.jfif" alt="Herbalife Womans Choice" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Woman's Choice</h3>
+                    <p class="product-description" itemprop="description">Hormonal balance aur monthly comfort ke liye
+                        designed.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Hormonal balance support</li>
+                            <li>Mood swings control</li>
+                            <li>General well-being</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('womenchoice', 'Woman\'s Choice')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('womenchoice', 'Woman\'s Choice', 1200, '/images/Woman\'s Choice.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Digestive Support">
+                <div class="product-image">
+                    <span class="product-badge">Digestive Support</span>
+                    <img src="/images/Aloe Plus.webp" alt="Herbalife Aloe Plus" loading="lazy" width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Aloe Plus</h3>
+                    <p class="product-description" itemprop="description">Aloe vera tablets jo digestion aur body detox
+                        mein madad karti hain.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Body detox karta hai</li>
+                            <li>Digestion improve karta hai</li>
+                            <li>Immunity support karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('aloeplus', 'Aloe Plus')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('aloeplus', 'Aloe Plus', 1200, '/images/Aloe Plus.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Ayurvedic Beauty">
+                <div class="product-image">
+                    <span class="product-badge">Ayurvedic Beauty</span>
+                    <img src="/images/Vritilife Facial Cleanser.webp" alt="Herbalife Vritilife Facial Cleanser"
+                        loading="lazy" width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Vritilife Facial Cleanser</h3>
+                    <p class="product-description" itemprop="description">Ayurvedic herbs ke sath natural face cleanser.
+                    </p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Soap-free formula</li>
+                            <li>Natural glow</li>
+                            <li>Purifies skin</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('facialcleanser', 'Vritilife Facial Cleanser')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('facialcleanser', 'Vritilife Facial Cleanser', 1200, '/images/Vritilife Facial Cleanser.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Ayurvedic Beauty">
+                <div class="product-image">
+                    <span class="product-badge">Ayurvedic Beauty</span>
+                    <img src="/images/Vritilife Facial Toner.jpg" alt="Herbalife Vritilife Facial Toner" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Vritilife Facial Toner</h3>
+                    <p class="product-description" itemprop="description">Skin pores ko tight karne aur balance karne ke
+                        liye herbal toner.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Tightens pores</li>
+                            <li>Refreshes skin</li>
+                            <li>Balances pH level</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('facialtoner', 'Vritilife Facial Toner')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('facialtoner', 'Vritilife Facial Toner', 1200, '/images/Vritilife Facial Toner.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Ayurvedic Beauty">
+                <div class="product-image">
+                    <span class="product-badge">Ayurvedic Beauty</span>
+                    <img src="/images/Vritilife Skin Moisturizer.jpg" alt="Herbalife Vritilife Skin Moisturizer"
+                        loading="lazy" width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Vritilife Skin Moisturizer</h3>
+                    <p class="product-description" itemprop="description">Ayurvedic oils aur herbs wala natural
+                        moisturizer.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Deep nourishment</li>
+                            <li>Natural ingredients</li>
+                            <li>Healthy skin glow</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('skinmoisturizer', 'Vritilife Skin Moisturizer')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('skinmoisturizer', 'Vritilife Skin Moisturizer', 1200, '/images/Vritilife Skin Moisturizer.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Ayurvedic Beauty">
+                <div class="product-image">
+                    <span class="product-badge">Ayurvedic Beauty</span>
+                    <img src="/images/Vritilife Facial Serum.jfif" alt="Herbalife Vritilife Facial Serum" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Vritilife Facial Serum</h3>
+                    <p class="product-description" itemprop="description">Skin nutrition aur anti-aging ke liye
+                        concentrated herbal serum.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Anti-aging support</li>
+                            <li>Radiant skin</li>
+                            <li>Fast absorption</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('formulacleanser', 'Vritilife Facial Serum')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('formulacleanser', 'Vritilife Facial Cleanser', 1200, '/images/Vritilife Facial Cleanser.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Continue with other product cards... -->
+
+        </div>
+    </section>
+
+    <!-- Guest Lock Overlay Container -->
+    <div id="guest-lock-container"></div>
+
+    <!-- Approval Modal Container -->
+    <div id="approvalModalContainer"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <!-- Add this to every HTML file -->
+
+
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        // Firebase Init
+        if (!firebase.apps.length) {
+            const firebaseConfig = {
+                apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+                authDomain: "prabha-wellness.firebasestorage.app",
+                projectId: "prabha-wellness",
+                storageBucket: "prabha-wellness.firebasestorage.app",
+                messagingSenderId: "555332322398",
+                appId: "1:555332322398:web:57e29182b8693c35ef60cf"
+            };
+            firebase.initializeApp(firebaseConfig);
+        }
+
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const userProfileBox = document.getElementById('userProfileBox');
+        const loginBtnNav = document.getElementById('loginBtnNav');
+
+        // Cart array
+        let cart = JSON.parse(localStorage.getItem('prabhaCart')) || [];
+
+        // ✅ NEW: Set up cart synchronization
+        // ✅ NEW: Set up cart synchronization (legacy - use only if cartManager not available)
+function setupCartSync() {
+    if (window.cartManager) {
+        console.log("Using CartManager for cart sync");
+        return;
+    }
+    
+    // Old method (fallback)
+    window.addEventListener('storage', function (e) {
+        if (e.key === 'prabhaCart' || e.key === 'cart_sync') {
+            updateCartFromStorage();
+        }
+    });
+
+    // Set up polling as fallback (check every 2 seconds)
+    setInterval(function () {
+        updateCartFromStorage();
+    }, 2000);
+}
+// ✅ NEW: Update cart from localStorage (legacy)
+function updateCartFromStorage() {
+    if (window.cartManager) {
+        // cartManager will handle this
+        return;
+    }
+    
+    const savedCart = localStorage.getItem('prabhaCart');
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+    } else {
+        cart = [];
+    }
+    updateCartCount();
+}
+
+// ✅ NEW: Broadcast cart updates (legacy)
+function broadcastCartUpdate() {
+    if (window.cartManager) {
+        // cartManager will handle this
+        window.cartManager.saveToLocalStorage();
+        return;
+    }
+    
+    // Old method
+    localStorage.setItem('prabhaCart', JSON.stringify(cart));
+    localStorage.setItem('cart_sync', Date.now().toString());
+}
+
+
+        // --- AUTH STATE & GUEST CHECK ---
+        // --- AUTH STATE & GUEST CHECK ---
+       auth.onAuthStateChanged(async (user) => {
+    if (user) {
+        // User Logged In Hai
+        if (userProfileBox) userProfileBox.style.display = 'flex';
+        if (loginBtnNav) loginBtnNav.style.display = 'none';
+
+        document.getElementById('displayEmail').innerText = user.email;
+        document.getElementById('userInitial').innerText = user.email.charAt(0).toUpperCase();
+
+        // Show Admin Panel link
+        const adminLink = document.getElementById('adminPanelLink');
+        if (adminLink) {
+            if (user.email === "sarthakbhawsar8@gmail.com") {
+                adminLink.style.display = 'flex';
+            } else {
+                // Check if user is in admin collection
+                try {
+                    const adminDoc = await db.collection("adminUsers").doc(user.email).get();
+                    adminLink.style.display = adminDoc.exists ? 'flex' : 'none';
+                } catch (error) {
+                    console.error("Error checking admin status:", error);
+                    adminLink.style.display = 'none';
+                }
+            }
+        }
+
+        // Check customer approval status
+        const isApproved = await checkCustomerApprovalStatus(user.email);
+        console.log("Auth state - Approval status:", isApproved);
+
+        // Handle approval status
+        if (!isApproved) {
+            // Check if already has pending request
+            const customerDoc = await db.collection("customers").doc(user.email).get();
+            if (customerDoc.exists) {
+                const customerData = customerDoc.data();
+                if (customerData.status === 'pending') {
+                    showApprovalPendingScreen();
+                } else if (customerData.status === 'rejected') {
+                    showToast("Your account was rejected. Please contact admin.", true);
+                }
+            }
+            // Don't show lock screen for logged-in users, just prevent cart additions
+        } else {
+            // Remove any existing lock screens
+            const lock = document.getElementById('guest-lock-overlay');
+            if (lock) {
+                lock.classList.remove('active');
+                setTimeout(() => lock.remove(), 300);
+            }
+            const pendingOverlay = document.getElementById('approval-pending-overlay');
+            if (pendingOverlay) {
+                pendingOverlay.classList.remove('active');
+                setTimeout(() => pendingOverlay.remove(), 300);
+            }
+            document.body.style.overflow = 'auto';
+        }
+
+        // ✅ CART SYNC - Use cartManager if available
+        if (window.cartManager) {
+            // Cart will be auto-synced by cartManager
+            console.log("CartManager available, cart sync handled automatically");
+        } else {
+            // Fallback to old method
+            setupCartSync();
+            updateCartCount();
+        }
+
+    } else {
+        // Guest / Logged out
+        if (userProfileBox) userProfileBox.style.display = 'none';
+        if (loginBtnNav) loginBtnNav.style.display = 'block';
+        
+        // ✅ CART CLEAR - Use cartManager if available
+        if (window.cartManager) {
+            // CartManager will handle clearing cart automatically
+            console.log("CartManager will handle guest cart");
+        }
+        
+        // Show lock screen for guests
+        showLockScreen();
+    }
+});
+
+        // Show approval pending screen - NEW FUNCTION
+        // Show approval pending screen - UPDATED VERSION
+        function showApprovalPendingScreen() {
+            // Check if overlay already exists
+            if (document.getElementById('approval-pending-overlay')) {
+                return;
+            }
+
+            const container = document.getElementById('guest-lock-container');
+            document.body.style.overflow = 'hidden';
+
+            container.innerHTML = `
+        <div id="approval-pending-overlay" style="display:flex;">
+            <div class="lock-card">
+                <div class="lock-icon"><i class="fas fa-user-clock"></i></div>
+                <h2>Account Pending Approval</h2>
+                <p>
+                    Your account is under review. Once approved by our admin, you'll be able to:
+                    <ul style="text-align: left; margin: 20px 0; padding-left: 20px;">
+                        <li>Purchase products</li>
+                        <li>Access premium features</li>
+                        <li>Get priority support</li>
+                        <li>View order history</li>
+                    </ul>
+                    We'll notify you once your account is approved!
+                </p>
+                <div class="lock-actions">
+                    <a href="dashboard.html" class="btn-primary">Check Status</a>
+                    <a href="#" onclick="logoutUser()" class="btn-secondary">Logout</a>
+                </div>
+                <a href="index.html" style="font-size:0.8rem; color:#999; text-decoration:none; margin-top:15px; display:inline-block;">Back to Home</a>
+            </div>
+        </div>
+    `;
+
+            // Animation
+            setTimeout(() => {
+                const overlay = document.getElementById('approval-pending-overlay');
+                if (overlay) overlay.classList.add('active');
+            }, 10);
+        }
+
+        // Check customer approval status
+        // Check customer approval status - UPDATED VERSION
+        async function checkCustomerApprovalStatus(email) {
+            try {
+                console.log("Checking approval status for:", email);
+
+                // Admin auto-approved
+                if (email === "sarthakbhawsar8@gmail.com") {
+                    console.log("User is admin - auto approved");
+                    return true;
+                }
+
+                // Check in customers collection
+                const customerRef = db.collection("customers").doc(email);
+                const customerDoc = await customerRef.get();
+
+                if (!customerDoc.exists) {
+                    console.log("Customer not found in database - not approved");
+                    return false;
+                }
+
+                const customerData = customerDoc.data();
+                console.log("Customer data:", customerData);
+
+                // Check if customer is approved
+                if (customerData.status === 'active' || customerData.status === 'approved') {
+                    console.log("Customer is approved");
+                    return true;
+                } else if (customerData.status === 'pending') {
+                    console.log("Customer is pending approval");
+                    return false;
+                } else if (customerData.status === 'rejected') {
+                    console.log("Customer was rejected");
+                    return false;
+                } else {
+                    console.log("Customer status unknown:", customerData.status);
+                    return false;
+                }
+
+            } catch (error) {
+                console.error("❌ Approval check error:", error);
+                return false;
+            }
+        }
+
+        function showPendingApprovalMessage() {
+            showToast("Your account is pending approval. Admin will review your request soon.", false);
+        }
+
+        function showRejectedMessage() {
+            showToast("Your account approval was rejected. Please contact admin for more details.", true);
+        }
+
+        // --- LOCK SCREEN FUNCTION (FIXED) ---
+        function showLockScreen() {
+            // 1. STRICT CHECK: Agar popup pehle se hai, toh wapas mat banao
+            if (document.getElementById('guest-lock-overlay')) {
+                return;
+            }
+
+            const container = document.getElementById('guest-lock-container');
+            document.body.style.overflow = 'hidden';
+
+            container.innerHTML = `
+    <div id="guest-lock-overlay" style="display:flex;">
+        <div class="lock-card">
+            <div class="lock-icon"><i class="fas fa-lock"></i></div>
+            <h2>Access Restricted</h2>
+            <p>
+                To view products and make purchases, please login first. 
+                New users need to request approval from admin to ensure 
+                authentic Herbalife products and personalized service.
+            </p>
+            <div class="lock-actions">
+                <a href="login.html" class="btn-primary">Login to Continue</a>
+                <a href="login.html" class="btn-secondary">Create Free Account</a>
+            </div>
+            <a href="index.html" style="font-size:0.8rem; color:#999; text-decoration:none; margin-top:15px; display:inline-block;">Back to Home</a>
+        </div>
+    </div>
+    `;
+
+            // Animation start karo
+            setTimeout(() => {
+                const overlay = document.getElementById('guest-lock-overlay');
+                if (overlay) overlay.classList.add('active');
+            }, 10);
+        }
+
+        // --- UTILS ---
+        function showToast(message, isError = false) {
+            const toast = document.getElementById("toastBox");
+            const msg = document.getElementById("toastMessage");
+            msg.innerText = message;
+
+            if (isError) {
+                toast.style.background = "#EF4444";
+                toast.querySelector("i").className = "fas fa-exclamation-circle";
+            } else {
+                toast.style.background = "var(--neutral-dark)";
+                toast.querySelector("i").className = "fas fa-check-circle";
+            }
+
+            toast.classList.add("show");
+            setTimeout(() => { toast.classList.remove("show"); }, 3000);
+        }
+
+        window.logoutUser = function () {
+            auth.signOut().then(() => {
+                showToast("Logged out successfully!");
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 1500);
+            }).catch((error) => {
+                console.error("Logout error:", error);
+                showToast("Logout failed. Please try again.", true);
+            });
+        }
+
+        window.toggleProfileMenu = function () {
+            document.getElementById('profileDropdown').classList.toggle('active');
+        }
+
+        window.addEventListener('click', function (e) {
+            const profileBox = document.getElementById('userProfileBox');
+            const dropdown = document.getElementById('profileDropdown');
+            if (profileBox && !profileBox.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Mobile menu toggle
+        window.toggleMenu = function () {
+            const nav = document.getElementById("navLinks");
+            nav.classList.toggle("active");
+
+            // Scroll Lock for Mobile
+            if (nav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const nav = document.getElementById("navLinks");
+            const toggle = document.querySelector(".menu-toggle");
+            if (!nav || !toggle) return;
+
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                nav.classList.remove("active");
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close menu after clicking a link (mobile)
+        document.querySelectorAll('#navLinks a').forEach(a => {
+            a.addEventListener('click', () => {
+                const nav = document.getElementById("navLinks");
+                nav.classList.remove("active");
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // --- PRODUCT SEARCH & FILTER LOGIC ---
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const productCards = document.querySelectorAll('.product-card');
+
+        function filterProducts() {
+            const searchText = searchInput.value.toLowerCase().trim();
+            const selectedCategory = categoryFilter.value;
+
+            productCards.forEach(card => {
+                const productName = card.querySelector('h3').textContent.toLowerCase();
+                const productCategory = card.getAttribute('data-category');
+
+                const matchesSearch = productName.includes(searchText);
+                const matchesCategory = selectedCategory === 'all' || productCategory === selectedCategory;
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Event Listeners
+        searchInput.addEventListener('input', filterProducts);
+        categoryFilter.addEventListener('change', filterProducts);
+
+        // --- AUTO ACTIVE NAV LINK ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentLocation = window.location.pathname.split("/").pop();
+            const navItems = document.querySelectorAll('.nav-links a');
+
+            navItems.forEach(link => {
+                const linkPath = link.getAttribute('href');
+                if (linkPath === currentLocation || (currentLocation === '' && linkPath === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // ✅ Initial cart update on page load
+            updateCartCount();
+        });
+
+        const loader = document.getElementById('pageLoader');
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 800);
+        });
+
+        // ────────────── CART SYSTEM ──────────────
+        function saveCart() {
+            localStorage.setItem('prabhaCart', JSON.stringify(cart));
+            updateCartCount();
+            broadcastCartUpdate(); // ✅ Broadcast after saving
+        }
+
+        // Modified addToCart function for customer approval system
+        // Modified addToCart function - FIXED
+        // Modified addToCart function - FIXED VERSION
+     async function addToCart(id, name, price, image) {
+    const user = auth.currentUser;
+    if (!user) {
+        showToast("Please login to add to cart", true);
+        showLockScreen();
+        return;
+    }
+
+    console.log("Adding to cart - checking approval for:", user.email);
+
+    // Check if customer is approved
+    const isApproved = await checkCustomerApprovalStatus(user.email);
+    console.log("Approval status:", isApproved);
+
+    if (!isApproved) {
+        // Check if already submitted approval request
+        const customerDoc = await db.collection("customers").doc(user.email).get();
+
+        if (customerDoc.exists) {
+            const customerData = customerDoc.data();
+            if (customerData.status === 'pending') {
+                showToast("Your account is pending approval. Please wait for admin approval.", false);
+                showApprovalPendingScreen();
+                return;
+            } else if (customerData.status === 'rejected') {
+                showToast("Your account was rejected. Please contact admin for details.", true);
+                return;
+            } else {
+                // Status unknown, show approval request
+                showApprovalRequestModal(user, name);
+                return;
+            }
+        } else {
+            // No customer record found, show approval request
+            showApprovalRequestModal(user, name);
+            return;
+        }
+    }
+
+    // Customer is approved - proceed with adding to cart
+    const product = { id, name, price, image };
+    
+    if (window.cartManager) {
+        // Use new cartManager
+        const success = await window.cartManager.addToCart(product);
+        if (success) {
+            showToast(`${name} added to cart!`, false);
+        }
+    } else {
+        // Use legacy system
+        const existing = cart.find(item => item.id === id);
+        if (existing) {
+            existing.qty += 1;
+        } else {
+            cart.push({
+                id,
+                name,
+                price,
+                image,
+                qty: 1,
+                addedAt: new Date().toISOString()
+            });
+        }
+        
+        // Save using legacy method
+        localStorage.setItem('prabhaCart', JSON.stringify(cart));
+        updateCartCount();
+        broadcastCartUpdate(); // ✅ Broadcast after saving
+        showToast(`${name} added to cart!`, false);
+    }
+}
+
+        // Customer is approved - proceed with adding to cart
+        const existing = cart.find(item => item.id === id);
+        if (existing) {
+            existing.qty += 1;
+        } else {
+            cart.push({
+                id,
+                name,
+                price,
+                image,
+                qty: 1,
+                addedAt: new Date().toISOString()
+            });
+        }
+
+        saveCart();
+        showToast(`${name} added to cart!`, false);
+
+
+        // Show approval request modal
+        // Show approval request modal - UPDATED VERSION
+        function showApprovalRequestModal(user, productName) {
+            const container = document.getElementById('approvalModalContainer');
+
+            container.innerHTML = `
+        <div class="approval-modal" id="approvalModal">
+            <div class="approval-modal-content">
+                <button class="modal-close-btn" onclick="closeApprovalModal()" style="position:absolute; top:15px; right:15px; width:36px; height:36px; padding:0; border-radius:50%; background:#f0f0f0; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                    <i class="fas fa-times"></i>
+                </button>
+                
+                <div class="approval-header">
+                    <div class="approval-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h2>Approval Required</h2>
+                    <p>To purchase <strong>"${productName}"</strong>, please complete your registration.</p>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-box-title">
+                        <i class="fas fa-shield-alt"></i> Why Approval is Required?
+                    </div>
+                    <div class="info-box-text">
+                        We verify all customers to ensure authentic Herbalife products, personalized support, secure transactions, and priority delivery for approved members.
+                    </div>
+                </div>
+                
+                <form id="approvalForm">
+                    <div class="approval-form-group">
+                        <label class="approval-label">Full Name *</label>
+                        <input type="text" id="approvalName" class="approval-input"
+                            value="${user.displayName || ''}" 
+                            placeholder="Enter your full name"
+                            required>
+                    </div>
+                    
+                    <div class="approval-form-group">
+                        <label class="approval-label">Email Address *</label>
+                        <input type="email" id="approvalEmail" class="approval-input"
+                            value="${user.email}" 
+                            readonly
+                            style="background-color: #f8f9fa;">
+                    </div>
+                    
+                    <div class="approval-form-group">
+                        <label class="approval-label">Phone Number *</label>
+                        <input type="tel" id="approvalPhone" class="approval-input"
+                            placeholder="10-digit WhatsApp number"
+                            required
+                            pattern="[0-9]{10}"
+                            title="Please enter a valid 10-digit phone number">
+                        <small style="color: var(--neutral-gray); font-size: 0.8rem; display: block; margin-top: 5px;">
+                            We'll contact you on this number for verification
+                        </small>
+                    </div>
+                    
+                    <div class="approval-form-group">
+                        <label class="approval-label">How did you hear about us? *</label>
+                        <select id="approvalSource" class="approval-input" style="width:100%; padding:12px; border:2px solid var(--neutral-light); border-radius:var(--border-radius-md); font-family:'satoshi', sans-serif; font-size:1rem; background:var(--neutral-white);" required>
+                            <option value="">Select an option</option>
+                            <option value="friend">Friend/Family</option>
+                            <option value="social">Social Media</option>
+                            <option value="google">Google Search</option>
+                            <option value="referral">Member Referral</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="approval-form-group">
+                        <label class="approval-label">Your Health Goal (Optional)</label>
+                        <textarea id="approvalMessage" class="approval-input approval-textarea"
+                                placeholder="Tell us about your health & wellness goals..."></textarea>
+                    </div>
+                    
+                    <div class="approval-actions">
+                        <button type="submit" class="approval-btn approval-btn-submit" id="submitApprovalBtn">
+                            <i class="fas fa-paper-plane"></i> Submit for Approval
+                        </button>
+                        <button type="button" onclick="closeApprovalModal()" class="approval-btn approval-btn-cancel">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    `;
+
+            // Handle form submission
+            const form = document.getElementById('approvalForm');
+            const submitBtn = document.getElementById('submitApprovalBtn');
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                // Get form values
+                const name = document.getElementById('approvalName').value.trim();
+                const email = document.getElementById('approvalEmail').value.trim();
+                const phone = document.getElementById('approvalPhone').value.trim();
+                const source = document.getElementById('approvalSource').value;
+                const message = document.getElementById('approvalMessage').value.trim();
+
+                // Basic validation
+                if (!name || !phone || !source) {
+                    showToast("Please fill all required fields", true);
+                    return;
+                }
+
+                if (!/^[0-9]{10}$/.test(phone)) {
+                    showToast("Please enter a valid 10-digit phone number", true);
+                    return;
+                }
+
+                // Show loading state
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                submitBtn.disabled = true;
+
+                try {
+                    // Save approval request to Firestore
+                    await db.collection("customers").doc(email).set({
+                        name,
+                        email,
+                        phone,
+                        source,
+                        message: message || "No message provided",
+                        status: "pending",
+                        requestedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        lastUpdated: firebase.firestore.FieldValue.serverTimestamp(),
+                        userId: user.uid,
+                        productInterest: productName
+                    }, { merge: true });
+
+                    // Also save to customerApprovals for admin panel
+                    await db.collection("customerApprovals").doc(email).set({
+                        name,
+                        email,
+                        phone,
+                        source,
+                        message: message || "No message provided",
+                        status: "pending",
+                        requestedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        userId: user.uid,
+                        productInterest: productName
+                    }, { merge: true });
+
+                    // Show success message in modal
+                    container.innerHTML = `
+                <div class="approval-modal" id="approvalModal">
+                    <div class="approval-modal-content" style="text-align:center;">
+                        <button class="modal-close-btn" onclick="closeApprovalModal()" style="position:absolute; top:15px; right:15px; width:36px; height:36px; padding:0; border-radius:50%; background:#f0f0f0; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        
+                        <div style="font-size:3rem; color:var(--primary-green); margin-bottom:1.5rem;">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        
+                        <h2 style="margin-bottom:1rem; color:var(--neutral-dark);">Request Submitted!</h2>
+                        
+                        <div class="info-box" style="text-align: left; margin:20px 0;">
+                            <div class="info-box-title">
+                                <i class="fas fa-info-circle"></i> What Happens Next?
+                            </div>
+                            <div class="info-box-text">
+                                1. Our team will review your request within 24-48 hours<br>
+                                2. You'll receive a confirmation call/SMS<br>
+                                3. Once approved, you can start shopping immediately<br>
+                                4. Check your dashboard for approval status
+                            </div>
+                        </div>
+                        
+                        <div style="margin: 25px 0;">
+                            <p>We've sent a confirmation to <strong>${email}</strong></p>
+                        </div>
+                        
+                        <div class="approval-actions">
+                            <button onclick="closeApprovalModal()" class="approval-btn approval-btn-submit">
+                                <i class="fas fa-home"></i> Back to Products
+                            </button>
+                            <button onclick="window.location.href='dashboard.html'" class="approval-btn approval-btn-cancel">
+                                <i class="fas fa-chart-line"></i> Check Dashboard
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+                } catch (error) {
+                    console.error("Error submitting approval request:", error);
+                    showToast("Error submitting request. Please try again.", true);
+
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+
+            // Close modal when clicking outside
+            document.getElementById('approvalModal').addEventListener('click', function (e) {
+                if (e.target === this) {
+                    closeApprovalModal();
+                }
+            });
+
+            // Escape key to close modal
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeApprovalModal();
+                }
+            });
+        }
+
+        // Close approval modal
+        function closeApprovalModal() {
+            const modal = document.getElementById('approvalModal');
+            const container = document.getElementById('approvalModalContainer');
+
+            if (modal) {
+                container.innerHTML = '';
+                document.body.style.overflow = 'auto';
+            }
+        }
+        // Close approval modal
+
+        // Add this CSS for closing animation
+        const style = document.createElement('style');
+        style.textContent = `
+    @keyframes modalSlideOut {
+        from {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-30px) scale(0.95);
+        }
+    }
+`;
+        document.head.appendChild(style);
+
+        // Close approval modal
+        function closeApprovalModal() {
+            const modal = document.getElementById('approvalModal');
+            if (modal) {
+                modal.remove();
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+function updateCartCount() {
+    let total = 0;
+    
+    if (window.cartManager) {
+        // Use cartManager
+        const cartManagerCart = window.cartManager.getCart();
+        total = cartManagerCart.reduce((sum, item) => sum + (item.qty || 1), 0);
+    } else {
+        // Use legacy cart
+        total = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+    }
+    
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+        cartCountElement.textContent = total || '0';
+    }
+}
+
+        // ✅ Initialize cart sync on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartCount();
+        });
+
+        //----- PRODUCT DETAILS VIEW -----
+        function viewProductDetails(productId, productName) {
+            window.location.href = `product-details.html?id=${productId}`;
+        }
+
+        // Mobile menu functionality
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileMenu = document.getElementById("mobile-menu");
+            const navLinks = document.getElementById("navLinks");
+            const icon = mobileMenu.querySelector("i");
+
+            mobileMenu.addEventListener("click", (e) => {
+                e.stopPropagation();
+                navLinks.classList.toggle("active");
+
+                if (navLinks.classList.contains("active")) {
+                    icon.classList.remove("fa-bars");
+                    icon.classList.add("fa-times");
+                    document.body.style.overflow = "hidden";
+                } else {
+                    icon.classList.remove("fa-times");
+                    icon.classList.add("fa-bars");
+                    document.body.style.overflow = "auto";
+                }
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener("click", (e) => {
+                if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+                    navLinks.classList.remove("active");
+                    icon.classList.remove("fa-times");
+                    icon.classList.add("fa-bars");
+                    document.body.style.overflow = "auto";
+                }
+            });
+
+            // Close menu when clicking a link
+            navLinks.querySelectorAll("a").forEach(link => {
+                link.addEventListener("click", () => {
+                    navLinks.classList.remove("active");
+                    icon.classList.remove("fa-times");
+                    icon.classList.add("fa-bars");
+                    document.body.style.overflow = "auto";
+                });
+            });
+        });
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function (e) {
+            const approvalModal = document.getElementById('approvalModal');
+            if (approvalModal && e.target === approvalModal) {
+                closeApprovalModal();
+            }
+        });
+
+        // Escape key to close modal
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeApprovalModal();
+            }
+        });
+    </script>
+    <!-- Include cart-sync.js AFTER the main script -->
+<script src="/js/cart-sync.js"></script>
+<script src="/js/profile-photo-sync.js"></script>
+<script src="/js/profile.js"></script>
+</body>
+
+</html>
