@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Admin System | PRABHA WELLNESS | Official Herbalife Nutrition Center</title>
+
+    <!-- Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Setup Admin System | PRABHA WELLNESS">
+    <meta property="og:description" content="Setup first admin account for Prabha Wellness Center management.">
+    <meta property="og:image" content="/images/PRABHA WELLNESS CENTER ALL FINE.png">
+
+    <link rel="icon" href="/images/Only logo.png" type="image/png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === PROFESSIONAL BRAND THEME === */
+        :root {
+            --primary-green: #0B7A6B;
+            --primary-green-dark: #065749;
+            --primary-green-light: #E0F2F1;
+            --secondary-gold: #C6A959;
+            --neutral-dark: #1A1A1A;
+            --neutral-gray: #4A4A4A;
+            --neutral-light: #F8F9FA;
+            --neutral-white: #FFFFFF;
+            --accent-orange: #FF7C4C;
+            --gradient-primary: linear-gradient(135deg, #0B7A6B 0%, #2D9C8F 100%);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-large: 0 15px 50px rgba(0, 0, 0, 0.1);
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--neutral-dark);
+        }
+
+        .container {
+            max-width: 550px;
+            margin: 0 auto;
+            background: var(--neutral-white);
+            padding: 50px 40px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-large);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            color: var(--neutral-gray);
+            margin-bottom: 30px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--neutral-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            margin: 8px 0;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            background: var(--neutral-light);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(11, 122, 107, 0.1);
+            background: var(--neutral-white);
+        }
+
+        .form-input[readonly] {
+            background: var(--primary-green-light);
+            color: var(--primary-green-dark);
+            font-weight: 600;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            background: var(--neutral-light);
+            cursor: pointer;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(11, 122, 107, 0.1);
+        }
+
+        button {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            border: none;
+            padding: 16px 32px;
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            width: 45%;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* === MESSAGE STYLES === */
+        .message {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: var(--border-radius-md);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .success {
+            background: rgba(11, 122, 107, 0.1);
+            color: var(--primary-green-dark);
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .error {
+            background: rgba(231, 76, 60, 0.1);
+            color: #c62828;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .warning {
+            background: rgba(255, 152, 0, 0.1);
+            color: #ef6c00;
+            border-left: 4px solid #ff9800;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid var(--neutral-white);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* === CODE BLOCK === */
+        code {
+            background: #f5f5f5;
+            padding: 10px 15px;
+            display: block;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+            color: #333;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 25px;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            button {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2><i class="fas fa-tools"></i> Setup Super Admin Account</h2>
+        <p class="subtitle">Create the first admin account for Prabha Wellness Center management system.</p>
+
+        <div id="status" class="message warning">
+            <i class="fas fa-spinner fa-spin"></i> Initializing system...
+        </div>
+
+        <form id="setupForm">
+            <div class="form-group">
+                <label class="form-label" for="email">
+                    <i class="fas fa-envelope"></i> Email Address *
+                </label>
+                <input type="email" class="form-input" id="email" value="sarthakbhawsar8@gmail.com" readonly>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="name">
+                    <i class="fas fa-user"></i> Full Name *
+                </label>
+                <input type="text" class="form-input" id="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">
+                    <i class="fas fa-lock"></i> Password *
+                </label>
+                <input type="password" class="form-input" id="password" placeholder="Minimum 6 characters" required
+                    minlength="6">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="adminRole">
+                    <i class="fas fa-user-tag"></i> Role *
+                </label>
+                <select class="form-select" id="adminRole" required>
+                    <option value="">Select Role</option>
+                    <option value="super_admin">Super Admin (Full Access)</option>
+                    <option value="admin">Admin (Limited Access)</option>
+                    <option value="manager">Manager (View Only)</option>
+                </select>
+            </div>
+
+            <div>
+                <button type="button" onclick="createAdminAccount()" id="createBtn">Create Admin</button>
+                <button type="button" onclick="checkDatabase()" id="checkBtn">Check Database</button>
+            </div>
+        </form>
+
+        <div id="result" class="message"></div>
+
+        <div style="margin-top: 30px; font-size: 0.9rem; color: var(--neutral-gray); text-align: left; background: var(--neutral-light); padding: 20px; border-radius: var(--border-radius-md);">
+            <p><strong>Next Steps:</strong></p>
+            <p>1. After creating admin account, go to <a href="admin-login.html" style="color: var(--primary-green); font-weight: 600;">Admin Login</a></p>
+            <p>2. Login with the credentials above</p>
+            <p>3. You will be redirected to admin panel</p>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+            authDomain: "prabha-wellness.firebaseapp.com",
+            projectId: "prabha-wellness",
+            storageBucket: "prabha-wellness.firebasestorage.app",
+            messagingSenderId: "555332322398",
+            appId: "1:555332322398:web:57e29182b8693c35ef60cf",
+            measurementId: "G-EQ36VYT215"
+        };
+
+        // Initialize Firebase
+        let auth, db;
+        try {
+            firebase.initializeApp(firebaseConfig);
+            auth = firebase.auth();
+            db = firebase.firestore();
+            updateStatus("✅ Firebase initialized successfully", "success");
+        } catch (error) {
+            updateStatus("❌ Firebase Error: " + error.message, "error");
+        }
+
+        // Update status display
+        function updateStatus(text, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = `<i class="fas fa-info-circle"></i> ${text}`;
+            statusDiv.className = "message " + type;
+        }
+
+        // Show result message
+        function showResult(text, type) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = text;
+            resultDiv.className = "message " + type;
+        }
+
+        // Main function to create admin account
+        async function createAdminAccount() {
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value.trim();
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('adminRole').value;
+            const btn = document.getElementById('createBtn');
+
+            // Validation
+            if (!name || name.length < 2) {
+                showResult("Please enter your full name (minimum 2 characters)", "error");
+                return;
+            }
+            if (!password || password.length < 6) {
+                showResult("Password must be at least 6 characters", "error");
+                return;
+            }
+            if (!role) {
+                showResult("Please select a role", "error");
+                return;
+            }
+
+            btn.innerHTML = '<span class="loading"></span> Processing...';
+            btn.disabled = true;
+
+            try {
+                showResult("Creating Firebase user account...", "warning");
+
+                // Step 1: Create user in Firebase Authentication
+                let user;
+                try {
+                    const userCred = await auth.createUserWithEmailAndPassword(email, password);
+                    user = userCred.user;
+                    showResult("✅ User created in Firebase Authentication", "success");
+                } catch (authError) {
+                    if (authError.code === 'auth/email-already-in-use') {
+                        // Sign in to existing account
+                        showResult("User already exists, signing in...", "warning");
+                        const userCred = await auth.signInWithEmailAndPassword(email, password);
+                        user = userCred.user;
+                        showResult("✅ Signed in to existing account", "success");
+                    } else {
+                        throw authError;
+                    }
+                }
+
+                // Step 2: Create admin document in Firestore
+                showResult("Creating admin document in Firestore...", "warning");
+
+                const adminData = {
+                    email: email,
+                    name: name,
+                    role: role,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    isActive: true,
+                    uid: user.uid,
+                    permissions: getPermissionsByRole(role),
+                    lastLogin: null
+                };
+
+                await db.collection("adminUsers").doc(email).set(adminData);
+                showResult("✅ Admin document created in Firestore", "success");
+
+                // Step 3: Verify creation
+                showResult("Verifying admin account...", "warning");
+                const verifyDoc = await db.collection("adminUsers").doc(email).get();
+
+                if (verifyDoc.exists) {
+                    showResult(
+                        `<strong style="color: var(--primary-green);">🎉 Admin Account Created Successfully!</strong><br><br>
+                        <strong>Login Details:</strong><br>
+                        • Email: ${email}<br>
+                        • Password: ${'*'.repeat(password.length)}<br>
+                        • Role: ${role.replace('_', ' ').toUpperCase()}<br><br>
+                        <strong>Next Steps:</strong><br>
+                        1. Go to <a href="admin-login.html" style="color: var(--primary-green); font-weight: 600;">Admin Login</a><br>
+                        2. Login with the credentials above<br>
+                        3. You will be redirected to admin panel<br><br>
+                        <em>Redirecting to login page in 5 seconds...</em>`,
+                        "success"
+                    );
+
+                    // Auto redirect after 5 seconds
+                    setTimeout(() => {
+                        window.location.href = "admin-login.html";
+                    }, 5000);
+                } else {
+                    showResult("❌ Verification failed: Document not found", "error");
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+                let errorMessage = "Error: " + error.message;
+
+                if (error.code === 'permission-denied') {
+                    errorMessage = `
+                        ❌ <strong>Firestore Permission Denied!</strong><br><br>
+                        Your Firestore security rules are blocking access.<br><br>
+                        <strong>Quick Fix:</strong><br>
+                        1. Go to <a href="https://console.firebase.google.com/" target="_blank">Firebase Console</a><br>
+                        2. Select your project (prabha-wellness)<br>
+                        3. Go to Firestore Database → Rules tab<br>
+                        4. Update rules to allow read/write<br>
+                        5. Click 'Publish'<br>
+                        6. Refresh this page and try again
+                    `;
+                }
+
+                showResult(errorMessage, "error");
+            } finally {
+                btn.innerHTML = 'Create Admin';
+                btn.disabled = false;
+            }
+        }
+
+        // Function to get permissions by role
+        function getPermissionsByRole(role) {
+            switch (role) {
+                case 'super_admin':
+                    return ["all"];
+                case 'admin':
+                    return ["view_orders", "edit_orders", "view_products", "edit_products", "view_users"];
+                case 'manager':
+                    return ["view_orders", "view_products", "view_users"];
+                default:
+                    return ["view_orders"];
+            }
+        }
+
+        // Check database function
+        async function checkDatabase() {
+            const btn = document.getElementById('checkBtn');
+            btn.innerHTML = '<span class="loading"></span> Checking...';
+            btn.disabled = true;
+
+            try {
+                showResult("Checking Firestore connection...", "warning");
+
+                // Test connection
+                await db.collection("testConnection").doc("test").set({
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+
+                // Check existing admins
+                const admins = await db.collection("adminUsers").get();
+
+                let message = "✅ <strong>Firestore Connection Successful!</strong><br><br>";
+
+                if (!admins.empty) {
+                    message += "<strong>Existing Admin Users:</strong><br>";
+                    admins.forEach(doc => {
+                        const data = doc.data();
+                        message += `• ${data.email} (${data.role || 'admin'})<br>`;
+                    });
+                } else {
+                    message += "No admin users found. You can create one now.<br>";
+                }
+
+                // Cleanup
+                await db.collection("testConnection").doc("test").delete();
+                showResult(message, "success");
+
+            } catch (error) {
+                console.error("Check error:", error);
+                if (error.code === 'permission-denied') {
+                    showResult("❌ Permission denied! Update Firestore security rules.", "error");
+                } else {
+                    showResult("❌ Error: " + error.message, "error");
+                }
+            } finally {
+                btn.innerHTML = 'Check Database';
+                btn.disabled = false;
+            }
+        }
+
+        // Auto-check on page load
+        window.onload = async function() {
+            try {
+                if (!auth || !db) {
+                    updateStatus("❌ Firebase not initialized", "error");
+                    return;
+                }
+
+                // Check existing admins
+                const admins = await db.collection("adminUsers").get();
+                if (!admins.empty) {
+                    updateStatus("✅ Admin system already setup. You can login.", "success");
+                }
+            } catch (error) {
+                console.log("Initial check error:", error);
+            }
+        };
+    </script>
+</body>
+
+</html>

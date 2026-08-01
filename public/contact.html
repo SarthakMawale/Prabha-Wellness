@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | PRABHA WELLNESS | Official Herbalife Nutrition Center</title>
+
+    <!-- Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact Us | PRABHA WELLNESS">
+    <meta property="og:description" content="Get in touch with certified Herbalife nutrition experts for consultations, product inquiries, and wellness guidance.">
+    <meta property="og:image" content="/images/PRABHA WELLNESS CENTER ALL FINE.png">
+
+    <link rel="icon" href="/images/Only logo.png" type="image/png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* === PROFESSIONAL BRAND THEME === */
+        :root {
+            --primary-green: #0B7A6B;
+            --primary-green-dark: #065749;
+            --primary-green-light: #E0F2F1;
+            --secondary-gold: #C6A959;
+            --neutral-dark: #1A1A1A;
+            --neutral-gray: #4A4A4A;
+            --neutral-light: #F8F9FA;
+            --neutral-white: #FFFFFF;
+            --accent-teal: #2D9C8F;
+            --accent-blue: #4A90E2;
+            --accent-orange: #FF7C4C;
+            --gradient-primary: linear-gradient(135deg, #0B7A6B 0%, #2D9C8F 100%);
+            --gradient-secondary: linear-gradient(135deg, #C6A959 0%, #E8D9A0 100%);
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-large: 0 15px 50px rgba(0, 0, 0, 0.1);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+            --border-radius-xl: 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'satoshi', sans-serif;
+            background-color: var(--neutral-light);
+            color: var(--neutral-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 700;
+            color: var(--neutral-dark);
+            line-height: 1.2;
+        }
+
+        .logo {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 800;
+        }
+
+        /* === NEW LOADER === */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--neutral-white);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .loader-logo {
+            width: 100px;
+            height: auto;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .loader-text {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        /* === IMPROVED SCROLLBAR === */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--neutral-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-green-dark);
+        }
+
+        /* === PROFESSIONAL NAVBAR === */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--neutral-white);
+            box-shadow: var(--shadow-subtle);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+        }
+
+        .logo span {
+            color: var(--secondary-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--neutral-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-green);
+            bottom: 0;
+            left: 0;
+        }
+
+        .cta-btn {
+            background: var(--gradient-primary);
+            color: var(--neutral-white) !important;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+                .login-btn {
+
+            color: black !important;
+
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            text-decoration: none;
+
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-1px);
+
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        /* === USER PROFILE === */
+        .user-profile {
+            position: relative;
+        }
+
+        .cart-badge {
+            background: var(--accent-orange);
+            color: var(--neutral-white);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .profile-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid var(--neutral-white);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            top: 120%;
+            right: 0;
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-large);
+            min-width: 250px;
+            display: none;
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        .profile-dropdown.active {
+            display: block;
+        }
+
+        .profile-header {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .profile-email {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .profile-menu {
+            padding: 1rem 0;
+        }
+
+        .profile-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1.5rem;
+            color: var(--neutral-gray);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .profile-menu a:hover {
+            background: var(--neutral-light);
+            color: var(--primary-green);
+        }
+
+        .profile-menu i {
+            width: 20px;
+            color: var(--primary-green);
+        }
+
+        /* === PAGE HEADER === */
+        .page-header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(11, 122, 107, 0.05) 0%, rgba(11, 122, 107, 0.02) 100%);
+            border-radius: var(--border-radius-lg);
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            color: var(--neutral-gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* === BREADCRUMB === */
+        .breadcrumb-container {
+            padding: 1.5rem 2rem;
+            background: var(--neutral-white);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .breadcrumb {
+            list-style: none;
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--neutral-gray);
+        }
+
+        .breadcrumb li a {
+            text-decoration: none;
+            color: var(--neutral-gray);
+            transition: color 0.3s;
+        }
+
+        .breadcrumb li a:hover {
+            color: var(--primary-green);
+        }
+
+        .breadcrumb li::after {
+            content: '/';
+            margin-left: 0.5rem;
+        }
+
+        .breadcrumb li:last-child::after {
+            content: '';
+        }
+
+        .breadcrumb li.active {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        /* === CONTACT SECTION === */
+        .contact-section {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        /* Contact Info Cards */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-large);
+            border-color: var(--primary-green-light);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-green-light);
+            color: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--neutral-dark);
+        }
+
+        .contact-card p {
+            color: var(--neutral-gray);
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .contact-link {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-green-dark);
+            text-decoration: underline;
+        }
+
+        /* Contact Form */
+        .form-card {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .form-card:hover {
+            box-shadow: var(--shadow-large);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            font-size: 0.95rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius-sm);
+            font-size: 1rem;
+            font-family: 'satoshi', sans-serif;
+            transition: all 0.3s;
+            background: var(--neutral-light);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(11, 122, 107, 0.1);
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        select.form-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%230B7A6B' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 16px 12px;
+            padding-right: 3rem;
+        }
+
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        
+        .nav-links a.cart-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1;
+        }
+
+        /* Badge fix */
+        .cart-badge {
+            margin-left: 0;
+            transform: translateY(-2px);
+            background: var(--accent-orange);
+            color: var(--neutral-white);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.1rem;
+        }
+
+
+        /* === MAP SECTION === */
+        .map-section {
+            margin-top: 4rem;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            height: 400px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+            background: var(--primary-green-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-gray);
+        }
+
+        /* === FAQ SECTION === */
+        .faq-section {
+            margin-top: 5rem;
+        }
+
+        .faq-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin-bottom: 3rem;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-md);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-medium);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--neutral-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: var(--neutral-light);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--neutral-gray);
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+            color: var(--primary-green);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* === TOAST NOTIFICATION === */
+        #toastBox {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: var(--primary-green);
+            color: var(--neutral-white);
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-large);
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            min-width: 300px;
+            max-width: 90%;
+        }
+
+        #toastBox.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* === CTA SECTION === */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+            color: var(--neutral-white);
+            text-align: center;
+            padding: 5rem 2rem;
+            border-radius: var(--border-radius-lg);
+            margin: 5rem 2rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            color: var(--neutral-white);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--neutral-white);
+            color: var(--primary-green) !important;
+            padding: 1rem 2.5rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--neutral-white) !important;
+            padding: 1rem 2.5rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid var(--neutral-white);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--neutral-white);
+            color: var(--primary-green) !important;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--neutral-dark);
+            color: var(--neutral-white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--neutral-white);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 1024px) {
+            .contact-container {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--neutral-white);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                box-shadow: var(--shadow-medium);
+                display: none;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .page-header {
+                padding: 3rem 1rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .contact-section {
+                padding: 1rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .form-card {
+                padding: 2rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .map-section {
+                height: 300px;
+                margin-top: 3rem;
+            }
+
+            .faq-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .cta-section {
+                margin: 3rem 1rem;
+                padding: 3rem 1rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .logo img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .form-card {
+                padding: 1.5rem;
+            }
+
+            .contact-card {
+                padding: 1.2rem;
+            }
+
+            .form-title {
+                font-size: 1.5rem;
+            }
+
+            .contact-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .faq-title {
+                font-size: 1.5rem;
+            }
+
+            .faq-question {
+                padding: 1.2rem;
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            #toastBox {
+                min-width: 250px;
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- === LOADER === -->
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-content">
+            <img src="/images/Only logo.png" alt="Prabha Wellness" class="loader-logo">
+            <div class="loader-text">PRABHA WELLNESS</div>
+        </div>
+    </div>
+
+    <!-- === NAVIGATION === -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="/images/Only logo.png" alt="Prabha Wellness">
+                <div>
+                    <span>PRABHA</span> WELLNESS<br>
+                    <small style="font-size: 0.7rem; color: var(--neutral-gray); font-weight: 500;">Official Herbalife
+                        Nutrition Center</small>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="features.html">Features</a>
+                <a href="cart.html" class="cart-link">
+                    <span>Cart</span>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+                <a href="contact.html" class="active">Contact</a>
+
+                <!-- User Profile -->
+                <div class="user-profile" id="userProfileBox" style="display: none;">
+                    <div class="profile-icon" onclick="toggleProfileMenu()">
+                        <span id="userInitial">U</span>
+                    </div>
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <div class="profile-header">
+                            <div id="displayEmail" class="profile-email"></div>
+                        </div>
+                        <div class="profile-menu">
+                                  <a href="profile.html">
+                                <i class="fas fa-user"></i> My Profile
+                            </a>
+                            <div id="adminPanelLink" style="display: none;">
+                                <a href="adminpanel.html">
+                                    <i class="fas fa-cog"></i> Admin Panel
+                                </a>
+                            </div>
+                            <a href="#" onclick="logoutUser()">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="login.html" id="loginBtnNav" class="login-btn">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === BREADCRUMB === -->
+    <div class="breadcrumb-container">
+        <ul class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Contact Us</li>
+        </ul>
+    </div>
+
+    <!-- === PAGE HEADER === -->
+    <div class="page-header" data-aos="fade-up">
+        <h1>Get In Touch</h1>
+        <p>We're here to help you achieve your wellness goals. Reach out to our certified nutrition experts.</p>
+    </div>
+
+    <!-- === CONTACT SECTION === -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <!-- Contact Info -->
+            <div class="contact-info" data-aos="fade-right">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Our Location</h3>
+                    <p><strong>Prabha Wellness Center</strong></p>
+                    <p>Nashik, Maharashtra</p>
+                    <p>India</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Phone & WhatsApp</h3>
+                    <p><strong>Primary Contact:</strong></p>
+                    <p><a href="tel:+918805650842" class="contact-link">+91 88056 50842</a></p>
+                    <p><a href="https://wa.me/918805650842" class="contact-link" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                        </a></p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p><strong>For Inquiries:</strong></p>
+                    <p><a href="mailto:bhawanamawale8984@gmail.com" class="contact-link">bhawanamawale8984@gmail.com</a>
+                    </p>
+                    <p><strong>Response Time:</strong> Within 24 hours</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Business Hours</h3>
+                    <p><strong>Monday - Friday:</strong> 9:00 AM - 7:00 PM</p>
+                    <p><strong>Saturday:</strong> 10:00 AM - 5:00 PM</p>
+                    <p><strong>Sunday:</strong> By Appointment Only</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="form-card" data-aos="fade-left">
+                <h2 class="form-title">Send Us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name *</label>
+                        <input type="text" id="name" class="form-input" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address *</label>
+                        <input type="email" id="email" class="form-input" placeholder="Enter your email address"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="Enter your phone number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject *</label>
+                        <select id="subject" class="form-input" required>
+                            <option value="">Select a subject</option>
+                            <option value="consultation">Book a Consultation</option>
+                            <option value="product">Product Inquiry</option>
+                            <option value="coaching">Wellness Coaching</option>
+                            <option value="partnership">Business Partnership</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">Your Message *</label>
+                        <textarea id="message" class="form-input" placeholder="Tell us how we can help you..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section" data-aos="fade-up" data-aos-delay="200">
+            <div class="map-container">
+                <div style="text-align: center; padding: 20px;">
+                    <i class="fas fa-map-marked-alt"
+                        style="font-size: 3rem; color: var(--primary-green); margin-bottom: 15px;"></i>
+                    <h3 style="color: var(--neutral-dark); margin-bottom: 10px;">Nashik, Maharashtra</h3>
+                    <p style="color: var(--neutral-gray);">Herbalife Certified Wellness Center</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section" data-aos="fade-up">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How soon can I expect a response?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We typically respond within 24 hours during business days. For urgent inquiries, please call us
+                        directly at +91 88056 50842.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Do you offer virtual consultations?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! We offer online consultations via Zoom, Google Meet, or WhatsApp video call for clients who
+                        cannot visit in person.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Are the products available for shipping?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely. We ship Herbalife products across India. Delivery typically takes 3-7 business days
+                        depending on your location.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What payment methods do you accept?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We accept UPI, credit/debit cards, net banking, and cash on delivery (COD) for select locations.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Do you provide personalized diet plans?
+                        <i class="fas fa-plus faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, we create customized nutrition plans based on your health goals, dietary preferences
+                        (veg/non-veg), and lifestyle after a thorough consultation.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- === CTA SECTION === -->
+    <section class="cta-section">
+        <h2>Start Your Wellness Journey Today</h2>
+        <p>Book a free consultation with our certified Herbalife experts and get personalized guidance for your health goals.</p>
+        <div class="cta-buttons">
+            <a href="tel:+918805650842" class="btn-primary">
+                <i class="fas fa-phone"></i> Call Now: +91 88056 50842
+            </a>
+            <a href="https://wa.me/918805650842" class="btn-secondary" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp Us
+            </a>
+        </div>
+    </section>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Prabha Wellness</h3>
+                <p>Official Herbalife Nutrition Center providing premium wellness solutions, workout sessions, and expert guidance for a healthier lifestyle.</p>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> Nashik, India<br>
+                    <i class="fas fa-phone"></i> +91 88056 50842<br>
+                    <i class="fas fa-envelope"></i> bhawanamawale8984@gmail.com
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Herbalife Products</a></li>
+                    <li><a href="features.html">Wellness Tools</a></li>
+                    <li><a href="contact.html">Book Consultation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li><a href="tel:+918805650842"><i class="fas fa-phone"></i> Call Us</a></li>
+                    <li><a href="https://wa.me/918805650842" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                    <li><a href="mailto:bhawanamawale8984@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
+                    <li><a href="contact.html#faq"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Connect With Us</h3>
+                <p>Follow us for daily tips and updates:</p>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Prabha Wellness Center. All rights reserved. | Official Herbalife Independent Distributor</p>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Herbalife and the Herbalife logo are registered trademarks of Herbalife International.</p>
+        </div>
+    </footer>
+
+    <!-- === TOAST NOTIFICATION === -->
+    <div id="toastBox">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Success Message</span>
+    </div>
+
+    <!-- Scripts -->
+     <script src="/js/cart-sync.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <!-- Add this to every HTML file -->
+<script src="/js/profile-photo-sync.js"></script>
+<script src="/js/profile.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // Page Loader
+        const loader = document.getElementById('pageLoader');
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 800);
+        });
+
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('navLinks');
+
+            if (mobileMenu && navLinks) {
+                mobileMenu.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                    this.innerHTML = navLinks.classList.contains('active')
+                        ? '<i class="fas fa-times"></i>'
+                        : '<i class="fas fa-bars"></i>';
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+                        navLinks.classList.remove('active');
+                        mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+
+                // Close menu when clicking links
+                document.querySelectorAll('#navLinks a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+        });
+
+        // Profile Menu Toggle
+        function toggleProfileMenu() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('active');
+
+            // Close other dropdowns
+            document.querySelectorAll('.profile-dropdown').forEach(d => {
+                if (d !== dropdown) d.classList.remove('active');
+            });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.user-profile')) {
+                document.querySelectorAll('.profile-dropdown').forEach(d => {
+                    d.classList.remove('active');
+                });
+            }
+        });
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+            authDomain: "prabha-wellness.firebaseapp.com",
+            projectId: "prabha-wellness",
+            storageBucket: "prabha-wellness.firebasestorage.app",
+            messagingSenderId: "555332322398",
+            appId: "1:555332322398:web:57e29182b8693c35ef60cf",
+            measurementId: "G-EQ36VYT215"
+        };
+
+        // Initialize Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Auth State Listener
+        auth.onAuthStateChanged(async (user) => {
+            const profileBox = document.getElementById('userProfileBox');
+            const loginBtn = document.getElementById('loginBtnNav');
+            const adminLink = document.getElementById('adminPanelLink');
+
+            if (user) {
+                // User is signed in
+                profileBox.style.display = 'block';
+                loginBtn.style.display = 'none';
+
+                // Update user info
+                document.getElementById('displayEmail').textContent = user.email;
+                document.getElementById('userInitial').textContent = user.email.charAt(0).toUpperCase();
+
+                // Check admin status
+                if (user.email === "sarthakbhawsar8@gmail.com") {
+                    adminLink.style.display = 'block';
+                } else {
+                    try {
+                        const adminDoc = await db.collection("adminUsers").doc(user.email).get();
+                        if (adminDoc.exists) {
+                            adminLink.style.display = 'block';
+                        } else {
+                            adminLink.style.display = 'none';
+                        }
+                    } catch (error) {
+                        console.error("Error checking admin status:", error);
+                        adminLink.style.display = 'none';
+                    }
+                }
+
+                // Pre-fill form with user data
+                document.getElementById('name').value = user.displayName || '';
+                document.getElementById('email').value = user.email || '';
+            } else {
+                // User is signed out
+                profileBox.style.display = 'none';
+                loginBtn.style.display = 'block';
+                adminLink.style.display = 'none';
+            }
+        });
+
+        // Toast Notification
+        function showToast(message, isError = false) {
+            const toast = document.getElementById("toastBox");
+            const msg = document.getElementById("toastMessage");
+            msg.innerText = message;
+            toast.classList.add("show");
+            setTimeout(() => { toast.classList.remove("show"); }, 3000);
+        }
+
+        // Logout Function
+        async function logoutUser() {
+            try {
+                await auth.signOut();
+                window.location.reload();
+            } catch (error) {
+                console.error("Logout error:", error);
+                showToast("Logout failed!", true);
+            }
+        }
+
+        // FAQ Toggle Function
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value.trim();
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Validate form
+            if (!name || !email || !subject || !message) {
+                showToast("Please fill in all required fields", true);
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showToast("Please enter a valid email address", true);
+                return;
+            }
+
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+            try {
+                // Save to Firestore
+                await db.collection("contactMessages").add({
+                    name: name,
+                    email: email,
+                    phone: phone || 'Not provided',
+                    subject: subject,
+                    message: message,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    status: "new",
+                    read: false
+                });
+
+                // Success
+                showToast("Message sent successfully! We'll get back to you soon.");
+                document.getElementById('contactForm').reset();
+
+            } catch (error) {
+                console.error("Error submitting form:", error);
+                showToast("Failed to send message. Please try again later.", true);
+
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            }
+        });
+
+        // Pre-select subject based on URL parameter
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const subjectParam = urlParams.get('subject');
+            if (subjectParam) {
+                const subjectSelect = document.getElementById('subject');
+                subjectSelect.value = subjectParam;
+            }
+        });
+    </script>
+</body>
+
+</html>

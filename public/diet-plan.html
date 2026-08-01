@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Diet Plan - Prabha Wellness</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../images/Only logo.png" type="image/png">
+
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- jsPDF Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        /* === PROFESSIONAL BRAND THEME === */
+        :root {
+            --primary-green: #0B7A6B;
+            --primary-green-dark: #065749;
+            --primary-green-light: #E0F2F1;
+            --secondary-gold: #C6A959;
+            --neutral-dark: #1A1A1A;
+            --neutral-gray: #4A4A4A;
+            --neutral-light: #F8F9FA;
+            --neutral-white: #FFFFFF;
+            --accent-teal: #2D9C8F;
+            --accent-blue: #4A90E2;
+            --accent-orange: #FF7C4C;
+            --gradient-primary: linear-gradient(135deg, #0B7A6B 0%, #2D9C8F 100%);
+            --gradient-secondary: linear-gradient(135deg, #C6A959 0%, #E8D9A0 100%);
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-large: 0 15px 50px rgba(0, 0, 0, 0.1);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+            --border-radius-xl: 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'satoshi', sans-serif;
+            background-color: var(--neutral-light);
+            color: var(--neutral-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 700;
+            color: var(--neutral-dark);
+            line-height: 1.2;
+        }
+
+        /* === PAGE LOADER === */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--neutral-white);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .loader-logo {
+            width: 80px;
+            height: auto;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        /* === NAVIGATION === */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--neutral-white);
+            box-shadow: var(--shadow-subtle);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--neutral-gray);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius-md);
+        }
+
+        .back-link:hover {
+            color: var(--primary-green);
+            background: var(--primary-green-light);
+        }
+
+        /* === MAIN CONTAINER === */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* === HEADER CARD === */
+        .header-card {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .plan-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: var(--neutral-white);
+            font-size: 2rem;
+        }
+
+        .plan-title {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .plan-subtitle {
+            color: var(--neutral-gray);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .user-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--neutral-light);
+        }
+
+        .metric-item {
+            background: var(--primary-green-light);
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius-md);
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--neutral-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* === CONTENT GRID === */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 968px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* === AI RESPONSE SECTION === */
+        .ai-response-card {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            min-height: 400px;
+        }
+
+        .ai-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-green-light);
+        }
+
+        .ai-icon {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+        }
+
+        .ai-header h2 {
+            color: var(--primary-green);
+            font-size: 1.5rem;
+        }
+
+        /* AI Response Content Styling */
+        .ai-content {
+            line-height: 1.8;
+            color: var(--neutral-dark);
+        }
+
+        .ai-content h3 {
+            color: var(--primary-green);
+            margin: 2rem 0 1rem;
+            font-size: 1.3rem;
+        }
+
+        .ai-content h4 {
+            color: var(--accent-teal);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.1rem;
+        }
+
+        .ai-content p {
+            margin-bottom: 1rem;
+            color: var(--neutral-gray);
+        }
+
+        .ai-content ul,
+        .ai-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ai-content li {
+            margin-bottom: 0.5rem;
+            color: var(--neutral-gray);
+        }
+
+        .ai-content strong {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        /* Herbalife Product Styling */
+        .herbalife-product {
+            background: var(--primary-green-light);
+            padding: 1rem;
+            border-radius: var(--border-radius-md);
+            margin: 1rem 0;
+            border-left: 4px solid var(--secondary-gold);
+        }
+
+        .product-name {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .product-benefit {
+            color: var(--neutral-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Loading Animation */
+        .ai-loading {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--primary-green-light);
+            border-top: 4px solid var(--primary-green);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* === SIDEBAR === */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-medium);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .info-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .daily-schedule {
+            list-style: none;
+        }
+
+        .daily-schedule li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--neutral-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .daily-schedule li:last-child {
+            border-bottom: none;
+        }
+
+        .time {
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+
+        .activity {
+            color: var(--neutral-gray);
+        }
+
+        .quick-tips {
+            list-style: none;
+        }
+
+        .quick-tips li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--neutral-light);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .quick-tips li:last-child {
+            border-bottom: none;
+        }
+
+        .tip-icon {
+            color: var(--secondary-gold);
+            font-size: 0.9rem;
+            margin-top: 0.2rem;
+        }
+
+        /* === PDF DOWNLOAD SECTION === */
+        .pdf-section {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            box-shadow: var(--shadow-medium);
+            border: 2px solid var(--primary-green);
+            text-align: center;
+        }
+
+        .pdf-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .pdf-section h2 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .pdf-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .pdf-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--neutral-gray);
+        }
+
+        .pdf-feature i {
+            color: var(--secondary-gold);
+        }
+
+        .pdf-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .pdf-btn {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1.2rem;
+            border-radius: var(--border-radius-md);
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .pdf-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-simple {
+            background: var(--neutral-light);
+            color: var(--primary-green);
+        }
+
+        .btn-detailed {
+            background: var(--secondary-gold);
+            color: var(--neutral-dark);
+        }
+
+        .btn-print {
+            background: var(--accent-teal);
+            color: var(--neutral-white);
+        }
+
+        /* PDF Loading Modal */
+        .pdf-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pdf-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--neutral-white);
+            padding: 3rem;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .modal-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--primary-green-light);
+            border-top: 4px solid var(--primary-green);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            animation: spin 1s linear infinite;
+        }
+
+        /* === ACTION BUTTONS === */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .action-btn {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1.2rem 2rem;
+            border-radius: var(--border-radius-md);
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-green-light);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
+        /* === PRODUCT RECOMMENDATIONS === */
+        .products-section {
+            margin-top: 3rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .product-card {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .product-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .product-card h4 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .product-card p {
+            color: var(--neutral-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            color: var(--secondary-gold);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* === DISCLAIMER === */
+        .disclaimer {
+            background: var(--primary-green-light);
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .disclaimer p {
+            color: var(--neutral-gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .header-card {
+                padding: 2rem 1rem;
+            }
+
+            .plan-title {
+                font-size: 2rem;
+            }
+
+            .user-metrics {
+                gap: 1rem;
+            }
+
+            .metric-item {
+                min-width: 120px;
+                padding: 0.75rem 1rem;
+            }
+
+            .ai-response-card,
+            .info-card {
+                padding: 1.5rem;
+            }
+
+            .pdf-options {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .plan-title {
+                font-size: 1.8rem;
+            }
+
+            .metric-item {
+                min-width: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Page Loader -->
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-content">
+            <img src="../images/Only logo.png" alt="Prabha Wellness" class="loader-logo">
+            <div style="font-family: 'satoshi'; font-weight: 700; color: var(--primary-green);">
+                Creating Your AI Diet Plan...
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Generation Modal -->
+    <div id="pdfModal" class="pdf-modal">
+        <div class="modal-content">
+            <div class="modal-spinner"></div>
+            <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Generating PDF</h3>
+            <p style="color: var(--neutral-gray);">Creating your personalized diet plan document...</p>
+            <p id="pdfProgress" style="color: var(--accent-teal); font-size: 0.9rem; margin-top: 0.5rem;"></p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="../index.html" class="logo">
+            <img src="../images/Only logo.png" alt="Prabha Wellness">
+            <div>
+                <span style="color: var(--primary-green);">PRABHA</span> WELLNESS<br>
+                <small style="font-size: 0.7rem; color: var(--neutral-gray); font-weight: 500;">
+                    Official Herbalife Nutrition Center
+                </small>
+            </div>
+        </a>
+
+        <a href="../features.html" class="back-link" onclick="triggerPageTransition(event, '../features.html')">
+            <i class="fas fa-arrow-left"></i> Back to Features
+        </a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Card -->
+        <div class="header-card" data-aos="fade-up">
+            <div class="plan-icon">
+                <i class="fas fa-utensils"></i>
+            </div>
+            <h1 class="plan-title" id="planTitle">Your AI-Powered Diet Plan</h1>
+            <p class="plan-subtitle" id="planDesc">
+                Generated with advanced AI based on your unique health metrics and goals. This personalized plan includes Herbalife product recommendations for optimal results.
+            </p>
+            
+            <div class="user-metrics" id="userMetrics">
+                <!-- Metrics will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- PDF Download Section -->
+        <div class="pdf-section" data-aos="fade-up" data-aos-delay="100">
+            <div class="pdf-icon">
+                <i class="fas fa-file-pdf"></i>
+            </div>
+            <h2>Download Your Diet Plan</h2>
+            <p style="color: var(--neutral-gray); max-width: 600px; margin: 0 auto 1.5rem;">
+                Save your personalized plan as a professional PDF document. Share with your coach or keep for reference.
+            </p>
+            
+            <div class="pdf-features">
+                <div class="pdf-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Professional Layout</span>
+                </div>
+                <div class="pdf-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Herbalife Product Guide</span>
+                </div>
+                <div class="pdf-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>7-Day Meal Plan</span>
+                </div>
+                <div class="pdf-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Exercise Schedule</span>
+                </div>
+            </div>
+
+            <div class="pdf-options">
+                <button onclick="generateSimplePDF()" class="pdf-btn">
+                    <i class="fas fa-file-download"></i> Simple PDF
+                </button>
+                <button onclick="generateDetailedPDF()" class="pdf-btn btn-detailed">
+                    <i class="fas fa-file-medical-alt"></i> Detailed Report
+                </button>
+                <button onclick="generatePrintablePDF()" class="pdf-btn btn-print">
+                    <i class="fas fa-print"></i> Print Version
+                </button>
+            </div>
+
+            <p style="color: var(--neutral-gray); font-size: 0.9rem; margin-top: 1.5rem;">
+                <i class="fas fa-info-circle"></i> All PDFs include your personal metrics and plan details
+            </p>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- AI Response Section -->
+            <div class="ai-response-card" data-aos="fade-right">
+                <div class="ai-header">
+                    <div class="ai-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h2>AI-Powered Nutrition Analysis</h2>
+                </div>
+                
+                <div class="ai-content" id="aiResponse">
+                    <div class="ai-loading">
+                        <div class="loading-spinner"></div>
+                        <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Analyzing Your Data</h3>
+                        <p style="color: var(--neutral-gray);">
+                            Our AI is creating a personalized diet plan based on your BMI, goals, and preferences.<br>
+                            This usually takes 10-15 seconds.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Daily Schedule -->
+                <div class="info-card" data-aos="fade-left" data-aos-delay="100">
+                    <h3><i class="fas fa-clock"></i> Daily Schedule</h3>
+                    <ul class="daily-schedule" id="dailySchedule">
+                        <li>
+                            <span class="time">7:00 AM</span>
+                            <span class="activity">Wake up + Warm water</span>
+                        </li>
+                        <li>
+                            <span class="time">8:00 AM</span>
+                            <span class="activity">Breakfast</span>
+                        </li>
+                        <li>
+                            <span class="time">11:00 AM</span>
+                            <span class="activity">Mid-morning snack</span>
+                        </li>
+                        <li>
+                            <span class="time">1:00 PM</span>
+                            <span class="activity">Lunch</span>
+                        </li>
+                        <li>
+                            <span class="time">4:00 PM</span>
+                            <span class="activity">Evening snack</span>
+                        </li>
+                        <li>
+                            <span class="time">7:00 PM</span>
+                            <span class="activity">Dinner</span>
+                        </li>
+                        <li>
+                            <span class="time">10:00 PM</span>
+                            <span class="activity">Sleep time</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quick Tips -->
+                <div class="info-card" data-aos="fade-left" data-aos-delay="200">
+                    <h3><i class="fas fa-lightbulb"></i> Quick Tips</h3>
+                    <ul class="quick-tips">
+                        <li>
+                            <i class="fas fa-check-circle tip-icon"></i>
+                            <span>Drink 3-4 liters of water daily</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle tip-icon"></i>
+                            <span>Take Herbalife products as recommended</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle tip-icon"></i>
+                            <span>Combine with 30-min daily exercise</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle tip-icon"></i>
+                            <span>Get 7-8 hours of quality sleep</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Share Options -->
+                <div class="info-card" data-aos="fade-left" data-aos-delay="300">
+                    <h3><i class="fas fa-share-alt"></i> Share Plan</h3>
+                    <p style="color: var(--neutral-gray); margin-bottom: 1rem; font-size: 0.9rem;">
+                        Share your diet plan with coach or family members.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button onclick="shareViaWhatsApp()" style="flex: 1; background: #25D366; color: white; border: none; padding: 0.75rem; border-radius: var(--border-radius-md); cursor: pointer;">
+                            <i class="fab fa-whatsapp"></i>
+                        </button>
+                        <button onclick="copyPlanLink()" style="flex: 1; background: var(--primary-green); color: white; border: none; padding: 0.75rem; border-radius: var(--border-radius-md); cursor: pointer;">
+                            <i class="fas fa-link"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="https://wa.me/918805650842?text=Hi%20Prabha%20Wellness,%20I%20want%20personalized%20coaching%20for%20my%20diet%20plan" 
+               class="action-btn btn-whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat with Coach
+            </a>
+            <a href="../products.html" class="action-btn btn-secondary">
+                <i class="fas fa-shopping-cart"></i> Shop Herbalife Products
+            </a>
+            <a href="../features.html" class="action-btn btn-secondary">
+                <i class="fas fa-calculator"></i> Try Other Calculators
+            </a>
+        </div>
+
+        <!-- Herbalife Product Recommendations -->
+        <div class="products-section" data-aos="fade-up">
+            <h2 style="color: var(--primary-green); margin-bottom: 1.5rem; font-size: 1.8rem;">
+                <i class="fas fa-prescription-bottle-alt"></i> Recommended Herbalife Products
+            </h2>
+            <div class="products-grid" id="productRecommendations">
+                <!-- Products will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="disclaimer" data-aos="fade-up">
+            <p><strong>Disclaimer:</strong> This AI-generated diet plan is for informational purposes only.</p>
+            <p>Consult with our certified Herbalife coaches for personalized guidance and adjustments.</p>
+            <p style="font-size: 0.8rem; margin-top: 1rem;">Results may vary based on individual adherence and metabolism.</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Local Perplexity API Key -->
+    <script>
+        // Local API key for testing
+    
+        
+        // Netlify Function URL for production
+        const NETLIFY_FUNCTION_URL = '/.netlify/functions/fetch-diet';
+        
+        // Global variables for plan data
+        let userPlanData = {};
+        let aiPlanContent = '';
+    </script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 800, once: true });
+
+        // Page Loader
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('pageLoader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                // Start generating plan after loader
+                generateDietPlan();
+            }, 800);
+        });
+
+        // Get URL Parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const bmi = parseFloat(urlParams.get('bmi')) || 22;
+        const weight = parseFloat(urlParams.get('weight')) || 70;
+        const height = parseFloat(urlParams.get('height')) || 170;
+        const planType = urlParams.get('type') || 'maintain';
+        const age = urlParams.get('age') || 30;
+        const gender = urlParams.get('gender') || 'adult';
+        const activity = urlParams.get('activity') || 'moderate';
+
+        // Store user data
+        userPlanData = {
+            bmi, weight, height, planType, age, gender, activity,
+            planDate: new Date().toLocaleDateString('en-IN', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            }),
+            bmiCategory: getBMICategory(bmi),
+            dailyCalories: calculateDailyCalories(weight, height, age, gender, activity, planType)
+        };
+
+        // Set plan title based on type
+        const planTitles = {
+            'gain': 'Weight Gain Diet Plan',
+            'loss': 'Weight Loss Diet Plan',
+            'fat-loss': 'Fat Loss Program',
+            'maintain': 'Health Maintenance Plan'
+        };
+
+        document.getElementById('planTitle').textContent = planTitles[planType] || 'AI Diet Plan';
+        document.getElementById('planDesc').textContent = `BMI: ${bmi.toFixed(1)} | Goal: ${planType.replace('-', ' ').toUpperCase()}`;
+
+        // Update user metrics
+        const metricsHTML = `
+            <div class="metric-item">
+                <div class="metric-value">${bmi.toFixed(1)}</div>
+                <div class="metric-label">BMI Score</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-value">${weight} kg</div>
+                <div class="metric-label">Current Weight</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-value">${height} cm</div>
+                <div class="metric-label">Height</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-value">${planType.toUpperCase()}</div>
+                <div class="metric-label">Goal</div>
+            </div>
+        `;
+        document.getElementById('userMetrics').innerHTML = metricsHTML;
+
+        // Page transition function
+        function triggerPageTransition(e, targetUrl) {
+            if (e && targetUrl && targetUrl !== "#") {
+                e.preventDefault();
+                const loader = document.getElementById('pageLoader');
+                loader.classList.remove('hidden');
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 400);
+            }
+        }
+
+        // Generate diet plan
+        async function generateDietPlan() {
+            try {
+                // Show loading state
+                const aiResponse = document.getElementById('aiResponse');
+                aiResponse.innerHTML = `
+                    <div class="ai-loading">
+                        <div class="loading-spinner"></div>
+                        <h3 style="color: var(--primary-green); margin-bottom: 1rem;">Analyzing Your Health Data</h3>
+                        <p style="color: var(--neutral-gray);">
+                            Creating personalized meal plan with Herbalife recommendations...
+                        </p>
+                    </div>
+                `;
+
+                // Prepare prompt for AI
+                const prompt = `Create a detailed 7-day diet plan for ${gender}, age ${age}, with BMI ${bmi} (${getBMICategory(bmi)}), current weight ${weight}kg, height ${height}cm, activity level: ${activity}. Goal: ${planType}. Include specific Herbalife product recommendations for each meal. Format with clear sections for breakfast, lunch, dinner, snacks. Include timing and portion sizes. Add Indian food options.`;
+
+                // Try local AI first, then fallback to Netlify function
+                try {
+                    aiPlanContent = await generateLocalPlan();
+                } catch (error) {
+                    console.log('Local plan failed, trying Netlify function');
+                    aiPlanContent = await fetchNetlifyPlan();
+                }
+
+                // Store the content for PDF generation
+                userPlanData.aiContent = aiPlanContent;
+                
+                // Display the plan
+                displayPlan(aiPlanContent);
+                
+                // Generate product recommendations
+                generateProductRecommendations();
+
+            } catch (error) {
+                console.error('Error generating plan:', error);
+                document.getElementById('aiResponse').innerHTML = `
+                    <div style="padding: 2rem; background: #ffebee; border-radius: var(--border-radius-md); color: #c62828;">
+                        <h3 style="color: #c62828; margin-bottom: 1rem;">⚠️ Error Generating Plan</h3>
+                        <p>Could not generate AI plan. Please try again or contact our coaches directly.</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem;">Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function getBMICategory(bmi) {
+            if (bmi < 18.5) return 'Underweight';
+            if (bmi < 25) return 'Normal Weight';
+            if (bmi < 30) return 'Overweight';
+            return 'Obese';
+        }
+
+        // Calculate daily calories
+        function calculateDailyCalories(weight, height, age, gender, activity, goal) {
+            // BMR calculation
+            let bmr;
+               if (gender === 'male') {
+                bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+            } else {
+                bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+            }
+            
+            // Activity multiplier
+            const multipliers = {
+                'sedentary': 1.2,
+                'light': 1.375,
+                'moderate': 1.55,
+                'active': 1.725,
+                'very_active': 1.9
+            };
+            
+            let calories = bmr * (multipliers[activity] || 1.55);
+            
+            // Adjust for goal
+            if (goal === 'loss' || goal === 'fat-loss') {
+                calories -= 500; // Deficit for weight loss
+            } else if (goal === 'gain') {
+                calories += 500; // Surplus for weight gain
+            }
+            
+            return Math.round(calories);
+        }
+
+        // Generate plan locally (for testing)
+        async function generateLocalPlan() {
+            await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate delay
+            
+            const bmiCategory = getBMICategory(bmi);
+            const dailyCalories = calculateDailyCalories(weight, height, age, gender, activity, planType);
+            
+            return `
+                <h3>Your Personalized ${planType.toUpperCase()} Diet Plan</h3>
+                
+                <p><strong>Health Assessment:</strong> Based on your BMI of ${bmi} (${bmiCategory}), your daily calorie target is <strong>${dailyCalories} calories</strong>.</p>
+                
+                <div class="herbalife-product">
+                    <div class="product-name"><i class="fas fa-leaf"></i> Herbalife Formula 1</div>
+                    <div class="product-benefit">Meal replacement shake for balanced nutrition</div>
+                </div>
+                
+                <h4>📅 7-Day Meal Plan</h4>
+                
+                <h5>Monday</h5>
+                <ul>
+                    <li><strong>Breakfast (8 AM):</strong> Herbalife Formula 1 shake with 250ml skim milk + 1 banana</li>
+                    <li><strong>Snack (11 AM):</strong> Handful of almonds + green tea</li>
+                    <li><strong>Lunch (1 PM):</strong> 2 roti + dal + vegetable sabji + salad</li>
+                    <li><strong>Evening (4 PM):</strong> Herbalife Tea Concentrate</li>
+                    <li><strong>Dinner (7 PM):</strong> Grilled chicken/fish OR paneer with vegetables</li>
+                </ul>
+                
+                <h5>Daily Guidelines</h5>
+                <ul>
+                    <li>Drink 3-4 liters of water daily</li>
+                    <li>Include Herbalife supplements as recommended</li>
+                    <li>30 minutes of exercise daily</li>
+                    <li>Monitor portion sizes</li>
+                </ul>
+                
+                <h4>🏋️ Exercise Recommendations</h4>
+                <p>Combine cardio and strength training 5 days/week:</p>
+                <ul>
+                    <li>Monday: Cardio (30 mins)</li>
+                    <li>Tuesday: Strength training</li>
+                    <li>Wednesday: Yoga/Stretching</li>
+                    <li>Thursday: Cardio</li>
+                    <li>Friday: Strength training</li>
+                    <li>Saturday: Active rest (walking)</li>
+                    <li>Sunday: Rest</li>
+                </ul>
+                
+                <div class="herbalife-product">
+                    <div class="product-name"><i class="fas fa-prescription-bottle"></i> Herbalife24 Rebuild Strength</div>
+                    <div class="product-benefit">Post-workout recovery formula</div>
+                </div>
+                
+                <h4>📊 Progress Tracking</h4>
+                <p>Track your weight weekly and adjust portions as needed. Book a consultation after 2 weeks for plan adjustments.</p>
+            `;
+        }
+
+        // Fetch plan from Netlify function
+        async function fetchNetlifyPlan() {
+            try {
+                const response = await fetch(NETLIFY_FUNCTION_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        bmi: bmi,
+                        weight: weight,
+                        height: height,
+                        planType: planType,
+                        age: age,
+                        gender: gender,
+                        activity: activity
+                    })
+                });
+                
+                if (!response.ok) throw new Error('Netlify function failed');
+                
+                const data = await response.json();
+                return data.plan || data.content || 'Plan generated successfully.';
+                
+            } catch (error) {
+                console.error('Netlify function error:', error);
+                throw error;
+            }
+        }
+
+        // Display the plan
+        function displayPlan(planContent) {
+            const aiResponse = document.getElementById('aiResponse');
+            
+            // Format the content
+            let formattedHTML = planContent
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/### (.*)/g, '<h5>$1</h5>')
+                .replace(/## (.*)/g, '<h4>$1</h4>')
+                .replace(/# (.*)/g, '<h3>$1</h3>')
+                .replace(/Herbalife (Formula 1|Tea Concentrate|Thermo Complete|Total Control|Cell Activator|Rebuild Strength)/g, 
+                         '<div class="herbalife-product"><div class="product-name"><i class="fas fa-prescription-bottle-alt"></i> $&</div><div class="product-benefit">Recommended Herbalife product for optimal results</div></div>');
+            
+            aiResponse.innerHTML = `<div class="ai-content">${formattedHTML}</div>`;
+        }
+
+        // Generate product recommendations
+        function generateProductRecommendations() {
+            const products = [
+                {
+                    icon: 'fas fa-blender',
+                    name: 'Formula 1 Shake',
+                    desc: 'Meal replacement for balanced nutrition',
+                    price: '₹2,200'
+                },
+                {
+                    icon: 'fas fa-mug-hot',
+                    name: 'Tea Concentrate',
+                    desc: 'Metabolism booster with antioxidants',
+                    price: '₹1,800'
+                },
+                {
+                    icon: 'fas fa-fire',
+                    name: 'Thermo Complete',
+                    desc: 'Supports calorie burning',
+                    price: '₹2,500'
+                },
+                {
+                    icon: 'fas fa-apple-alt',
+                    name: 'Total Control',
+                    desc: 'Appetite management tablets',
+                    price: '₹1,950'
+                },
+                {
+                    icon: 'fas fa-dna',
+                    name: 'Cell Activator',
+                    desc: 'Cellular metabolism support',
+                    price: '₹2,300'
+                },
+                {
+                    icon: 'fas fa-dumbbell',
+                    name: 'Rebuild Strength',
+                    desc: 'Post-workout recovery',
+                    price: '₹2,100'
+                }
+            ];
+            
+            // Store for PDF
+            userPlanData.products = products;
+            
+            const productsGrid = document.getElementById('productRecommendations');
+            productsGrid.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="${product.icon}"></i>
+                    </div>
+                    <h4>${product.name}</h4>
+                    <p>${product.desc}</p>
+                    <div class="product-price">${product.price}</div>
+                    <a href="../products.html?search=${encodeURIComponent(product.name)}" 
+                       style="display: inline-block; margin-top: 0.5rem; color: var(--primary-green); font-size: 0.9rem; text-decoration: none;">
+                       <i class="fas fa-shopping-cart"></i> View Product
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        // ==================== PDF GENERATION SYSTEM ====================
+
+        function showPDFModal() {
+            document.getElementById('pdfModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hidePDFModal() {
+            document.getElementById('pdfModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updatePDFProgress(message) {
+            document.getElementById('pdfProgress').textContent = message;
+        }
+
+        // Generate Simple PDF (One Page)
+        async function generateSimplePDF() {
+            showPDFModal();
+            updatePDFProgress('Creating simple PDF...');
+            
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                // Set initial y position
+                let yPos = 20;
+                
+                // ===== HEADER =====
+                // Add logo (if available)
+                try {
+                    const logoImg = await loadImage('../images/Only logo.png');
+                    doc.addImage(logoImg, 'PNG', 20, yPos, 20, 20);
+                } catch (e) {
+                    // If logo fails, continue without it
+                }
+                
+                // Company info
+                doc.setFontSize(20);
+                doc.setTextColor(11, 122, 107); // Primary green
+                doc.setFont('helvetica', 'bold');
+                doc.text('PRABHA WELLNESS', 50, yPos + 10);
+                doc.setFontSize(10);
+                doc.setTextColor(100, 100, 100);
+                doc.text('Official Herbalife Nutrition Center', 50, yPos + 16);
+                
+                // Plan title
+                yPos += 35;
+                doc.setFontSize(16);
+                doc.setTextColor(11, 122, 107);
+                doc.text(`Diet Plan: ${planTitles[planType] || 'Personalized Plan'}`, 20, yPos);
+                
+                // Date
+                doc.setFontSize(10);
+                doc.setTextColor(100, 100, 100);
+                doc.text(`Generated on: ${userPlanData.planDate}`, 20, yPos + 8);
+                
+                // ===== USER METRICS =====
+                yPos += 25;
+                doc.setFontSize(12);
+                doc.setTextColor(0, 0, 0);
+                doc.text('Personal Health Metrics:', 20, yPos);
+                
+                yPos += 10;
+                doc.setFontSize(10);
+                doc.text(`• BMI: ${bmi.toFixed(1)} (${userPlanData.bmiCategory})`, 25, yPos);
+                yPos += 7;
+                doc.text(`• Weight: ${weight} kg | Height: ${height} cm`, 25, yPos);
+                yPos += 7;
+                doc.text(`• Age: ${age} years | Gender: ${gender}`, 25, yPos);
+                yPos += 7;
+                doc.text(`• Activity Level: ${activity}`, 25, yPos);
+                yPos += 7;
+                doc.text(`• Daily Calorie Target: ${userPlanData.dailyCalories} calories`, 25, yPos);
+                
+                // ===== KEY RECOMMENDATIONS =====
+                yPos += 15;
+                doc.setFontSize(12);
+                doc.text('Key Recommendations:', 20, yPos);
+                
+                yPos += 10;
+                doc.setFontSize(10);
+                const keyTips = [
+                    `1. Follow the meal timing schedule strictly`,
+                    `2. Drink 3-4 liters of water daily`,
+                    `3. Combine with 30 minutes of daily exercise`,
+                    `4. Use recommended Herbalife products`,
+                    `5. Get 7-8 hours of quality sleep`
+                ];
+                
+                keyTips.forEach(tip => {
+                    doc.text(tip, 25, yPos);
+                    yPos += 6;
+                });
+                
+                // ===== DAILY SCHEDULE =====
+                yPos += 5;
+                doc.setFontSize(12);
+                doc.text('Daily Schedule:', 20, yPos);
+                
+                yPos += 8;
+                doc.setFontSize(9);
+                const schedule = [
+                    ['7:00 AM', 'Wake up + Warm water'],
+                    ['8:00 AM', 'Breakfast'],
+                    ['11:00 AM', 'Mid-morning snack'],
+                    ['1:00 PM', 'Lunch'],
+                    ['4:00 PM', 'Evening snack'],
+                    ['7:00 PM', 'Dinner'],
+                    ['10:00 PM', 'Sleep time']
+                ];
+                
+                schedule.forEach(([time, activity]) => {
+                    doc.text(time, 25, yPos);
+                    doc.text(activity, 60, yPos);
+                    yPos += 5;
+                });
+                
+                // ===== IMPORTANT NOTES =====
+                yPos += 5;
+                doc.setFontSize(10);
+                doc.setTextColor(198, 169, 89); // Gold color
+                doc.text('Note: This is an AI-generated plan. Consult with our Herbalife coaches for personalized adjustments.', 20, yPos);
+                
+                // Check if we need a new page
+                if (yPos > 270) {
+                    doc.addPage();
+                    yPos = 20;
+                }
+                
+                // ===== SAVE PDF =====
+                updatePDFProgress('Finalizing document...');
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                const fileName = `PrabhaWellness_DietPlan_${planType}_${Date.now()}.pdf`;
+                doc.save(fileName);
+                
+                hidePDFModal();
+                
+                // Show success toast
+                showToast('PDF downloaded successfully!');
+                
+            } catch (error) {
+                console.error('PDF generation error:', error);
+                hidePDFModal();
+                showToast('Error generating PDF. Please try again.', 'error');
+            }
+        }
+
+        // Generate Detailed PDF
+        async function generateDetailedPDF() {
+            showPDFModal();
+            updatePDFProgress('Creating detailed report...');
+            
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                let yPos = 20;
+                let page = 1;
+                
+                // ===== COVER PAGE =====
+                // Logo
+                try {
+                    const logoImg = await loadImage('../images/Only logo.png');
+                    doc.addImage(logoImg, 'PNG', 85, 40, 40, 40);
+                } catch (e) {}
+                
+                // Title
+                doc.setFontSize(24);
+                doc.setTextColor(11, 122, 107);
+                doc.setFont('helvetica', 'bold');
+                doc.text('PRABHA WELLNESS', 105, 100, null, null, 'center');
+                doc.setFontSize(14);
+                doc.setTextColor(100, 100, 100);
+                doc.text('Official Herbalife Nutrition Center', 105, 110, null, null, 'center');
+                
+                // Plan Title
+                doc.setFontSize(18);
+                doc.setTextColor(11, 122, 107);
+                doc.text(planTitles[planType] || 'Personalized Diet Plan', 105, 130, null, null, 'center');
+                
+                // User Info
+                doc.setFontSize(12);
+                doc.setTextColor(0, 0, 0);
+                doc.text(`For: ${gender.charAt(0).toUpperCase() + gender.slice(1)}, ${age} years`, 105, 150, null, null, 'center');
+                doc.text(`BMI: ${bmi.toFixed(1)} (${userPlanData.bmiCategory})`, 105, 160, null, null, 'center');
+                doc.text(`Generated: ${userPlanData.planDate}`, 105, 170, null, null, 'center');
+                
+                // Disclaimer
+                doc.setFontSize(9);
+                doc.setTextColor(100, 100, 100);
+                doc.text('AI-Powered Personalized Diet Plan', 105, 200, null, null, 'center');
+                doc.text('Consult our certified coaches for adjustments', 105, 207, null, null, 'center');
+                
+                // ===== PAGE 2: DETAILED ANALYSIS =====
+                doc.addPage();
+                page++;
+                yPos = 20;
+                
+                // Page header
+                addPageHeader(doc, page, `Detailed Analysis`);
+                
+                // Health Assessment
+                doc.setFontSize(12);
+                doc.setTextColor(11, 122, 107);
+                doc.text('Health Assessment', 20, yPos);
+                
+                yPos += 10;
+                doc.setFontSize(10);
+                doc.setTextColor(0, 0, 0);
+                const assessment = [
+                    `• Current Status: BMI ${bmi.toFixed(1)} (${userPlanData.bmiCategory})`,
+                    `• Ideal BMI Range: 18.5 - 24.9`,
+                    `• Weight Status: ${weight} kg at ${height} cm height`,
+                    `• Target: ${planType.replace('-', ' ').toUpperCase()}`,
+                    `• Daily Calorie Need: ${userPlanData.dailyCalories} calories`,
+                    `• Activity Level: ${activity.charAt(0).toUpperCase() + activity.slice(1)}`,
+                    `• Recommended Rate: ${planType.includes('loss') ? '0.5-1 kg/week' : planType.includes('gain') ? '0.25-0.5 kg/week' : 'Maintain weight'}`
+                ];
+                
+                assessment.forEach(line => {
+                    doc.text(line, 25, yPos);
+                    yPos += 7;
+                });
+                
+                // Nutrition Guidelines
+                yPos += 10;
+                doc.setFontSize(12);
+                doc.setTextColor(11, 122, 107);
+                doc.text('Nutrition Guidelines', 20, yPos);
+                
+                yPos += 10;
+                doc.setFontSize(10);
+                doc.setTextColor(0, 0, 0);
+                const guidelines = [
+                    '1. Eat every 3-4 hours (5-6 small meals)',
+                    '2. Include protein in every meal',
+                    '3. Choose complex carbs over simple carbs',
+                    '4. Include healthy fats (nuts, seeds, avocado)',
+                    '5. Minimum 3-4 liters of water daily',
+                    '6. Limit processed foods and sugar',
+                    '7. Include fiber-rich vegetables'
+                ];
+                
+                guidelines.forEach(line => {
+                    doc.text(line, 25, yPos);
+                    yPos += 7;
+                });
+                
+                // Add more pages for meal plan, exercise, products
+                await addMealPlanPage(doc);
+                await addExercisePage(doc);
+                await addProductsPage(doc);
+                await addTrackingPage(doc);
+                
+                // ===== SAVE PDF =====
+                updatePDFProgress('Finalizing document...');
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                const fileName = `PrabhaWellness_DetailedPlan_${planType}_${Date.now()}.pdf`;
+                doc.save(fileName);
+                
+                hidePDFModal();
+                showToast('Detailed PDF downloaded successfully!');
+                
+            } catch (error) {
+                console.error('Detailed PDF error:', error);
+                hidePDFModal();
+                showToast('Error generating detailed PDF', 'error');
+            }
+        }
+
+        // Generate Printable PDF
+        async function generatePrintablePDF() {
+            showPDFModal();
+            updatePDFProgress('Creating print-friendly version...');
+            
+            try {
+                // Create a printable HTML version
+                const printContent = document.createElement('div');
+                printContent.style.cssText = `
+                    font-family: 'satoshi', sans-serif;
+                    padding: 40px;
+                    max-width: 800px;
+                    margin: 0 auto;
+                    background: white;
+                    color: #1A1A1A;
+                `;
+                
+                printContent.innerHTML = `
+                    <div style="text-align: center; margin-bottom: 40px; border-bottom: 3px solid #0B7A6B; padding-bottom: 20px;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 10px;">
+                            <img src="../images/Only logo.png" alt="Logo" style="width: 50px; height: 50px;">
+                            <div>
+                                <h1 style="color: #0B7A6B; margin: 0; font-size: 28px;">PRABHA WELLNESS</h1>
+                                <p style="color: #4A4A4A; margin: 5px 0 0 0; font-size: 14px;">Official Herbalife Nutrition Center</p>
+                            </div>
+                        </div>
+                        <h2 style="color: #065749; margin: 20px 0 10px 0; font-size: 24px;">${planTitles[planType] || 'Personalized Diet Plan'}</h2>
+                        <p style="color: #666; margin: 5px 0;">Generated: ${userPlanData.planDate}</p>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 40px;">
+                        <div style="background: #E0F2F1; padding: 20px; border-radius: 10px;">
+                            <h3 style="color: #0B7A6B; margin: 0 0 15px 0; font-size: 18px;">Personal Information</h3>
+                            <p style="margin: 8px 0;"><strong>Gender:</strong> ${gender}</p>
+                            <p style="margin: 8px 0;"><strong>Age:</strong> ${age} years</p>
+                            <p style="margin: 8px 0;"><strong>Height:</strong> ${height} cm</p>
+                            <p style="margin: 8px 0;"><strong>Current Weight:</strong> ${weight} kg</p>
+                        </div>
+                        
+                        <div style="background: #E0F2F1; padding: 20px; border-radius: 10px;">
+                            <h3 style="color: #0B7A6B; margin: 0 0 15px 0; font-size: 18px;">Health Metrics</h3>
+                            <p style="margin: 8px 0;"><strong>BMI:</strong> ${bmi.toFixed(1)} (${userPlanData.bmiCategory})</p>
+                            <p style="margin: 8px 0;"><strong>Activity Level:</strong> ${activity}</p>
+                            <p style="margin: 8px 0;"><strong>Daily Calories:</strong> ${userPlanData.dailyCalories}</p>
+                            <p style="margin: 8px 0;"><strong>Goal:</strong> ${planType.toUpperCase()}</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 40px;">
+                        <h3 style="color: #0B7A6B; margin: 0 0 20px 0; font-size: 20px; border-left: 5px solid #C6A959; padding-left: 15px;">7-Day Meal Plan</h3>
+                        <div style="background: #F8F9FA; padding: 25px; border-radius: 10px;">
+                            ${aiPlanContent.replace(/<[^>]*>/g, '')}
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 40px;">
+                        <h3 style="color: #0B7A6B; margin: 0 0 20px 0; font-size: 20px; border-left: 5px solid #C6A959; padding-left: 15px;">Recommended Herbalife Products</h3>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                            ${userPlanData.products ? userPlanData.products.map(product => `
+                                <div style="border: 1px solid #E5E7EB; padding: 15px; border-radius: 8px;">
+                                    <h4 style="color: #0B7A6B; margin: 0 0 10px 0; font-size: 16px;">${product.name}</h4>
+                                    <p style="color: #666; margin: 0 0 10px 0; font-size: 14px;">${product.desc}</p>
+                                    <p style="color: #C6A959; font-weight: bold; margin: 0;">${product.price}</p>
+                                </div>
+                            `).join('') : ''}
+                        </div>
+                    </div>
+                    
+                    <div style="background: #E0F2F1; padding: 25px; border-radius: 10px; margin-bottom: 40px;">
+                        <h3 style="color: #065749; margin: 0 0 15px 0; font-size: 18px;">Important Notes</h3>
+                        <ul style="color: #4A4A4A; margin: 0; padding-left: 20px;">
+                            <li style="margin-bottom: 8px;">This is an AI-generated plan for reference only</li>
+                            <li style="margin-bottom: 8px;">Consult with certified Herbalife coaches for personalized adjustments</li>
+                            <li style="margin-bottom: 8px;">Results may vary based on individual adherence and metabolism</li>
+                            <li style="margin-bottom: 8px;">Book a consultation for ongoing support and plan adjustments</li>
+                            <li>Contact: +91 88056 50842 | bhawanamawale8984@gmail.com</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="text-align: center; color: #666; font-size: 12px; padding-top: 20px; border-top: 1px solid #E5E7EB;">
+                        <p>© ${new Date().getFullYear()} Prabha Wellness Center. All rights reserved.</p>
+                        <p>Herbalife and the Herbalife logo are registered trademarks of Herbalife International.</p>
+                    </div>
+                `;
+                
+                document.body.appendChild(printContent);
+                
+                // Use html2canvas to capture and create PDF
+                updatePDFProgress('Generating printable version...');
+                
+                const canvas = await html2canvas(printContent, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false
+                });
+                
+                document.body.removeChild(printContent);
+                
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'mm', 'a4');
+                const imgData = canvas.toDataURL('image/png');
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 297; // A4 height in mm
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                
+                doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                
+                // Add page numbers if multiple pages
+                let heightLeft = imgHeight;
+                let position = 0;
+                
+                if (heightLeft > pageHeight) {
+                    doc.addPage();
+                    doc.addImage(imgData, 'PNG', 0, -pageHeight, imgWidth, imgHeight);
+                }
+                
+                updatePDFProgress('Finalizing...');
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                const fileName = `PrabhaWellness_PrintablePlan_${planType}_${Date.now()}.pdf`;
+                doc.save(fileName);
+                
+                hidePDFModal();
+                showToast('Printable PDF downloaded successfully!');
+                
+            } catch (error) {
+                console.error('Printable PDF error:', error);
+                document.body.removeChild(printContent);
+                hidePDFModal();
+                showToast('Error generating printable PDF', 'error');
+            }
+        }
+
+        // Helper Functions for PDF Generation
+        async function loadImage(src) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = () => resolve(img);
+                img.onerror = reject;
+                img.src = src;
+            });
+        }
+
+        function addPageHeader(doc, pageNumber, title) {
+            doc.setFontSize(10);
+            doc.setTextColor(100, 100, 100);
+            doc.text(`Page ${pageNumber}`, 195, 10, null, null, 'right');
+            doc.text(title, 20, 10);
+            doc.setDrawColor(11, 122, 107);
+            doc.line(20, 12, 190, 12);
+        }
+
+        async function addMealPlanPage(doc) {
+            doc.addPage();
+            const page = doc.internal.getNumberOfPages();
+            let yPos = 20;
+            
+            addPageHeader(doc, page, '7-Day Meal Plan');
+            
+            yPos += 10;
+            doc.setFontSize(12);
+            doc.setTextColor(11, 122, 107);
+            doc.text('Weekly Meal Schedule', 20, yPos);
+            
+            // Add meal plan content
+            // This would be populated with the actual meal plan
+            yPos += 10;
+            doc.setFontSize(10);
+            doc.setTextColor(0, 0, 0);
+            doc.text('Complete meal plan with timing and portion sizes...', 25, yPos);
+            
+            return yPos;
+        }
+
+        async function addExercisePage(doc) {
+            doc.addPage();
+            const page = doc.internal.getNumberOfPages();
+            let yPos = 20;
+            
+            addPageHeader(doc, page, 'Exercise Program');
+            
+            yPos += 10;
+            doc.setFontSize(12);
+            doc.setTextColor(11, 122, 107);
+            doc.text('Weekly Exercise Schedule', 20, yPos);
+            
+            return yPos;
+        }
+
+        async function addProductsPage(doc) {
+            doc.addPage();
+            const page = doc.internal.getNumberOfPages();
+            let yPos = 20;
+            
+            addPageHeader(doc, page, 'Herbalife Product Guide');
+            
+            return yPos;
+        }
+
+        async function addTrackingPage(doc) {
+            doc.addPage();
+            const page = doc.internal.getNumberOfPages();
+            let yPos = 20;
+            
+            addPageHeader(doc, page, 'Progress Tracking');
+            
+            return yPos;
+        }
+
+        // Utility Functions
+        function showToast(message, type = 'success') {
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#0B7A6B' : '#e74c3c'};
+                color: white;
+                padding: 15px 25px;
+                border-radius: var(--border-radius-md);
+                box-shadow: var(--shadow-medium);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            toast.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
+
+        function shareViaWhatsApp() {
+            const text = `Check out my personalized diet plan from Prabha Wellness:\nBMI: ${bmi}\nGoal: ${planType}\n\n${window.location.href}`;
+            const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+
+        function copyPlanLink() {
+            navigator.clipboard.writeText(window.location.href)
+                .then(() => showToast('Plan link copied to clipboard!'))
+                .catch(() => showToast('Failed to copy link', 'error'));
+        }
+
+        // Add CSS for animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Optional: Uncomment to use Perplexity API directly
+        
+        async function callPerplexityAPI(prompt) {
+            try {
+                const response = await fetch('https://api.perplexity.ai/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${PERPLEXITY_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: 'llama-3.1-sonar-small-128k-online',
+                        messages: [
+                            {
+                                role: 'system',
+                                content: 'You are a certified Herbalife nutrition expert. Create detailed diet plans with specific Herbalife product recommendations.'
+                            },
+                            {
+                                role: 'user',
+                                content: prompt
+                            }
+                        ],
+                        max_tokens: 1500,
+                        temperature: 0.7
+                    })
+                });
+
+                const data = await response.json();
+                return data.choices[0]?.message?.content || 'No response from AI';
+            } catch (error) {
+                console.error('Perplexity API Error:', error);
+                throw error;
+            }
+        }
+        
+    </script>
+</body>
+</html>

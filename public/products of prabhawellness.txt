@@ -1,0 +1,1083 @@
+ <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Energy">
+                <div class="product-image">
+                    <span class="product-badge">Energy</span>
+                    <img src="/images/afresh.webp" alt="Herbalife Afresh Energy Drink Mix" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Afresh Energy Drink</h3>
+                    <p class="product-description" itemprop="description">Afresh ek refreshing energy drink hai jo bina
+                        extra sugar ke instant energy deta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Tiredness (thakan) kam karta hai</li>
+                            <li>Focus aur alertness badhata hai</li>
+                            <li>Metabolism boost karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('afresh', 'Afresh Energy Drink')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('afresh', 'Afresh Energy Drink', 1200, '/images/afresh.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Digestive Health">
+                <div class="product-image">
+                    <span class="product-badge">Digestive Health</span>
+                    <img src="/images/aloe.webp" alt="Herbalife Herbal Aloe Concentrate" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbal Aloe Concentrate</h3>
+                    <p class="product-description" itemprop="description">Digestion ko support karta hai aur gut health
+                        improve karne mein madad karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Acidity aur bloating se relief</li>
+                            <li>Pet (stomach) ke liye soothing</li>
+                            <li>Better nutrient absorption</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('aloe', 'Herbal Aloe Concentrate')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('aloe', 'Herbal Aloe Concentrate', 1200, '/images/aloe.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Heart Health">
+                <div class="product-image">
+                    <span class="product-badge">Heart Health</span>
+                    <img src="/images/nightwork.webp" alt="Herbalife Nightworks" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Niteworks</h3>
+                    <p class="product-description" itemprop="description">Niteworks raat ke time body recovery aur blood
+                        circulation support ke liye use hota hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Blood flow support</li>
+                            <li>Workout recovery</li>
+                            <li>Heart health support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('niteworks', 'Niteworks')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('niteworks', 'Niteworks', 1200, '/images/nightwork.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Mental Focus">
+                <div class="product-image">
+                    <span class="product-badge">Mental Focus</span>
+                    <img src="/images/brain.webp" alt="Herbalife N-R-G Brain Boost" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Brain Boost (N-R-G)</h3>
+                    <p class="product-description" itemprop="description">N-R-G focus aur mental alertness improve karne
+                        mein madad karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Concentration improve karta hai</li>
+                            <li>Mental fatigue kam karta hai</li>
+                            <li>Daily productivity support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('brainboost', 'Brain Boost (N-R-G)')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('brainboost', 'Brain Boost (N-R-G)', 1200, '/images/brain.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Gut Health">
+                <div class="product-image">
+                    <span class="product-badge">Gut Health</span>
+                    <img src="/images/probiotic.jpg" alt="Herbalife Simply Probiotic" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Simply Probiotic</h3>
+                    <p class="product-description" itemprop="description">Digestion aur immunity ke liye good bacteria
+                        provide karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Gut balance improve karta hai</li>
+                            <li>Digestion better banata hai</li>
+                            <li>Immunity support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('probiotic', 'Simply Probiotic')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('probiotic', 'Simply Probiotic', 1200, '/images/probiotic.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Skin Booster">
+                <div class="product-image">
+                    <span class="product-badge">Skin Booster</span>
+                    <img src="/images/Collagen.webp" alt="Herbalife SKIN Collagen Beauty Booster" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbalife SKIN Collagen</h3>
+                    <p class="product-description" itemprop="description">Collagen Skin Booster skin elasticity aur glow
+                        support karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Skin hydration</li>
+                            <li>Glow aur firmness</li>
+                            <li>Anti-aging support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('Collagen', 'Herbalife SKIN Collagen')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('Collagen', 'Herbalife SKIN Collagen', 1200, '/images/Collagen.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Vitamin C">
+                <div class="product-image">
+                    <span class="product-badge">Vitamin C</span>
+                    <img src="/images/Radiant C.jpg" alt="Herbalife Radiant C Serum" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Radiant C Serum</h3>
+                    <p class="product-description" itemprop="description">Skin aur immunity ke liye Vitamin C provide
+                        karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Skin brightness</li>
+                            <li>Immunity support</li>
+                            <li>Antioxidant protection</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('radiantC', 'Radiant C Serum')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('radiantC', 'Radiant C Serum', 1200, '/images/Radiant C.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Sports">
+                <div class="product-image">
+                    <span class="product-badge">Sports</span>
+                    <img src="/images/Hydrate.webp" alt="Herbalife Hydrate" loading="lazy" width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbalife Hydrate</h3>
+                    <p class="product-description" itemprop="description">Body ko quick hydration aur electrolytes deta
+                        hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Dehydration se bachata hai</li>
+                            <li>Workout ke baad recovery</li>
+                            <li>Energy maintain karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('hydrate', 'Herbalife Hydrate')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('hydrate', 'Herbalife Hydrate', 1200, '/images/Hydrate.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Performance">
+                <div class="product-image">
+                    <span class="product-badge">Performance</span>
+                    <img src="/images/CR7 Drive.webp" alt="Herbalife CR7 Drive" loading="lazy" width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">CR7 Drive</h3>
+                    <p class="product-description" itemprop="description">Athletes aur active lifestyle ke liye
+                        hydration drink hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Endurance improve karta hai</li>
+                            <li>Electrolyte balance</li>
+                            <li>Sports performance support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('cr7drive', 'CR7 Drive')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('cr7drive', 'CR7 Drive', 1200, '/images/CR7 Drive.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Metabolism">
+                <div class="product-image">
+                    <span class="product-badge">Metabolism</span>
+                    <img src="/images/Herbal Tea.jfif" alt="Herbalife Herbal Tea Concentrate" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbal Tea Concentrate</h3>
+                    <p class="product-description" itemprop="description">Metabolism aur digestion support karta hai.
+                    </p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Metabolism support</li>
+                            <li>Fatigue kam karta hai</li>
+                            <li>Refreshing energy</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('herbaltea', 'Herbal Tea Concentrate')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('herbaltea', 'Herbal Tea Concentrate', 1200, '/images/Herbal Tea.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Stress Relief">
+                <div class="product-image">
+                    <span class="product-badge">Stress Relief</span>
+                    <img src="/images/Relax Tea.webp" alt="Herbalife Relaxation Tea" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Relaxation Tea</h3>
+                    <p class="product-description" itemprop="description">Stress relief aur better sleep ke liye helpful
+                        hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Stress kam karta hai</li>
+                            <li>Calm feeling deta hai</li>
+                            <li>Better sleep support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('relaxtea', 'Relaxation Tea')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('relaxtea', 'Relaxation Tea ', 1200, '/images/Relax Tea.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Kids Nutrition">
+                <div class="product-image">
+                    <span class="product-badge">Kids Nutrition</span>
+                    <img src="/images/Junior Shake.webp" alt="Herbalife Junior Shake" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbalife Junior Shake / Shakemate</h3>
+                    <p class="product-description" itemprop="description">Bachchon ke growth aur daily nutrition ke liye
+                        bana hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Growth support</li>
+                            <li>Energy aur focus</li>
+                            <li>Balanced nutrition</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('shakemate', 'Herbalife Junior Shake / Shakemate')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('shakemate', 'Shakemate', 1200, '/images/Junior Shake.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="High Protein">
+                <div class="product-image">
+                    <span class="product-badge">High Protein</span>
+                    <img src="/images/PDM.webp" alt="Herbalife Protein Drink Mix" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Protein Drink Mix (PDM)</h3>
+                    <p class="product-description" itemprop="description">Tasty chocolate protein option daily intake ke
+                        liye.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Protein intake increase karta hai</li>
+                            <li>Muscle support</li>
+                            <li>Healthy taste</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('pdm', 'Protein Drink Mix (PDM)')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('pdm', 'Protein Drink Mix (PDM)', 1200, '/images/PDM.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Daily Nutrition">
+                <div class="product-image">
+                    <span class="product-badge">Daily Nutrition</span>
+                    <img src="/images/Formula 2 Multivitamin.webp" alt="Herbalife Formula 2 Multivitamin" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Formula 2 Multivitamin</h3>
+                    <p class="product-description" itemprop="description">Zaroori vitamins aur minerals jo daily diet
+                        mein miss ho jate hain.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Immunity system strong karta hai</li>
+                            <li>Energy aur vitality badhata hai</li>
+                            <li>Overall health maintain karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('multivitamin', 'Formula 2 Multivitamin')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('multivitamin', 'Formula 2 Multivitamin', 1200, '/images/Formula 2 Multivitamin.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Nutrient Absorption">
+                <div class="product-image">
+                    <span class="product-badge">Nutrient Absorption</span>
+                    <img src="/images/Cell Activator.png" alt="Herbalife Cell Activator" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Cell Activator</h3>
+                    <p class="product-description" itemprop="description">Khane ke nutrients ko body mein absorb hone
+                        mein madad karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Nutrient absorption improve karta hai</li>
+                            <li>Cellular energy boost karta hai</li>
+                            <li>Aging signs ko slow karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('cellactivator', 'Cell Activator')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('cellactivator', 'Cell Activator', 1200, '/images/Cell Activator.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Weight Management">
+                <div class="product-image">
+                    <span class="product-badge">Weight Management</span>
+                    <img src="/images/Cell-U-Loss.jfif" alt="Herbalife Cell-U-Loss" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Cell-U-Loss</h3>
+                    <p class="product-description" itemprop="description">Body se excess water aur inches kam karne ke
+                        liye best hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Water retention kam karta hai</li>
+                            <li>Inch loss mein madad karta hai</li>
+                            <li>Cellulite reduction support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('celluloss', 'Cell-U-Loss')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('celluloss', 'Cell-U-Loss', 1200, '/images/Cell-U-Loss.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Metabolism Booster">
+                <div class="product-image">
+                    <span class="product-badge">Metabolism Booster</span>
+                    <img src="/images/Herbal Control.jfif" alt="Herbalife Herbal Control" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbal Control</h3>
+                    <p class="product-description" itemprop="description">Metabolism tez karke fat burn karne mein help
+                        karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Metabolism boost karta hai</li>
+                            <li>Energy level badhata hai</li>
+                            <li>Weight loss process fast karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('herbalcontrol', 'Herbal Control')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('herbalcontrol', 'Herbal Control', 1200, '/images/Herbal Control.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Digestive Health">
+                <div class="product-image">
+                    <span class="product-badge">Digestive Health</span>
+                    <img src="/images/Activated Fiber.jfif" alt="Herbalife Activated Fiber" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Activated Fiber</h3>
+                    <p class="product-description" itemprop="description">Khane ke fat ko body se bahar nikalne mein
+                        madad karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Dietary fat absorption kam karta hai</li>
+                            <li>Digestion improve karta hai</li>
+                            <li>Hunger control mein helpful</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('activatedfiber', 'Activated Fiber')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('activatedfiber', 'Activated Fiber', 1200, '/images/Activated Fiber.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Gut Health">
+                <div class="product-image">
+                    <span class="product-badge">Gut Health</span>
+                    <img src="/images/Active Fiber Complex.jfif" alt="Herbalife Active Fiber Complex" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Active Fiber Complex</h3>
+                    <p class="product-description" itemprop="description">Powder form mein fiber jo gut health aur
+                        regular bowel movement support karta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Healthy digestion support</li>
+                            <li>Regularity maintain karta hai</li>
+                            <li>Good bacteria growth support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('activefibercomplex', 'Active Fiber Complex')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('activefibercomplex', 'Active Fiber Complex', 1200, '/images/Active Fiber Complex.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Heart Health">
+                <div class="product-image">
+                    <span class="product-badge">Heart Health</span>
+                    <img src="/images/Herbalifeline (Omega-3).webp" alt="Herbalifeline Omega 3" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Herbalifeline (Omega-3)</h3>
+                    <p class="product-description" itemprop="description">Premium Omega-3 capsules heart, brain aur
+                        joints ke liye.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Cholesterol manage karta hai</li>
+                            <li>Joint flexibility improve karta hai</li>
+                            <li>Brain health support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('Omega-3', 'Herbalifeline (Omega-3)')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('Omega-3', 'Herbalifeline (Omega-3)', 1200, '/images/Herbalifeline (Omega-3).webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Bone Health">
+                <div class="product-image">
+                    <span class="product-badge">Bone Health</span>
+                    <img src="/images/Calcium Tablets.jfif" alt="Herbalife Calcium Tablets" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Calcium Tablets</h3>
+                    <p class="product-description" itemprop="description">Strong bones aur teeth ke liye Calcium aur
+                        Vitamin D.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Bones ko strong banata hai</li>
+                            <li>Osteoporosis risk kam karta hai</li>
+                            <li>Teeth health maintain karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('calciumtablets', 'Calcium Tablets')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('calciumtablets', 'Calcium Tablets', 1200, '/images/Calcium Tablets.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Core Nutrition">
+                <div class="product-image">
+                    <span class="product-badge">Core Nutrition</span>
+                    <img src="images/formula 1 750g.png" alt="Herbalife Formula 1 Nutritional Shake Mix" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Formula 1 Nutritional shake mix Vanilla 750 g</h3>
+                    <p class="product-description" itemprop="description">Formula 1 ek balanced nutritional shake hai jo
+                        daily body ko essential nutrients deta hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Healthy breakfast meal replacement</li>
+                            <li>Weight management support</li>
+                            <li>Energy aur stamina maintain karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('formula1750g', 'Formula 1 Shake Mix 750g')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('formula1750g', 'Formula 1 Shake Mix 750g', 1200, 'images/formula 1 750g.png')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Joint Health">
+                <div class="product-image">
+                    <span class="product-badge">Joint Health</span>
+                    <img src="/images/Joint Support.jfif" alt="Herbalife Joint Support" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Joint Support</h3>
+                    <p class="product-description" itemprop="description">Glucosamine ke sath, joints pain aur
+                        flexibility ke liye.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Joints pain relief</li>
+                            <li>Cartilage health support</li>
+                            <li>Easy movement mein madad</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('jointsupport', 'Joint Support')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('jointsupport', 'Joint Support', 1200, '/images/Joint Support.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product" data-category="Heart Care">
+                <div class="product-image">
+                    <span class="product-badge">Heart Care</span>
+                    <img src="/images/Beta Heart.webp" alt="Herbalife Beta Heart" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Beta Heart</h3>
+                    <p class="product-description" itemprop="description">Oat Beta-Glucan powder jo cholesterol kam
+                        karne mein clinically proven hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Bad cholesterol kam karta hai</li>
+                            <li>Heart arteries clean rakhta hai</li>
+                            <li>Tasty vanilla flavor</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('betaheart', 'Beta Heart')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('betaheart', 'Beta Heart', 1200, '/images/Beta Heart.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Sports Recovery">
+                <div class="product-image">
+                    <span class="product-badge">Sports Recovery</span>
+                    <img src="/images/H24 Rebuild Strength.jfif" alt="Herbalife H24 Rebuild Strength" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">H24 Rebuild Strength</h3>
+                    <p class="product-description" itemprop="description">Heavy workout ke baad muscle recovery ke liye
+                        advanced protein.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Muscle mass increase karta hai</li>
+                            <li>Fast workout recovery</li>
+                            <li>24g protein per serving</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('h24rebuildstrength', 'H24 Rebuild Strength')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('h24rebuildstrength', 'H24 Rebuild Strength', 1200, '/images/H24 Rebuild Strength.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Ayurvedic Nutrition">
+                <div class="product-image">
+                    <span class="product-badge">Ayurvedic Nutrition</span>
+                    <img src="/images/Vritilife Immune Health.webp" alt="Vritilife Immune Health" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Vritilife Immune Health</h3>
+                    <p class="product-description" itemprop="description">Tulsi aur Kalmegh ki shakti se bani immunity
+                        booster tablets.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Natural immunity badhata hai</li>
+                            <li>Seasonal bimariyon se bachata hai</li>
+                            <li>Respiratory health support</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('immunehealth', 'Vritilife Immune Health')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('immunehealth', 'Vritilife Immune Health', 1200, '/images/Vritilife Immune Health.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Ayurvedic Nutrition">
+                <div class="product-image">
+                    <span class="product-badge">Ayurvedic Nutrition</span>
+                    <img src="/images/Vritilife Brain Health.jfif" alt="Vritilife Brain Health" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Vritilife Brain Health</h3>
+                    <p class="product-description" itemprop="description">Brahmi herb se bana supplement jo memory aur
+                        focus badhata hai.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Memory sharp karta hai</li>
+                            <li>Focus aur concentration badhata hai</li>
+                            <li>Mental stress kam karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('brainhealth', 'Vritilife Brain Health')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('brainhealth', 'Vritilife Brain Health', 1200, '/images/Vritilife Brain Health.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Women's Health">
+                <div class="product-image">
+                    <span class="product-badge">Women's Health</span>
+                    <img src="/images/Woman's Choice.jfif" alt="Herbalife Womans Choice" loading="lazy" width="300"
+                        height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Woman's Choice</h3>
+                    <p class="product-description" itemprop="description">Hormonal balance aur monthly comfort ke liye
+                        designed.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Hormonal balance support</li>
+                            <li>Mood swings control</li>
+                            <li>General well-being</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('womenchoice', 'Woman\'s Choice')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('womenchoice', 'Woman\'s Choice', 1200, '/images/Woman\'s Choice.jfif')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Digestive Support">
+                <div class="product-image">
+                    <span class="product-badge">Digestive Support</span>
+                    <img src="/images/Aloe Plus.webp" alt="Herbalife Aloe Plus" loading="lazy" width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Aloe Plus</h3>
+                    <p class="product-description" itemprop="description">Aloe vera tablets jo digestion aur body detox
+                        mein madad karti hain.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Body detox karta hai</li>
+                            <li>Digestion improve karta hai</li>
+                            <li>Immunity support karta hai</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary" onclick="viewProductDetails('aloeplus', 'Aloe Plus')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('aloeplus', 'Aloe Plus', 1200, '/images/Aloe Plus.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Ayurvedic Beauty">
+                <div class="product-image">
+                    <span class="product-badge">Ayurvedic Beauty</span>
+                    <img src="/images/Vritilife Facial Cleanser.webp" alt="Herbalife Vritilife Facial Cleanser"
+                        loading="lazy" width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Vritilife Facial Cleanser</h3>
+                    <p class="product-description" itemprop="description">Ayurvedic herbs ke sath natural face cleanser.
+                    </p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Soap-free formula</li>
+                            <li>Natural glow</li>
+                            <li>Purifies skin</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('facialcleanser', 'Vritilife Facial Cleanser')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('facialcleanser', 'Vritilife Facial Cleanser', 1200, '/images/Vritilife Facial Cleanser.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Ayurvedic Beauty">
+                <div class="product-image">
+                    <span class="product-badge">Ayurvedic Beauty</span>
+                    <img src="/images/Vritilife Facial Toner.jpg" alt="Herbalife Vritilife Facial Toner" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Vritilife Facial Toner</h3>
+                    <p class="product-description" itemprop="description">Skin pores ko tight karne aur balance karne ke
+                        liye herbal toner.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Tightens pores</li>
+                            <li>Refreshes skin</li>
+                            <li>Balances pH level</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('facialtoner', 'Vritilife Facial Toner')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('facialtoner', 'Vritilife Facial Toner', 1200, '/images/Vritilife Facial Toner.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Ayurvedic Beauty">
+                <div class="product-image">
+                    <span class="product-badge">Ayurvedic Beauty</span>
+                    <img src="/images/Vritilife Skin Moisturizer.jpg" alt="Herbalife Vritilife Skin Moisturizer"
+                        loading="lazy" width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Vritilife Skin Moisturizer</h3>
+                    <p class="product-description" itemprop="description">Ayurvedic oils aur herbs wala natural
+                        moisturizer.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Deep nourishment</li>
+                            <li>Natural ingredients</li>
+                            <li>Healthy skin glow</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('skinmoisturizer', 'Vritilife Skin Moisturizer')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('skinmoisturizer', 'Vritilife Skin Moisturizer', 1200, '/images/Vritilife Skin Moisturizer.jpg')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="product-card" itemscope itemtype="https://schema.org/Product"
+                data-category="Ayurvedic Beauty">
+                <div class="product-image">
+                    <span class="product-badge">Ayurvedic Beauty</span>
+                    <img src="/images/Vritilife Facial Serum.jfif" alt="Herbalife Vritilife Facial Serum" loading="lazy"
+                        width="300" height="250">
+                </div>
+                <div class="product-content">
+                    <h3 itemprop="name">Vritilife Facial Serum</h3>
+                    <p class="product-description" itemprop="description">Skin nutrition aur anti-aging ke liye
+                        concentrated herbal serum.</p>
+
+                    <div class="product-benefits">
+                        <div class="benefits-title">Fayde:</div>
+                        <ul class="benefits-list">
+                            <li>Anti-aging support</li>
+                            <li>Radiant skin</li>
+                            <li>Fast absorption</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn-secondary"
+                            onclick="viewProductDetails('formulacleanser', 'Vritilife Facial Serum')">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                        <button class="btn-primary"
+                            onclick="addToCart('formulacleanser', 'Vritilife Facial Cleanser', 1200, '/images/Vritilife Facial Cleanser.webp')">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </article>

@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Features & Tools | PRABHA WELLNESS - Official Herbalife Nutrition Center</title>
+
+    <!-- Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Wellness Features & Tools | PRABHA WELLNESS">
+    <meta property="og:description"
+        content="Comprehensive wellness tools including BMI calculator, diet plans, workout guides, and health assessments.">
+    <meta property="og:image" content="/images/PRABHA WELLNESS CENTER ALL FINE.png">
+
+    <link rel="icon" href="/images/Only logo.png" type="image/png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* === PROFESSIONAL BRAND THEME === */
+        :root {
+            --primary-green: #0B7A6B;
+            --primary-green-dark: #065749;
+            --primary-green-light: #E0F2F1;
+            --secondary-gold: #C6A959;
+            --neutral-dark: #1A1A1A;
+            --neutral-gray: #4A4A4A;
+            --neutral-light: #F8F9FA;
+            --neutral-white: #FFFFFF;
+            --accent-teal: #2D9C8F;
+            --accent-blue: #4A90E2;
+            --accent-orange: #FF7C4C;
+            --gradient-primary: linear-gradient(135deg, #0B7A6B 0%, #2D9C8F 100%);
+            --gradient-secondary: linear-gradient(135deg, #C6A959 0%, #E8D9A0 100%);
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-large: 0 15px 50px rgba(0, 0, 0, 0.1);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+            --border-radius-xl: 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'satoshi', sans-serif;
+            background-color: var(--neutral-light);
+            color: var(--neutral-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 700;
+            color: var(--neutral-dark);
+            line-height: 1.2;
+        }
+
+        .logo {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 800;
+        }
+
+        /* === NEW LOADER === */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--neutral-white);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .loader-logo {
+            width: 100px;
+            height: auto;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .loader-text {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        /* === IMPROVED SCROLLBAR === */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--neutral-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-green-dark);
+        }
+
+        /* === PROFESSIONAL NAVBAR === */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--neutral-white);
+            box-shadow: var(--shadow-subtle);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+        }
+
+        .logo span {
+            color: var(--secondary-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--neutral-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-green);
+            bottom: 0;
+            left: 0;
+        }
+
+        .cta-btn {
+            background: var(--gradient-primary);
+            color: var(--neutral-white) !important;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .login-btn {
+
+            color: black !important;
+
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            text-decoration: none;
+
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-1px);
+
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        /* === USER PROFILE === */
+        .user-profile {
+            position: relative;
+        }
+
+        .nav-links a.cart-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            line-height: 1;
+        }
+
+        /* Badge fix */
+        .cart-badge {
+            margin-left: 0;
+            transform: translateY(-2px);
+            background: var(--accent-orange);
+            color: var(--neutral-white);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.1rem;
+        }
+
+        .profile-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid var(--neutral-white);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            top: 120%;
+            right: 0;
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-large);
+            min-width: 250px;
+            display: none;
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        .profile-dropdown.active {
+            display: block;
+        }
+
+        .profile-header {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .profile-email {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .profile-menu {
+            padding: 1rem 0;
+        }
+
+        .profile-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1.5rem;
+            color: var(--neutral-gray);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .profile-menu a:hover {
+            background: var(--neutral-light);
+            color: var(--primary-green);
+        }
+
+        .profile-menu i {
+            width: 20px;
+            color: var(--primary-green);
+        }
+
+        /* === PAGE HEADER === */
+        .page-header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(11, 122, 107, 0.05) 0%, rgba(11, 122, 107, 0.02) 100%);
+            border-radius: var(--border-radius-lg);
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        .page-header h1 {
+            font-size: 2.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            color: var(--neutral-gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* === BREADCRUMB === */
+        .breadcrumb-container {
+            padding: 1.5rem 2rem;
+            background: var(--neutral-white);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .breadcrumb {
+            list-style: none;
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--neutral-gray);
+        }
+
+        .breadcrumb li a {
+            text-decoration: none;
+            color: var(--neutral-gray);
+            transition: color 0.3s;
+        }
+
+        .breadcrumb li a:hover {
+            color: var(--primary-green);
+        }
+
+        .breadcrumb li::after {
+            content: '/';
+            margin-left: 0.5rem;
+        }
+
+        .breadcrumb li:last-child::after {
+            content: '';
+        }
+
+        .breadcrumb li.active {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        /* === FEATURES GRID === */
+        .features-wrapper {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .category-card {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-large);
+            border-color: var(--primary-green-light);
+        }
+
+        .cat-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-green-light);
+        }
+
+        .cat-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-green-light);
+            color: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .cat-title {
+            font-size: 1.4rem;
+            color: var(--neutral-dark);
+            font-weight: 700;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .feature-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--neutral-light);
+            color: var(--neutral-dark);
+            padding: 0.6rem 1rem;
+            border-radius: var(--border-radius-xl);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .feature-item i {
+            color: var(--primary-green);
+            font-size: 0.9rem;
+        }
+
+        .feature-item:hover {
+            background: var(--primary-green);
+            color: var(--neutral-white);
+            transform: translateY(-2px);
+        }
+
+        .feature-item:hover i {
+            color: var(--neutral-white);
+        }
+
+        /* Coming Soon Badge */
+        .coming-soon-badge {
+            display: inline-block;
+            background: var(--secondary-gold);
+            color: var(--neutral-white);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* === CTA SECTION === */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+            color: var(--neutral-white);
+            text-align: center;
+            padding: 5rem 2rem;
+            border-radius: var(--border-radius-lg);
+            margin: 5rem 2rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            color: var(--neutral-white);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--neutral-white);
+            color: var(--primary-green) !important;
+            padding: 1rem 2.5rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--neutral-white) !important;
+            padding: 1rem 2.5rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid var(--neutral-white);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--neutral-white);
+            color: var(--primary-green) !important;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--neutral-dark);
+            color: var(--neutral-white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            color: var(--neutral-white);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* === TOAST NOTIFICATION === */
+        #toastBox {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: var(--primary-green);
+            color: var(--neutral-white);
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-large);
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            min-width: 300px;
+            max-width: 90%;
+        }
+
+        #toastBox.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* === GUEST LOCK OVERLAY === */
+        #guest-lock-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 99999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        #guest-lock-overlay.active {
+            opacity: 1;
+            display: flex;
+        }
+
+        .lock-box {
+            background: var(--neutral-white);
+            padding: 3rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-large);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .lock-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .lock-title {
+            font-size: 1.8rem;
+            color: var(--neutral-dark);
+            margin-bottom: 1rem;
+        }
+
+        .lock-desc {
+            color: var(--neutral-gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .lock-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-login {
+            background: var(--primary-green);
+            color: var(--neutral-white);
+        }
+
+        .btn-login:hover {
+            background: var(--primary-green-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-signup {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-signup:hover {
+            background: var(--primary-green-light);
+        }
+
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 1024px) {
+            .features-wrapper {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--neutral-white);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                box-shadow: var(--shadow-medium);
+                display: none;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .page-header {
+                padding: 3rem 1rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .features-wrapper {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .category-card {
+                padding: 1.5rem;
+            }
+
+            .feature-list {
+                gap: 0.6rem;
+            }
+
+            .feature-item {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.85rem;
+            }
+
+            .cta-section {
+                margin: 3rem 1rem;
+                padding: 3rem 1rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2.2rem;
+            }
+
+            .lock-box {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .logo img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .features-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .cat-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.8rem;
+            }
+
+            .cat-icon {
+                margin: 0 auto;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            #toastBox {
+                min-width: 250px;
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- === LOADER === -->
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-content">
+            <img src="/images/Only logo.png" alt="Prabha Wellness" class="loader-logo">
+            <div class="loader-text">PRABHA WELLNESS</div>
+        </div>
+    </div>
+
+    <!-- === NAVIGATION === -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="/images/Only logo.png" alt="Prabha Wellness">
+                <div>
+                    <span>PRABHA</span> WELLNESS<br>
+                    <small style="font-size: 0.7rem; color: var(--neutral-gray); font-weight: 500;">Official Herbalife
+                        Nutrition Center</small>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="features.html" class="active">Features</a>
+                <a href="cart.html" class="cart-link">
+                    <span>Cart</span>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+
+                <a href="contact.html">Contact</a>
+
+                <!-- User Profile -->
+                <div class="user-profile" id="userProfileBox" style="display: none;">
+                    <div class="profile-icon" onclick="toggleProfileMenu()">
+                        <span id="userInitial">U</span>
+                    </div>
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <div class="profile-header">
+                            <div id="displayEmail" class="profile-email"></div>
+                        </div>
+                        <div class="profile-menu">
+                                  <a href="profile.html">
+                                <i class="fas fa-user"></i> My Profile
+                            </a>
+                            <div id="adminPanelLink" style="display: none;">
+                                <a href="adminpanel.html">
+                                    <i class="fas fa-cog"></i> Admin Panel
+                                </a>
+                            </div>
+                            <a href="#" onclick="logoutUser()">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="login.html" id="loginBtnNav" class="login-btn">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === BREADCRUMB === -->
+    <div class="breadcrumb-container">
+        <ul class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Features</li>
+        </ul>
+    </div>
+
+    <!-- === PAGE HEADER === -->
+    <div class="page-header" data-aos="fade-up">
+        <h1>Wellness Features & Tools</h1>
+        <p>Your complete toolkit for health, nutrition, fitness, and lifestyle tracking.</p>
+    </div>
+
+    <!-- === FEATURES GRID === -->
+    <section class="features-wrapper">
+        <!-- 1. CORE HEALTH -->
+        <div class="category-card" data-aos="fade-up">
+            <div class="cat-header">
+                <div class="cat-icon"><i class="fas fa-heartbeat"></i></div>
+                <h2 class="cat-title">Core Health</h2>
+            </div>
+            <div class="feature-list">
+                <a href="./features/feature-bmi.html" class="feature-item"><i class="fas fa-calculator"></i> BMI
+                    Calculator</a>
+                <a href="./features/feature-ideal-weight.html" class="feature-item"><i class="fas fa-weight"></i> Ideal
+                    Weight Checker</a>
+                <a href="./features/feature-body-fat.html" class="feature-item"><i class="fas fa-percentage"></i> Body
+                    Fat</a>
+                <a href="./features/feature-daily-clry.html" class="feature-item"><i class="fas fa-fire"></i> Daily
+                    Calorie Calculator</a>
+                <a href="./features/feature-bmr-calc.html" class="feature-item"><i class="fas fa-burn"></i> BMR
+                    Calculator</a>
+                <a href="./features/feature-waist-hip-ratio.html" class="feature-item"><i
+                        class="fas fa-ruler-horizontal"></i> Waist-Hip Ratio</a>
+                <a href="./features/feature-metabolic-age.html" class="feature-item"><i
+                        class="fas fa-hourglass-half"></i> Metabolic Age</a>
+            </div>
+        </div>
+
+        <!-- 2. NUTRITION & DIET -->
+        <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="cat-header">
+                <div class="cat-icon"><i class="fas fa-carrot"></i></div>
+                <h2 class="cat-title">Nutrition & Diet <span class="coming-soon-badge">Coming Soon</span></h2>
+            </div>
+            <div class="feature-list">
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-utensils"></i> Free Diet Plan
+                    Generator</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-arrow-down"></i> Weight Loss Diet</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-arrow-up"></i> Weight Gain Diet</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-balance-scale"></i> Maintenance Diet</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-running"></i> Fat Loss Program</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-lemon"></i> Detox Plan</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-user-check"></i> Personalized Plan</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-seedling"></i> Veg/Non-Veg Selector</a>
+            </div>
+        </div>
+
+        <!-- 3. FITNESS & ACTIVITY -->
+        <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="cat-header">
+                <div class="cat-icon"><i class="fas fa-dumbbell"></i></div>
+                <h2 class="cat-title">Fitness & Activity <span class="coming-soon-badge">Coming Soon</span></h2>
+            </div>
+            <div class="feature-list">
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-shoe-prints"></i> Step Goal Tracker</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-clipboard-list"></i> Workout Guide</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-home"></i> Home Workouts</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-fire-alt"></i> Fat Burn Exercises</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-biking"></i> Muscle Building</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-praying-hands"></i> Yoga &
+                    Stretching</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-sun"></i> Morning Routine</a>
+            </div>
+        </div>
+
+        <!-- 4. WELLNESS & LIFESTYLE -->
+        <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="cat-header">
+                <div class="cat-icon"><i class="fas fa-brain"></i></div>
+                <h2 class="cat-title">Wellness & Lifestyle <span class="coming-soon-badge">Coming Soon</span></h2>
+            </div>
+            <div class="feature-list">
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-smile"></i> Stress Level Checker</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-moon"></i> Sleep Quality Tracker</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-tint"></i> Hydration Reminder</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-shield-alt"></i> Immunity Guide</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-battery-full"></i> Energy Assessment</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-star"></i> Lifestyle Score</a>
+            </div>
+        </div>
+
+        <!-- 5. HEALTH RISK & PREVENTION -->
+        <div class="category-card" data-aos="fade-up">
+            <div class="cat-header">
+                <div class="cat-icon"><i class="fas fa-notes-medical"></i></div>
+                <h2 class="cat-title">Risk & Prevention</h2>
+            </div>
+            <div class="feature-list">
+                <a onclick="location.href='features/obesity-risk.html'" class="feature-item"><i
+                        class="fas fa-exclamation-triangle"></i> Obesity Risk</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-tint-slash"></i> Diabetes Check</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-heart"></i> Heart Health</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-tachometer-alt"></i> BP Guide</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-vial"></i> Cholesterol Info</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-venus"></i> PCOD/PCOS Awareness</a>
+            </div>
+        </div>
+
+        <!-- 6. HERBAL & SUPPLEMENT -->
+        <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="cat-header">
+                <div class="cat-icon"><i class="fas fa-leaf"></i></div>
+                <h2 class="cat-title">Herbal & Supplement</h2>
+            </div>
+            <div class="feature-list">
+                <a href="products.html" class="feature-item"><i class="fas fa-book-open"></i> Herbal Product Guide</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-pills"></i> Recommendations</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-clock"></i> Dosage & Timing</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-check-double"></i> Compatibility
+                    Check</a>
+            </div>
+        </div>
+
+        <!-- 7. PROGRESS & TRACKING -->
+        <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="cat-header">
+                <div class="cat-icon"><i class="fas fa-chart-line"></i></div>
+                <h2 class="cat-title">Progress & Tracking <span class="coming-soon-badge">Coming Soon</span></h2>
+            </div>
+            <div class="feature-list">
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-calendar-alt"></i> Weekly Tracker</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-history"></i> Weight History</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-tape"></i> Body Measurements</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-camera"></i> Transformation Timeline</a>
+            </div>
+        </div>
+
+        <!-- 8. TOOLS & UTILITIES -->
+        <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="cat-header">
+                <div class="cat-icon"><i class="fas fa-tools"></i></div>
+                <h2 class="cat-title">Tools & Utilities <span class="coming-soon-badge">Coming Soon</span></h2>
+            </div>
+            <div class="feature-list">
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-file-pdf"></i> Download PDF Plan</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-file-medical-alt"></i> Health Report</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-bullseye"></i> Goal Setting</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-bell"></i> Reminders & Alerts</a>
+            </div>
+        </div>
+
+        <!-- 9. TRUST & COMMUNITY -->
+        <div class="category-card" data-aos="fade-up">
+            <div class="cat-header">
+                <div class="cat-icon"><i class="fas fa-users"></i></div>
+                <h2 class="cat-title">Trust & Community</h2>
+            </div>
+            <div class="feature-list">
+                <a href="index.html#transformations" class="feature-item"><i class="fas fa-trophy"></i> Client
+                    Transformations</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-star"></i> Success Stories</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-comment-dots"></i> Reviews</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-blog"></i> Wellness Blog</a>
+                <a onclick="comingSoon()" class="feature-item"><i class="fas fa-question-circle"></i> FAQs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- === CTA SECTION === -->
+    <section class="cta-section">
+        <h2>Unlock All Premium Features</h2>
+        <p>Create a free account to access personalized wellness tools, track your progress, and get expert
+            recommendations.</p>
+        <div class="cta-buttons">
+            <a href="login.html" class="btn-primary">
+                <i class="fas fa-user-plus"></i> Create Free Account
+            </a>
+            <a href="contact.html" class="btn-secondary">
+                <i class="fas fa-question-circle"></i> Need Help?
+            </a>
+        </div>
+    </section>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Prabha Wellness</h3>
+                <p>Official Herbalife Nutrition Center providing premium wellness solutions, workout sessions, and
+                    expert guidance for a healthier lifestyle.</p>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> Nashik, India<br>
+                    <i class="fas fa-phone"></i> +91 88056 50842<br>
+                    <i class="fas fa-envelope"></i> bhawanamawale8984@gmail.com
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Herbalife Products</a></li>
+                    <li><a href="features.html">Wellness Tools</a></li>
+                    <li><a href="contact.html">Book Consultation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Features</h3>
+                <ul class="footer-links">
+                    <li><a href="#core-health">Health Calculators</a></li>
+                    <li><a href="#nutrition">Diet Plans</a></li>
+                    <li><a href="#fitness">Workout Guides</a></li>
+                    <li><a href="#tracking">Progress Tracking</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Connect With Us</h3>
+                <p>Follow us for daily tips and updates:</p>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" style="color: white; font-size: 1.2rem;"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Prabha Wellness Center. All rights reserved. | Official Herbalife Independent Distributor</p>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Herbalife and the Herbalife logo are registered trademarks
+                of Herbalife International.</p>
+        </div>
+    </footer>
+
+    <!-- === TOAST NOTIFICATION === -->
+    <div id="toastBox">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Success Message</span>
+    </div>
+
+    <!-- === GUEST LOCK OVERLAY CONTAINER === -->
+    <div id="guest-lock-container"></div>
+
+    <!-- Scripts -->
+<!-- features.html mein head section mein -->
+<!-- FIRST: Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- SECOND: Firebase Configuration -->
+<script src="firebase-config.js"></script>
+
+<!-- THIRD: Your scripts -->
+<script src="/js/profile-photo-sync.js"></script>
+<script src="/js/profile.js"></script>
+<script src="/js/cart-sync.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 50
+        });
+
+        // Page Loader
+        const loader = document.getElementById('pageLoader');
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 800);
+        });
+
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('navLinks');
+
+            if (mobileMenu && navLinks) {
+                mobileMenu.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    navLinks.classList.toggle('active');
+                    this.innerHTML = navLinks.classList.contains('active')
+                        ? '<i class="fas fa-times"></i>'
+                        : '<i class="fas fa-bars"></i>';
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function (e) {
+                    if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+                        navLinks.classList.remove('active');
+                        mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+
+                // Close menu when clicking links
+                document.querySelectorAll('#navLinks a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navLinks.classList.remove('active');
+                        mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+        });
+
+        // Profile Menu Toggle
+        function toggleProfileMenu() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('active');
+
+            // Close other dropdowns
+            document.querySelectorAll('.profile-dropdown').forEach(d => {
+                if (d !== dropdown) d.classList.remove('active');
+            });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.user-profile')) {
+                document.querySelectorAll('.profile-dropdown').forEach(d => {
+                    d.classList.remove('active');
+                });
+            }
+        });
+
+        // ✅ YOUR ORIGINAL FIREBASE AND FUNCTIONALITY CODE (COMPLETE AND UNCHANGED) ✅
+        function initApp() {
+            const firebaseConfig = {
+                apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+                authDomain: "prabha-wellness.firebasestorage.app",
+                projectId: "prabha-wellness",
+                storageBucket: "prabha-wellness.firebasestorage.app",
+                messagingSenderId: "555332322398",
+                appId: "1:555332322398:web:57e29182b8693c35ef60cf",
+                measurementId: "G-EQ36VYT215"
+            };
+
+            // Initialize Firebase if not already initialized
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
+            }
+
+            const auth = firebase.auth();
+
+            const userProfileBox = document.getElementById('userProfileBox');
+            const loginBtnNav = document.getElementById('loginBtnNav');
+
+            firebase.auth().onAuthStateChanged(function (user) {
+                const adminLink = document.getElementById('adminPanelLink');
+
+                if (user) {
+                    // ✅ LOGGED IN USER
+
+                    // Hide guest lock
+                    const lock = document.getElementById('guest-lock-overlay');
+                    if (lock) lock.remove();
+
+                    document.body.style.overflow = 'auto';
+
+                    // Show admin panel only for admin email
+                    if (user.email === "sarthakbhawsar8@gmail.com") {
+                        if (adminLink) adminLink.style.display = 'block';
+                    }
+
+                } else {
+                    // ❌ GUEST USER
+
+                    if (!document.getElementById('guest-lock-overlay')) {
+                        showLockScreen();
+                    }
+
+                    if (adminLink) adminLink.style.display = 'none';
+                }
+            });
+
+
+            auth.onAuthStateChanged(user => {
+                if (user) {
+                    if (userProfileBox) userProfileBox.style.display = 'flex';
+                    if (loginBtnNav) loginBtnNav.style.display = 'none';
+                    const displayEmail = document.getElementById('displayEmail');
+                    const userInitial = document.getElementById('userInitial');
+                    if (displayEmail) displayEmail.innerText = user.email;
+                    if (userInitial) userInitial.innerText = user.email.charAt(0).toUpperCase();
+                } else {
+                    if (userProfileBox) userProfileBox.style.display = 'none';
+                    if (loginBtnNav) loginBtnNav.style.display = 'block';
+                }
+            });
+
+            function showToast(message, isError = false) {
+                const toast = document.getElementById("toastBox");
+                const msg = document.getElementById("toastMessage");
+                if (toast && msg) {
+                    msg.innerText = message;
+                    toast.classList.add("show");
+                    setTimeout(() => { toast.classList.remove("show"); }, 3000);
+                }
+            }
+
+            window.logoutUser = function () {
+                auth.signOut().then(() => {
+                    showToast("Logged out successfully!");
+                    setTimeout(() => { window.location.href = "login.html"; }, 1500);
+                }).catch(error => {
+                    showToast("Logout failed: " + error.message, true);
+                });
+            }
+
+            window.toggleProfileMenu = function () {
+                const dropdown = document.getElementById('profileDropdown');
+                if (dropdown) dropdown.classList.toggle('active');
+            }
+
+            window.addEventListener('click', function (e) {
+                const profileBox = document.getElementById('userProfileBox');
+                const dropdown = document.getElementById('profileDropdown');
+                if (profileBox && dropdown && !profileBox.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', initApp);
+
+        function comingSoon() {
+            alert("🚀 This feature is under development! Stay tuned.");
+        }
+
+        // Mobile menu toggle (your original function)
+        window.toggleMenu = function () {
+            const nav = document.getElementById("navLinks");
+            if (!nav) return;
+
+            nav.classList.toggle("active");
+
+            // Scroll Lock for Mobile
+            if (nav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        // Close menu when clicking outside (your original code)
+        document.addEventListener('click', (e) => {
+            const nav = document.getElementById("navLinks");
+            const toggle = document.querySelector(".menu-toggle");
+            if (!nav || !toggle) return;
+
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                nav.classList.remove("active");
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close menu after clicking a link (mobile) - your original code
+        document.querySelectorAll('#navLinks a').forEach(a => {
+            a.addEventListener('click', () => {
+                const nav = document.getElementById("navLinks");
+                if (nav) {
+                    nav.classList.remove("active");
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Guest lock screen logic - YOUR ORIGINAL CODE
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                const user = firebase.auth().currentUser;
+                if (!user) {
+                    showLockScreen();
+                }
+            }, 1000);
+        });
+
+
+
+        function showLockScreen() {
+            const container = document.getElementById('guest-lock-container');
+            if (!container) return;
+
+            document.body.style.overflow = 'hidden';
+
+            container.innerHTML = `
+                <div id="guest-lock-overlay" style="display:flex;">
+                    <div class="lock-box">
+                        <div class="lock-icon"><i class="fas fa-lock"></i></div>
+                        <h2 class="lock-title">Access Restricted</h2>
+                        <p class="lock-desc">
+                            Unlock premium wellness tools and detailed product insights by logging in. It's free and takes seconds!
+                        </p>
+                        <a href="login.html" class="lock-btn btn-login">Log In to Continue</a>
+                        <a href="login.html" class="lock-btn btn-signup">Create Free Account</a>
+                        <a href="index.html" style="font-size:0.8rem; color:#999; text-decoration:none; margin-top:15px; display:inline-block;">Back to Home</a>
+                    </div>
+                </div>
+            `;
+
+            setTimeout(() => {
+                const overlay = document.getElementById('guest-lock-overlay');
+                if (overlay) overlay.classList.add('active');
+            }, 10);
+        }
+    </script>
+</body>
+
+</html>
