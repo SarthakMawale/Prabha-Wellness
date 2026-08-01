@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - PRABHA WELLNESS</title>
+
+    <!-- Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="My Profile - PRABHA WELLNESS">
+    <meta property="og:description" content="Manage your profile, track fitness goals & view order history">
+    <meta property="og:image" content="/images/PRABHA WELLNESS CENTER ALL FINE.png">
+
+    <link rel="icon" href="/images/Only logo.png" type="image/png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Chart.js for BMI Tracking -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* === PROFESSIONAL BRAND THEME === */
+        :root {
+            --primary-green: #0B7A6B;
+            --primary-green-dark: #065749;
+            --primary-green-light: #E0F2F1;
+            --secondary-gold: #C6A959;
+            --neutral-dark: #1A1A1A;
+            --neutral-gray: #4A4A4A;
+            --neutral-light: #F8F9FA;
+            --neutral-white: #FFFFFF;
+            --accent-teal: #2D9C8F;
+            --accent-blue: #4A90E2;
+            --accent-orange: #FF7C4C;
+            --gradient-primary: linear-gradient(135deg, #0B7A6B 0%, #2D9C8F 100%);
+            --gradient-secondary: linear-gradient(135deg, #C6A959 0%, #E8D9A0 100%);
+            --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-large: 0 15px 50px rgba(0, 0, 0, 0.1);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+            --border-radius-xl: 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'satoshi', sans-serif;
+            background-color: var(--neutral-light);
+            color: var(--neutral-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 700;
+            color: var(--neutral-dark);
+            line-height: 1.2;
+        }
+
+        .logo {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 800;
+        }
+
+        /* === NEW LOADER === */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--neutral-white);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .loader-logo {
+            width: 100px;
+            height: auto;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .loader-text {
+            font-family: 'satoshi', sans-serif;
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        /* === PROFESSIONAL NAVBAR === */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--neutral-white);
+            box-shadow: var(--shadow-subtle);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+        }
+
+        .logo span {
+            color: var(--secondary-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--neutral-gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-green);
+            bottom: 0;
+            left: 0;
+        }
+
+        .cta-btn {
+            background: var(--gradient-primary);
+            color: var(--neutral-white) !important;
+            padding: 0.65rem 2.6rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            white-space: nowrap;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 18px rgba(11, 122, 107, 0.25);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(11, 122, 107, 0.35);
+        }
+
+        .login-btn {
+            color: black !important;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            cursor: pointer;
+        }
+
+        /* === PROFILE PAGE SPECIFIC STYLES === */
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Profile Header */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .profile-avatar {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-green);
+            background: var(--primary-green-light);
+        }
+
+        .avatar-change {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--primary-green);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 3px solid var(--neutral-white);
+            transition: all 0.3s;
+        }
+
+        .avatar-change:hover {
+            background: var(--primary-green-dark);
+            transform: scale(1.1);
+        }
+
+        .profile-info h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-email {
+            color: var(--neutral-gray);
+            margin-bottom: 1rem;
+        }
+
+        .membership-badge {
+            display: inline-block;
+            background: var(--secondary-gold);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: var(--border-radius-xl);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Profile Grid Layout */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Profile Cards */
+        .profile-card {
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-subtle);
+            margin-bottom: 2rem;
+        }
+
+        .profile-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-card h2 i {
+            color: var(--secondary-gold);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--neutral-gray);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius-sm);
+            font-family: 'satoshi', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(11, 122, 107, 0.1);
+        }
+
+        .btn-save {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(11, 122, 107, 0.25);
+        }
+
+        /* BMI Calculator */
+        .bmi-calculator {
+            background: var(--primary-green-light);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-md);
+            margin-bottom: 1.5rem;
+        }
+
+        .bmi-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .bmi-result {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--border-radius-md);
+        }
+
+        .bmi-value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .bmi-category {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--neutral-gray);
+        }
+
+        .bmi-chart-container {
+            margin-top: 2rem;
+        }
+
+        /* Fitness Goals */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .goal-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .goal-option.active {
+            border-color: var(--primary-green);
+            background: var(--primary-green-light);
+        }
+
+        .goal-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Order History */
+        .orders-list {
+            margin-top: 1rem;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-status {
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--border-radius-xl);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-processing {
+            background: #FFF3CD;
+            color: #856404;
+        }
+
+        .status-shipped {
+            background: #D1ECF1;
+            color: #0C5460;
+        }
+
+        .status-delivered {
+            background: #D4EDDA;
+            color: #155724;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius-md);
+            text-align: center;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--neutral-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Tabs */
+        .profile-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background: none;
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--neutral-gray);
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Avatar Loading */
+        .avatar-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--primary-green);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .bmi-inputs {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .order-item {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: var(--neutral-white);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                box-shadow: var(--shadow-medium);
+                display: none;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* === USER PROFILE === */
+        .user-profile {
+            position: relative;
+        }
+
+        .profile-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid var(--neutral-white);
+            box-shadow: var(--shadow-subtle);
+            overflow: hidden;
+        }
+
+        .profile-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-dropdown {
+            position: absolute;
+            top: 120%;
+            right: 0;
+            background: var(--neutral-white);
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-large);
+            min-width: 250px;
+            display: none;
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        .profile-dropdown.active {
+            display: block;
+        }
+
+        .profile-header-dropdown {
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .profile-email-dropdown {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .profile-menu {
+            padding: 1rem 0;
+        }
+
+        .profile-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1.5rem;
+            color: var(--neutral-gray);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .profile-menu a:hover {
+            background: var(--neutral-light);
+            color: var(--primary-green);
+        }
+
+        .profile-menu i {
+            width: 20px;
+            color: var(--primary-green);
+        }
+
+        .cart-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cart-badge {
+            margin-left: 0;
+            transform: translateY(-2px);
+            background: var(--accent-orange);
+            color: var(--neutral-white);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.1rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: var(--primary-green-dark);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- === LOADER === -->
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-content">
+            <img src="/images/Only logo.png" alt="Prabha Wellness" class="loader-logo">
+            <div class="loader-text">PRABHA WELLNESS</div>
+        </div>
+    </div>
+
+    <!-- === NAVIGATION === -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="/images/Only logo.png" alt="Prabha Wellness">
+                <div>
+                    <span>PRABHA</span> WELLNESS<br>
+                    <small style="font-size: 0.7rem; color: var(--neutral-gray); font-weight: 500;"> Health and
+                        Nutrition Center</small>
+                </div>
+            </a>
+
+            <button class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="features.html">Features</a>
+                <a href="cart.html" class="cart-link">
+                    <span>Cart</span>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </a>
+
+                <a href="contact.html">Contact</a>
+
+                <!-- User Profile Dropdown -->
+                <div class="user-profile" id="userProfileBox" style="display: none;">
+                    <div class="profile-icon" onclick="toggleProfileMenu()" id="navbarProfileIcon">
+                        <!-- Profile image will be loaded here -->
+                    </div>
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <div class="profile-header-dropdown">
+                            <div id="displayEmail" class="profile-email-dropdown"></div>
+                        </div>
+                        <div class="profile-menu">
+                            <a href="#" onclick="showNotification('Dashboard coming soon!', 'info')">
+                                <i class="fas fa-chart-line"></i> Dashboard
+                            </a>
+                            <div id="adminPanelLink" style="display: none;">
+                                <a href="adminpanel.html">
+                                    <i class="fas fa-cog"></i> Admin Panel
+                                </a>
+                            </div>
+                            <a href="#" onclick="logoutUser()">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="login.html" id="loginBtnNav" class="login-btn">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- === PROFILE CONTENT === -->
+    <div class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <div id="profileAvatar" class="avatar-img">
+                    <!-- Profile image will be loaded here -->
+                </div>
+                <div class="avatar-change" onclick="document.getElementById('avatarUpload').click()">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <input type="file" id="avatarUpload" accept="image/*" hidden>
+            </div>
+            <div class="profile-info">
+                <h1 id="userName">Loading...</h1>
+                <div class="profile-email" id="userEmail">user@example.com</div>
+                <span class="membership-badge" id="membershipBadge">Premium Member</span>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                    <button class="btn-save" onclick="saveProfile()">
+                        <i class="fas fa-save"></i> Save Changes
+                    </button>
+                    <button class="btn-save" onclick="showNotification('Dashboard coming soon!', 'info')" style="background: var(--secondary-gold);">
+                        <i class="fas fa-chart-line"></i> View Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="profile-tabs">
+            <button class="tab-btn active" onclick="switchTab('personal')">
+                <i class="fas fa-user"></i> Personal Info
+            </button>
+            <button class="tab-btn" onclick="switchTab('fitness')">
+                <i class="fas fa-dumbbell"></i> Fitness Goals
+            </button>
+            <button class="tab-btn" onclick="switchTab('orders')">
+                <i class="fas fa-shopping-bag"></i> Order History
+            </button>
+            <button class="tab-btn" onclick="switchTab('stats')">
+                <i class="fas fa-chart-bar"></i> Statistics
+            </button>
+        </div>
+
+        <!-- Personal Info Tab -->
+        <div class="tab-content active" id="personalTab">
+            <div class="profile-grid">
+                <!-- Left Column: Personal Details -->
+                <div>
+                    <div class="profile-card">
+                        <h2><i class="fas fa-user-circle"></i> Personal Information</h2>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="fullName" class="form-control" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="phoneNumber" class="form-control" placeholder="+91 00000 00000">
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input type="date" id="dateOfBirth" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select id="gender" class="form-control">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <h2><i class="fas fa-map-marker-alt"></i> Address</h2>
+                        <div class="form-group">
+                            <label>Full Address</label>
+                            <textarea id="address" class="form-control" rows="4"
+                                placeholder="Enter your complete address"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" id="city" class="form-control" placeholder="City">
+                        </div>
+                        <div class="form-group">
+                            <label>Pincode</label>
+                            <input type="text" id="pincode" class="form-control" placeholder="Pincode">
+                        </div>
+                        <div class="form-group">
+                            <label>State</label>
+                            <input type="text" id="state" class="form-control" placeholder="State">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: BMI Calculator -->
+                <div>
+                    <div class="profile-card">
+                        <h2><i class="fas fa-weight"></i> BMI Calculator & Tracker</h2>
+                        <div class="bmi-calculator">
+                            <div class="bmi-inputs">
+                                <div class="form-group">
+                                    <label>Height (cm)</label>
+                                    <input type="number" id="height" class="form-control" placeholder="170"
+                                        min="100" max="250">
+                                </div>
+                                <div class="form-group">
+                                    <label>Weight (kg)</label>
+                                    <input type="number" id="weight" class="form-control" placeholder="65"
+                                        min="30" max="200">
+                                </div>
+                            </div>
+                            <button class="btn-save" style="width: 100%;" onclick="calculateBMI()">
+                                <i class="fas fa-calculator"></i> Calculate BMI
+                            </button>
+                        </div>
+                        <div class="bmi-result">
+                            <div class="bmi-value" id="bmiValue">--</div>
+                            <div class="bmi-category" id="bmiCategory">Enter your details</div>
+                        </div>
+                        <div class="bmi-chart-container">
+                            <canvas id="bmiChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="profile-card">
+                        <h2><i class="fas fa-heartbeat"></i> Health Statistics</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-value" id="totalOrders">0</div>
+                                <div class="stat-label">Total Orders</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="totalSpent">₹0</div>
+                                <div class="stat-label">Total Spent</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="memberSince">0</div>
+                                <div class="stat-label">Days Member</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value" id="workoutDays">0</div>
+                                <div class="stat-label">Workout Days</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fitness Goals Tab -->
+        <div class="tab-content" id="fitnessTab">
+            <div class="profile-grid">
+                <div class="profile-card">
+                    <h2><i class="fas fa-bullseye"></i> Primary Fitness Goal</h2>
+                    <div class="goals-grid">
+                        <div class="goal-option" onclick="selectGoal('weightLoss')" id="goalWeightLoss">
+                            <div class="goal-icon">
+                                <i class="fas fa-weight"></i>
+                            </div>
+                            <div>
+                                <strong>Weight Loss</strong>
+                                <small style="color: var(--neutral-gray); display: block;">Shed extra pounds</small>
+                            </div>
+                        </div>
+                        <div class="goal-option" onclick="selectGoal('muscleGain')" id="goalMuscleGain">
+                            <div class="goal-icon">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <div>
+                                <strong>Muscle Gain</strong>
+                                <small style="color: var(--neutral-gray); display: block;">Build strength</small>
+                            </div>
+                        </div>
+                        <div class="goal-option" onclick="selectGoal('endurance')" id="goalEndurance">
+                            <div class="goal-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <div>
+                                <strong>Endurance</strong>
+                                <small style="color: var(--neutral-gray); display: block;">Improve stamina</small>
+                            </div>
+                        </div>
+                        <div class="goal-option" onclick="selectGoal('toning')" id="goalToning">
+                            <div class="goal-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div>
+                                <strong>Body Toning</strong>
+                                <small style="color: var(--neutral-gray); display: block;">Sculpt your body</small>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selectedGoal" value="">
+                </div>
+
+                <div class="profile-card">
+                    <h2><i class="fas fa-calendar-check"></i> Weekly Target</h2>
+                    <div class="form-group">
+                        <label>Workout Days per Week</label>
+                        <select id="workoutDays" class="form-control">
+                            <option value="1">1 Day</option>
+                            <option value="3">3 Days</option>
+                            <option value="5" selected>5 Days</option>
+                            <option value="6">6 Days</option>
+                            <option value="7">Every Day</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Daily Water Intake (Liters)</label>
+                        <input type="range" id="waterIntake" class="form-control" min="1" max="5" step="0.5" value="3">
+                        <div style="text-align: center; margin-top: 0.5rem;">
+                            <span id="waterValue">3</span> Liters
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Weight (kg)</label>
+                        <input type="number" id="targetWeight" class="form-control" placeholder="Your target weight">
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <h2><i class="fas fa-history"></i> Progress Timeline</h2>
+                <canvas id="progressChart" height="100"></canvas>
+            </div>
+        </div>
+
+        <!-- Order History Tab -->
+        <div class="tab-content" id="ordersTab">
+            <div class="profile-card">
+                <h2><i class="fas fa-shopping-bag"></i> Recent Orders</h2>
+                <div id="ordersList">
+                    <div style="text-align: center; padding: 3rem; color: var(--neutral-gray);">
+                        <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <h3>No orders yet</h3>
+                        <p>Start shopping to see your order history here</p>
+                        <button onclick="window.location.href='products.html'" class="cta-btn" style="margin-top: 1rem;">
+                            <i class="fas fa-shopping-cart"></i> Browse Products
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Tab -->
+        <div class="tab-content" id="statsTab">
+            <div class="profile-grid">
+                <div class="profile-card">
+                    <h2><i class="fas fa-chart-line"></i> Monthly Activity</h2>
+                    <canvas id="activityChart"></canvas>
+                </div>
+                <div class="profile-card">
+                    <h2><i class="fas fa-chart-pie"></i> Nutrition Breakdown</h2>
+                    <canvas id="nutritionChart"></canvas>
+                </div>
+            </div>
+            <div class="profile-card">
+                <h2><i class="fas fa-trophy"></i> Achievements</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-fire" style="font-size: 2rem; color: var(--accent-orange);"></i>
+                        <div class="stat-label" style="margin-top: 0.5rem;">Calories Burned</div>
+                        <div class="stat-value">12,540</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-walking" style="font-size: 2rem; color: var(--accent-blue);"></i>
+                        <div class="stat-label" style="margin-top: 0.5rem;">Steps Taken</div>
+                        <div class="stat-value">85,240</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-glass-whiskey" style="font-size: 2rem; color: var(--accent-teal);"></i>
+                        <div class="stat-label" style="margin-top: 0.5rem;">Water Consumed</div>
+                        <div class="stat-value">42L</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-dumbbell" style="font-size: 2rem; color: var(--secondary-gold);"></i>
+                        <div class="stat-label" style="margin-top: 0.5rem;">Workout Sessions</div>
+                        <div class="stat-value">24</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <div class="footer-container" style="max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div>
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 1.5rem;">Prabha Wellness</h3>
+                    <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1.5rem;">
+                        Official Herbalife Nutrition Center providing premium wellness solutions.
+                    </p>
+                    <p style="color: rgba(255, 255, 255, 0.7);">
+                        <i class="fas fa-map-marker-alt"></i> Nashik, India<br>
+                        <i class="fas fa-phone"></i> +91 88056 50842
+                    </p>
+                </div>
+                <div>
+                    <h3 style="color: white; font-size: 1.2rem; margin-bottom: 1.5rem;">Quick Links</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.8rem;"><a href="index.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Home</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="products.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Products</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="profile.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">My Profile</a></li>
+                        <li style="margin-bottom: 0.8rem;"><a href="contact.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.5);">
+                <p>&copy; 2024 Prabha Wellness Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+ <!-- profile.html -->
+<!-- 1. Firebase Libraries -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+
+<!-- 2. Firebase Initialization (Directly in HTML) -->
+<script>
+    // FIREBASE INITIALIZATION - Single place
+    if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+        const firebaseConfig = {
+            apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+            authDomain: "prabha-wellness.firebasestorage.app",
+            projectId: "prabha-wellness",
+            storageBucket: "prabha-wellness.firebasestorage.app",
+            messagingSenderId: "555332322398",
+            appId: "1:555332322398:web:57e29182b8693c35ef60cf",
+            measurementId: "G-EQ36VYT215"
+        };
+        
+        try {
+            firebase.initializeApp(firebaseConfig);
+            console.log("Firebase initialized successfully!");
+        } catch (error) {
+            console.error("Firebase initialization error:", error);
+        }
+    } else if (firebase.apps.length > 0) {
+        console.log("Firebase already initialized");
+    }
+</script>
+
+<!-- 3. Now load your custom scripts -->
+<script src="/js/profile.js"></script>
+<script src="/js/cart-sync.js"></script>
+<script src="/js/profile-photo-sync.js"></script>
+
+<!-- 4. Animation Library -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- 5. Main Profile Script -->
+<script>
+    // Initialize AOS
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 50
+    });
+
+    // Page Loader
+    const loader = document.getElementById('pageLoader');
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            loader.classList.add('hidden');
+        }, 800);
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('navLinks');
+    
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && !e.target.closest('.nav-container')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    }
+
+    // Profile Menu Toggle
+    function toggleProfileMenu() {
+        const dropdown = document.getElementById('profileDropdown');
+        if (dropdown) {
+            dropdown.classList.toggle('active');
+        }
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.user-profile')) {
+            document.querySelectorAll('.profile-dropdown').forEach(d => {
+                d.classList.remove('active');
+            });
+        }
+    });
+
+    // Main Auth Listener
+    function initializeProfilePage() {
+        // Wait for firebase to be available
+        setTimeout(() => {
+            if (typeof firebase !== 'undefined' && firebase.auth) {
+                const auth = firebase.auth();
+                const db = firebase.firestore();
+                
+                auth.onAuthStateChanged(async (user) => {
+                    const profileBox = document.getElementById('userProfileBox');
+                    const loginBtn = document.getElementById('loginBtnNav');
+
+                    if (user) {
+                        // User is signed in
+                        console.log("Profile page - User logged in:", user.email);
+                        
+                        if (profileBox) profileBox.style.display = 'block';
+                        if (loginBtn) loginBtn.style.display = 'none';
+                        
+                        // Update email in dropdown
+                        const displayEmail = document.getElementById('displayEmail');
+                        if (displayEmail) {
+                            displayEmail.textContent = user.email;
+                        }
+                        
+                        // Check admin status
+                        const adminPanelLink = document.getElementById('adminPanelLink');
+                        if (adminPanelLink) {
+                            if (user.email === "sarthakbhawsar8@gmail.com") {
+                                adminPanelLink.style.display = 'block';
+                            } else {
+                                try {
+                                    const adminDoc = await db.collection("adminUsers").doc(user.email).get();
+                                    adminPanelLink.style.display = adminDoc.exists ? 'block' : 'none';
+                                } catch (error) {
+                                    console.error("Error checking admin status:", error);
+                                    adminPanelLink.style.display = 'none';
+                                }
+                            }
+                        }
+                        
+                        // Load user data
+                        await loadUserData(user);
+                        
+                    } else {
+                        // User is signed out - redirect to login
+                        console.log("Profile page - No user, redirecting to login");
+                        window.location.href = 'login.html?redirect=profile.html';
+                    }
+                });
+                
+                console.log("Profile page auth initialized");
+            } else {
+                console.error("Firebase not loaded, retrying...");
+                setTimeout(initializeProfilePage, 500);
+            }
+        }, 1000);
+    }
+
+    // Start initialization
+    initializeProfilePage();
+
+    // Load User Data
+    async function loadUserData(user) {
+        try {
+            const db = firebase.firestore();
+            const userDoc = await db.collection('users').doc(user.uid).get();
+            
+            if (userDoc.exists) {
+                const userData = userDoc.data();
+                console.log("User data loaded:", userData);
+                
+                // Update profile info
+                document.getElementById('userName').textContent = userData.name || user.displayName || 'User';
+                document.getElementById('userEmail').textContent = user.email;
+                document.getElementById('fullName').value = userData.name || '';
+                document.getElementById('phoneNumber').value = userData.phone || '';
+                document.getElementById('dateOfBirth').value = userData.dob || '';
+                document.getElementById('gender').value = userData.gender || '';
+                document.getElementById('address').value = userData.address || '';
+                document.getElementById('city').value = userData.city || '';
+                document.getElementById('pincode').value = userData.pincode || '';
+                document.getElementById('state').value = userData.state || '';
+                
+                // Fitness data
+                if (userData.height) {
+                    document.getElementById('height').value = userData.height;
+                }
+                if (userData.weight) {
+                    document.getElementById('weight').value = userData.weight;
+                }
+                if (userData.targetWeight) {
+                    document.getElementById('targetWeight').value = userData.targetWeight;
+                }
+                
+                // Calculate BMI if data exists
+                if (userData.height && userData.weight) {
+                    calculateBMI(userData.height, userData.weight);
+                }
+                
+                // Update avatar (from profileManager)
+                if (window.profileManager && profileManager.photoUrl) {
+                    updateProfilePhoto(profileManager.photoUrl);
+                }
+                
+                // Initialize charts
+                initializeCharts();
+                
+            } else {
+                // Create user document
+                await db.collection('users').doc(user.uid).set({
+                    email: user.email,
+                    name: user.displayName || '',
+                    createdAt: new Date().toISOString()
+                });
+                
+                console.log("New user document created");
+            }
+        } catch (error) {
+            console.error("Error loading user data:", error);
+        }
+    }
+
+    // Calculate BMI
+    function calculateBMI(height, weight) {
+        const h = height || parseFloat(document.getElementById('height').value);
+        const w = weight || parseFloat(document.getElementById('weight').value);
+        
+        if (!h || !w) {
+            return;
+        }
+        
+        const heightInM = h / 100;
+        const bmi = (w / (heightInM * heightInM)).toFixed(1);
+        
+        // Update display
+        const bmiValue = document.getElementById('bmiValue');
+        const bmiCategory = document.getElementById('bmiCategory');
+        
+        if (bmiValue) bmiValue.textContent = bmi;
+        if (bmiCategory) bmiCategory.textContent = getBMICategory(bmi);
+    }
+
+    // Get BMI Category
+    function getBMICategory(bmi) {
+        bmi = parseFloat(bmi);
+        if (bmi < 18.5) return "Underweight ⚠️";
+        if (bmi < 25) return "Normal weight ✅";
+        if (bmi < 30) return "Overweight ⚠️";
+        return "Obese ❗";
+    }
+
+    // Update Profile Photo Display
+    function updateProfilePhoto(photoUrl) {
+        const avatarImg = document.getElementById('profileAvatar');
+        if (!avatarImg) return;
+        
+        if (photoUrl) {
+            avatarImg.innerHTML = `<img src="${photoUrl}" alt="Profile Photo" class="avatar-img">`;
+        } else {
+            // Show default avatar
+            avatarImg.innerHTML = `
+                <div style="width: 100%; height: 100%; border-radius: 50%; background: var(--primary-green); 
+                           display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                    <i class="fas fa-user"></i>
+                </div>
+            `;
+        }
+    }
+
+    // Save Profile
+    async function saveProfile() {
+        try {
+            const auth = firebase.auth();
+            const db = firebase.firestore();
+            const user = auth.currentUser;
+            
+            if (!user) {
+                showNotification('Please login to save profile', 'error');
+                return;
+            }
+            
+            const profileData = {
+                name: document.getElementById('fullName').value || '',
+                phone: document.getElementById('phoneNumber').value || '',
+                dob: document.getElementById('dateOfBirth').value || '',
+                gender: document.getElementById('gender').value || '',
+                address: document.getElementById('address').value || '',
+                city: document.getElementById('city').value || '',
+                pincode: document.getElementById('pincode').value || '',
+                state: document.getElementById('state').value || '',
+                updatedAt: new Date().toISOString()
+            };
+            
+            // Add fitness data
+            const height = parseFloat(document.getElementById('height').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            
+            if (!isNaN(height)) profileData.height = height;
+            if (!isNaN(weight)) profileData.weight = weight;
+            
+            // Save to Firestore
+            await db.collection('users').doc(user.uid).set(profileData, { merge: true });
+            
+            // Update displayed name
+            if (profileData.name) {
+                document.getElementById('userName').textContent = profileData.name;
+            }
+            
+            // Recalculate BMI
+            if (height && weight) {
+                calculateBMI(height, weight);
+            }
+            
+            showNotification('Profile updated successfully!', 'success');
+            
+        } catch (error) {
+            console.error("Error saving profile:", error);
+            showNotification('Error saving profile', 'error');
+        }
+    }
+
+    // Logout Function
+    async function logoutUser() {
+        try {
+            if (typeof firebase !== 'undefined' && firebase.auth) {
+                await firebase.auth().signOut();
+                window.location.href = 'index.html';
+            }
+        } catch (error) {
+            console.error("Logout error:", error);
+            showNotification('Logout failed', 'error');
+        }
+    }
+
+    // Show Notification
+    function showNotification(message, type = 'info') {
+        // Your existing notification code...
+    }
+
+    // Initialize Charts
+    function initializeCharts() {
+        // Your existing chart initialization code...
+    }
+
+    // Update cart count
+    function updateCartCount() {
+        const cartCountElement = document.getElementById('cart-count');
+        if (!cartCountElement) return;
+
+        let total = 0;
+        try {
+            const cart = JSON.parse(localStorage.getItem('prabhaCart')) || [];
+            total = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+        } catch (error) {
+            console.error("Cart count error:", error);
+        }
+        
+        cartCountElement.textContent = total;
+    }
+
+    // Initialize cart count
+    updateCartCount();
+    
+    // Listen for cart updates
+    window.addEventListener('storage', function(e) {
+        if (e.key === 'prabhaCart') {
+            updateCartCount();
+        }
+    });
+
+    // Water intake slider
+    const waterSlider = document.getElementById('waterIntake');
+    const waterValue = document.getElementById('waterValue');
+    if (waterSlider && waterValue) {
+        waterSlider.addEventListener('input', function() {
+            waterValue.textContent = this.value;
+        });
+    }
+</script>
+</body>
+</html>

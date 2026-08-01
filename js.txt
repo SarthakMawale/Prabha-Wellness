@@ -1,0 +1,648 @@
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // --- 1. Init AOS Animation ---
+        AOS.init({ duration: 800, once: true });
+
+
+        // --- 2. Page Loader Logic ---
+        const pageLoader = document.getElementById('pageLoader');
+        window.addEventListener('load', () => {
+            setTimeout(() => { pageLoader.classList.add('hidden'); }, 400);
+        });
+
+
+        function triggerPageTransition() { pageLoader.classList.remove('hidden'); }
+
+
+        // --- 3. Mobile Menu & Scroll Top ---
+        const menuToggle = document.querySelector('#mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const menuIcon = document.querySelector('#mobile-menu i');
+
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                if (navLinks.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+        }
+        function closeMenu() {
+            if (navLinks) {
+                navLinks.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        }
+
+
+        const scrollBtn = document.getElementById("scrollTopBtn");
+        window.onscroll = function () {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        };
+        function topFunction() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+
+
+        /* --- FIREBASE & USER PROFILE LOGIC --- */
+        const script1 = document.createElement('script');
+        script1.src = "https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js";
+        document.head.appendChild(script1);
+
+
+        const script2 = document.createElement('script');
+        script2.src = "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js";
+        script2.onload = initApp;
+        document.head.appendChild(script2);
+
+
+        function initApp() {
+            // ✅ CORRECT CONFIG (No Scientific Notation)
+            const firebaseConfig = {
+                apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+                authDomain: "prabha-wellness.firebaseapp.com",
+                projectId: "prabha-wellness",
+                storageBucket: "prabha-wellness.firebasestorage.app",
+                messagingSenderId: "555332322398", // ✅ Fixed
+                appId: "1:555332322398:web:57e29182b8693c35ef60cf", // ✅ Fixed
+                measurementId: "G-EQ36VYT215"
+            };
+
+
+            firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+
+
+            // UI Elements
+            const userProfileBox = document.getElementById('userProfileBox');
+            const loginBtnNav = document.getElementById('loginBtnNav');
+            const userInitial = document.getElementById('userInitial');
+            const displayEmail = document.getElementById('displayEmail');
+
+
+            // --- CHECK USER LOGIN STATUS ---
+            auth.onAuthStateChanged(user => {
+                if (user) {
+                    // User is Logged In
+                    console.log("User Active:", user.email);
+
+
+                    // Show Profile, Hide Login Button
+                    if (userProfileBox) userProfileBox.style.display = 'flex';
+                    if (loginBtnNav) loginBtnNav.style.display = 'none';
+
+
+                    // Update Data
+                    if (displayEmail) displayEmail.innerText = user.email;
+                    if (userInitial) {
+                        const initial = user.email.charAt(0).toUpperCase();
+                        userInitial.innerText = initial;
+                    }
+
+
+                } else {
+                    // User is NOT Logged In
+                    console.log("User is NOT logged in");
+
+
+                    // Show Login Button, Hide Profile
+                    if (userProfileBox) userProfileBox.style.display = 'none';
+                    if (loginBtnNav) loginBtnNav.style.display = 'block'; // Or 'inline-block' via CSS class
+
+
+                    // ❌ REDIRECT REMOVED: Yahan se redirect hata diya taaki loop na ho
+                    // window.location.href = "login.html"; 
+                }
+            });
+
+
+            // --- CUSTOM TOAST FUNCTION ---
+            function showToast(message, isError = false) {
+                const toast = document.getElementById("toastBox");
+                const msg = document.getElementById("toastMessage");
+                const icon = toast.querySelector("i");
+                msg.innerText = message;
+                if (isError) {
+                    icon.className = "fas fa-exclamation-circle";
+                    icon.style.color = "#ff5252";
+                } else {
+                    icon.className = "fas fa-check-circle";
+                    icon.style.color = "#4CAF50";
+                }
+                toast.classList.add("show");
+                setTimeout(() => { toast.classList.remove("show"); }, 3000);
+            }
+
+
+            // --- LOGOUT FUNCTION ---
+            window.logoutUser = function () {
+                auth.signOut().then(() => {
+                    showToast("Logged out successfully!");
+                    setTimeout(() => {
+                        window.location.reload(); // Reload page to update UI
+                    }, 1500);
+                }).catch((error) => {
+                    showToast("Error logging out", true);
+                });
+            }
+
+
+            // --- TOGGLE DROPDOWN MENU ---
+            window.toggleProfileMenu = function () {
+                const dropdown = document.getElementById('profileDropdown');
+                dropdown.classList.toggle('active');
+            }
+
+
+            // Close dropdown if clicked outside
+            window.addEventListener('click', function (e) {
+                const profileBox = document.getElementById('userProfileBox');
+                const dropdown = document.getElementById('profileDropdown');
+                if (profileBox && !profileBox.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        }
+
+
+        // Mobile Dropdown Logic
+        const dropdown = document.querySelector('.dropdown');
+        const dropBtn = document.querySelector('.dropbtn');
+        if (dropBtn) {
+            dropBtn.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        }
+
+index.html
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+
+    <script>
+        // Init App with Correct Config
+        function initApp() {
+            // ✅ CORRECT CONFIG
+            const firebaseConfig = {
+                apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+                authDomain: "prabha-wellness.firebaseapp.com",
+                projectId: "prabha-wellness",
+                storageBucket: "prabha-wellness.firebasestorage.app",
+                messagingSenderId: "555332322398", // Fixed ID
+                appId: "1:555332322398:web:57e29182b8693c35ef60cf", // Fixed ID
+                measurementId: "G-EQ36VYT215"
+            };
+
+
+            firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+
+
+            // UI Elements
+            const userProfileBox = document.getElementById('userProfileBox');
+            const loginBtnNav = document.getElementById('loginBtnNav');
+            const userInitial = document.getElementById('userInitial');
+            const displayEmail = document.getElementById('displayEmail');
+
+
+            // --- CHECK USER LOGIN STATUS ---
+            auth.onAuthStateChanged(user => {
+                if (user) {
+                    // User is Logged In
+                    console.log("User Active:", user.email);
+
+
+                    // Show Profile, Hide Login Button
+                    if(userProfileBox) userProfileBox.style.display = 'flex';
+                    if(loginBtnNav) loginBtnNav.style.display = 'none';
+
+
+                    // Update Data
+                    if(displayEmail) displayEmail.innerText = user.email;
+                    if(userInitial) {
+                        const initial = user.email.charAt(0).toUpperCase();
+                        userInitial.innerText = initial;
+                    }
+
+
+                } else {
+                    // User is NOT Logged In
+                    console.log("User is NOT logged in");
+                    
+                    // Show Login Button, Hide Profile
+                    if(userProfileBox) userProfileBox.style.display = 'none';
+                    if(loginBtnNav) loginBtnNav.style.display = 'block';
+                }
+            });
+
+
+            // --- CUSTOM TOAST FUNCTION ---
+            function showToast(message, isError = false) {
+                const toast = document.getElementById("toastBox");
+                const msg = document.getElementById("toastMessage");
+                const icon = toast.querySelector("i");
+                msg.innerText = message;
+                if (isError) {
+                    icon.className = "fas fa-exclamation-circle";
+                    icon.style.color = "#ff5252";
+                } else {
+                    icon.className = "fas fa-check-circle";
+                    icon.style.color = "#4CAF50";
+                }
+                toast.classList.add("show");
+                setTimeout(() => { toast.classList.remove("show"); }, 3000);
+            }
+
+
+            // --- LOGOUT FUNCTION ---
+            window.logoutUser = function () {
+                auth.signOut().then(() => {
+                    showToast("Logged out successfully!");
+                    setTimeout(() => {
+                        window.location.href = "login.html"; // Redirect to login after logout
+                    }, 1500);
+                }).catch((error) => {
+                    showToast("Error logging out", true);
+                });
+            }
+
+
+            // --- TOGGLE DROPDOWN MENU ---
+            window.toggleProfileMenu = function () {
+                const dropdown = document.getElementById('profileDropdown');
+                dropdown.classList.toggle('active');
+            }
+
+
+            // Close dropdown if clicked outside
+            window.addEventListener('click', function (e) {
+                const profileBox = document.getElementById('userProfileBox');
+                const dropdown = document.getElementById('profileDropdown');
+                if (profileBox && !profileBox.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        }
+
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', initApp);
+
+
+        // Feature Alert
+        function comingSoon() {
+            alert("This feature is currently under development! Stay tuned.");
+        }
+    </script>
+
+features.html
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+            authDomain: "prabha-wellness.firebaseapp.com",
+            projectId: "prabha-wellness",
+            storageBucket: "prabha-wellness.firebasestorage.app",
+            messagingSenderId: "555332322398",
+            appId: "1:555332322398:web:57e29182b8693c35ef60cf",
+            measurementId: "G-EQ36VYT215"
+        };
+
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+
+        // Page load par check karo – agar already logged in hai to direct index.html pe bhej do
+        auth.onAuthStateChanged(user => {
+            if (user && window.location.pathname.includes('login.html')) {
+                window.location.href = "index.html";
+            }
+        });
+
+
+        // REGISTER
+        document.getElementById('register-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('reg-email').value.trim();
+            const password = document.getElementById('reg-pass').value;
+            const errorMsg = document.getElementById('reg-error');
+            const btn = e.target.querySelector('.submit-btn');
+
+
+            btn.innerText = "Creating...";
+            btn.disabled = true;
+
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(() => {
+                    showToast("Account Created Successfully!");
+                    setTimeout(() => { window.location.href = "index.html"; }, 1500);
+                })
+                .catch((error) => {
+                    btn.innerText = "Create Free Account";
+                    btn.disabled = false;
+                    errorMsg.style.display = 'block';
+                    errorMsg.innerText = getFriendlyErrorMessage(error.code);
+                });
+        });
+
+
+        // LOGIN
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-pass').value;
+            const errorMsg = document.getElementById('login-error');
+            const btn = e.target.querySelector('.submit-btn');
+
+
+            btn.innerText = "Verifying...";
+            btn.disabled = true;
+
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    showToast("Login Successful!");
+                    setTimeout(() => { window.location.href = "index.html"; }, 1000);
+                })
+                .catch((error) => {
+                    btn.innerText = "Login Securely";
+                    btn.disabled = false;
+                    errorMsg.style.display = 'block';
+                    errorMsg.innerText = "Incorrect Email or Password";
+                });
+        });
+
+
+        // Toggle Views
+        function registerView() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('btn-bg').style.left = '50%';
+            document.querySelectorAll('.toggle-btn')[0].classList.remove('active-text');
+            document.querySelectorAll('.toggle-btn')[1].classList.add('active-text');
+            document.getElementById('login-error').style.display = 'none';
+        }
+
+
+        function loginView() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('btn-bg').style.left = '0';
+            document.querySelectorAll('.toggle-btn')[0].classList.add('active-text');
+            document.querySelectorAll('.toggle-btn')[1].classList.remove('active-text');
+            document.getElementById('reg-error').style.display = 'none';
+        }
+
+
+        // Friendly Error Messages
+        function getFriendlyErrorMessage(errorCode) {
+            switch (errorCode) {
+                case 'auth/email-already-in-use': return 'This email is already registered. Please Login.';
+                case 'auth/invalid-email': return 'Please enter a valid email address.';
+                case 'auth/weak-password': return 'Password should be at least 6 characters.';
+                default: return 'Something went wrong. Please try again.';
+            }
+        }
+
+
+        // Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById("toastBox");
+            document.getElementById("toastMessage").innerText = message;
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 3000);
+        }
+    </script>
+
+login.html
+
+    <script>
+        const searchInput = document.getElementById('productSearch');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const productCards = document.querySelectorAll('.product-card');
+        const noResults = document.getElementById('noResults');
+        const searchLoader = document.getElementById('searchLoader');
+
+
+        let debounceTimer;
+
+
+        function performSearch() {
+            // 1. Loader Dikhao
+            if (searchLoader) searchLoader.style.display = 'block';
+            if (noResults) noResults.style.display = 'none';
+
+
+            clearTimeout(debounceTimer);
+
+
+            debounceTimer = setTimeout(() => {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const selectedCategory = categoryFilter.value.toLowerCase();
+                let hasVisibleProduct = false;
+
+
+                if (productCards.length > 0) {
+                    productCards.forEach(card => {
+                        // Safety Check
+                        const titleEl = card.querySelector('h3');
+                        const badgeEl = card.querySelector('.badge');
+                        const descEl = card.querySelector('.short-info');
+
+
+                        const title = titleEl ? titleEl.innerText.toLowerCase() : "";
+                        const badgeText = badgeEl ? badgeEl.innerText.toLowerCase() : "";
+                        const desc = descEl ? descEl.innerText.toLowerCase() : "";
+
+
+                        // 1. SEARCH MATCH
+                        const matchesSearch = (searchTerm === '') ||
+                            title.includes(searchTerm) ||
+                            desc.includes(searchTerm);
+
+
+                        // 2. CATEGORY MATCH
+                        let matchesCategory = false;
+                        if (selectedCategory === 'all') {
+                            matchesCategory = true;
+                        } else {
+                            if (badgeText.includes(selectedCategory)) matchesCategory = true;
+                            // Extra Mappings
+                            if (selectedCategory === 'energy' && (badgeText.includes('sports') || title.includes('afresh'))) matchesCategory = true;
+                            if (selectedCategory === 'joint' && (badgeText.includes('bone') || badgeText.includes('calcium'))) matchesCategory = true;
+                            if (selectedCategory === 'digestive' && (badgeText.includes('gut') || badgeText.includes('aloe'))) matchesCategory = true;
+                        }
+
+
+                        // 3. DISPLAY RESULT
+                        if (matchesSearch && matchesCategory) {
+                            card.style.display = "block";
+                            card.style.animation = "none";
+                            card.offsetHeight; // trigger reflow
+                            card.style.animation = "fadeIn 0.5s forwards";
+                            hasVisibleProduct = true;
+                        } else {
+                            card.style.display = "none";
+                        }
+                    });
+                }
+
+
+
+                // 4. FINISH
+                if (searchLoader) searchLoader.style.display = 'none';
+
+
+                if (!hasVisibleProduct && noResults) {
+                    noResults.style.display = 'block';
+                    noResults.innerText = "No products found in this category.";
+                } else if (noResults) {
+                    noResults.style.display = 'none';
+                }
+
+
+            }, 300);
+        }
+
+
+        // Listeners
+        if (searchInput) searchInput.addEventListener('input', performSearch);
+        if (categoryFilter) categoryFilter.addEventListener('change', performSearch);
+    </script>
+    <!-- ✅ 3. Scripts Add Kiye (Bottom of Body) -->
+    <!-- Firebase Libraries -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    
+    <!-- Auth Logic File -->
+    <script src="static/js/auth.js"></script>
+
+product.html
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Init Animation
+        AOS.init({ duration: 800, once: true });
+
+
+        // Page Loader Logic
+        const pageLoader = document.getElementById('pageLoader');
+        window.addEventListener('load', () => {
+            setTimeout(() => { pageLoader.classList.add('hidden'); }, 400);
+        });
+        function triggerPageTransition() {
+            pageLoader.classList.remove('hidden');
+        }
+
+
+        // Mobile Menu Logic
+        const menuToggle = document.querySelector('#mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const menuIcon = document.querySelector('#mobile-menu i');
+
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                if (navLinks.classList.contains('active')) {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
+                } else {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+        }
+
+
+        // EmailJS Logic
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const btnText = document.getElementById('btnText');
+            const loadingText = document.getElementById('loadingText');
+            btnText.style.display = 'none';
+            loadingText.style.display = 'inline-block';
+            btn.disabled = true;
+            const serviceID = 'service_jpbgbh3';
+            const templateID = 'template_ztzkk7s';
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    btnText.style.display = 'inline-block';
+                    loadingText.style.display = 'none';
+                    btn.disabled = false;
+                    // Using our custom toast instead of alert
+                    showToast('Thank you! We will get back to you soon.');
+                    this.reset();
+                }, (err) => {
+                    btnText.style.display = 'inline-block';
+                    loadingText.style.display = 'none';
+                    btn.disabled = false;
+                    showToast('Something went wrong. Please try again.', true);
+                    console.error(err);
+                });
+        });
+
+
+        // Toast Function (Also used by auth.js)
+        function showToast(message, isError = false) {
+            const toast = document.getElementById("toastBox");
+            const msg = document.getElementById("toastMessage");
+            const icon = toast.querySelector("i");
+            msg.innerText = message;
+            if (isError) {
+                icon.className = "fas fa-exclamation-circle";
+                icon.style.color = "#ff5252";
+            } else {
+                icon.className = "fas fa-check-circle";
+                icon.style.color = "#4CAF50";
+            }
+            toast.classList.add("show");
+            setTimeout(() => { toast.classList.remove("show"); }, 3000);
+        }
+
+
+        // Mobile Dropdown Logic
+        const dropdown = document.querySelector('.dropdown');
+        const dropBtn = document.querySelector('.dropbtn');
+        if (dropBtn) {
+            dropBtn.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        }
+    </script>
+
+
+    <!-- FIREBASE SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    
+    <!-- AUTH LOGIC (Updated Path) -->
+    <script src="static/js/auth.js"></script>
+
+contact.html
+
+
+

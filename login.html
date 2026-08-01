@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | PRABHA WELLNESS | Official Herbalife Nutrition Center</title>
+
+    <!-- Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Login | PRABHA WELLNESS">
+    <meta property="og:description" content="Login to your Prabha Wellness account to access premium Herbalife products, personalized plans, and wellness tools.">
+    <meta property="og:image" content="/images/PRABHA WELLNESS CENTER ALL FINE.png">
+
+    <link rel="icon" href="/images/Only logo.png" type="image/png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* === PROFESSIONAL BRAND THEME === */
+        :root {
+            --primary-green: #0B7A6B;
+            --primary-green-dark: #065749;
+            --primary-green-light: #E0F2F1;
+            --secondary-gold: #C6A959;
+            --neutral-dark: #1A1A1A;
+            --neutral-gray: #4A4A4A;
+            --neutral-light: #F8F9FA;
+            --neutral-white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #0B7A6B 0%, #2D9C8F 100%);
+            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-large: 0 15px 50px rgba(0, 0, 0, 0.1);
+            --border-radius-md: 12px;
+            --border-radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'satoshi', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(rgba(11, 122, 107, 0.85), rgba(11, 122, 107, 0.9)),
+                url("./images/workout.png") center/cover no-repeat fixed;
+            color: var(--neutral-white);
+        }
+
+        /* === LOADER === */
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--neutral-white);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .loader-logo {
+            width: 100px;
+            height: auto;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        /* === LOGIN CONTAINER === */
+        .login-container {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 40px 30px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-large);
+            text-align: center;
+            animation: floatIn 0.8s ease;
+            color: var(--neutral-dark);
+        }
+
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* === BACK BUTTON === */
+        .back-btn {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            color: var(--neutral-gray);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            color: var(--primary-green);
+            transform: translateX(-3px);
+        }
+
+        /* === LOGO === */
+        .logo {
+            font-family: 'satoshi', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* === TOGGLE SWITCH === */
+        .btn-box {
+            width: 100%;
+            margin: 0 auto 30px;
+            border-radius: 50px;
+            position: relative;
+            display: flex;
+            background: var(--neutral-light);
+            padding: 4px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .toggle-btn {
+            padding: 12px;
+            cursor: pointer;
+            background: transparent;
+            border: 0;
+            outline: none;
+            flex: 1;
+            font-weight: 600;
+            color: var(--neutral-gray);
+            transition: all 0.3s;
+            z-index: 2;
+            font-size: 0.95rem;
+            font-family: 'satoshi', sans-serif;
+        }
+
+        #btn-bg {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: calc(50% - 4px);
+            height: calc(100% - 8px);
+            background: var(--gradient-primary);
+            border-radius: 50px;
+            transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 1;
+        }
+
+        .active-text {
+            color: var(--neutral-white) !important;
+        }
+
+        /* === FORMS === */
+        .input-group {
+            width: 100%;
+            transition: 0.5s;
+            position: relative;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: var(--border-radius-md);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            outline: none;
+            background: var(--neutral-white);
+            font-size: 0.95rem;
+            color: var(--neutral-dark);
+            font-weight: 500;
+            transition: all 0.3s;
+            font-family: 'satoshi', sans-serif;
+        }
+
+        .input-field::placeholder {
+            color: var(--neutral-gray);
+        }
+
+        .input-field:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(11, 122, 107, 0.1);
+        }
+
+        /* === SUBMIT BUTTON === */
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            margin: 20px auto 10px;
+            background: var(--gradient-primary);
+            color: var(--neutral-white);
+            font-size: 1rem;
+            border: 0;
+            outline: none;
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-family: 'satoshi', sans-serif;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* === FORGOT PASSWORD === */
+        .forgot-link {
+            display: block;
+            margin-top: 15px;
+            color: var(--primary-green);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        /* === GUEST LINK === */
+        .guest-section {
+            margin-top: 25px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding-top: 20px;
+        }
+
+        .guest-link {
+            display: inline-block;
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--primary-green);
+            padding: 10px 25px;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .guest-link:hover {
+            background: var(--primary-green);
+            color: var(--neutral-white);
+        }
+
+        /* === MESSAGES === */
+        .message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            display: none;
+            background: rgba(231, 76, 60, 0.1);
+            padding: 10px;
+            border-radius: var(--border-radius-md);
+            border: 1px solid rgba(231, 76, 60, 0.2);
+        }
+
+        #login-form {
+            display: block;
+            animation: fadeUp 0.4s ease;
+        }
+
+        #register-form {
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* === MODAL === */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-box {
+            background: var(--neutral-white);
+            padding: 40px;
+            border-radius: var(--border-radius-lg);
+            width: 90%;
+            max-width: 450px;
+            box-shadow: var(--shadow-large);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .modal-desc {
+            color: var(--neutral-gray);
+            margin-bottom: 25px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--neutral-gray);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-green);
+        }
+
+        /* === TOAST === */
+        #toastBox {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: var(--primary-green);
+            color: var(--neutral-white);
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: var(--shadow-large);
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            min-width: 300px;
+            max-width: 90%;
+        }
+
+        #toastBox.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 35px 25px;
+            }
+
+            .back-btn {
+                top: 20px;
+                left: 20px;
+                font-size: 1.1rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+                margin-top: 10px;
+            }
+
+            .logo img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .modal-box {
+                padding: 30px 25px;
+            }
+
+            #toastBox {
+                min-width: 250px;
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo img {
+                width: 35px;
+                height: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- === LOADER === -->
+    <div id="pageLoader" class="page-loader">
+        <div class="loader-content">
+            <img src="/images/Only logo.png" alt="Prabha Wellness" class="loader-logo">
+            <div style="font-family: 'satoshi', sans-serif; font-weight: 700; color: var(--primary-green);">
+                PRABHA WELLNESS
+            </div>
+        </div>
+    </div>
+
+    <!-- === TOAST === -->
+    <div id="toastBox">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Success</span>
+    </div>
+
+    <!-- === PASSWORD RESET MODAL === -->
+    <div class="modal-overlay" id="resetModal">
+        <div class="modal-box">
+            <span class="close-modal" onclick="closeResetModal()">&times;</span>
+            <h2 class="modal-title">Reset Password</h2>
+            <p class="modal-desc">Enter your email address to receive a password reset link.</p>
+            <form id="reset-form" onsubmit="sendResetLink(event)">
+                <input type="email" id="reset-email" class="input-field" placeholder="Enter your registered email" required>
+                <button type="submit" class="submit-btn" style="margin-top: 15px;">Send Reset Link</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- === MAIN LOGIN CONTAINER === -->
+    <div class="login-container">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+
+        <div class="logo">
+            <img src="/images/Only logo.png" alt="Logo">
+            PRABHA WELLNESS
+        </div>
+
+        <div class="btn-box">
+            <div id="btn-bg"></div>
+            <button type="button" class="toggle-btn active-text" onclick="loginView()">Log In</button>
+            <button type="button" class="toggle-btn" onclick="registerView()">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" class="input-group">
+            <input type="email" id="login-email" class="input-field" placeholder="Email Address" required>
+            <input type="password" id="login-pass" class="input-field" placeholder="Password" required>
+            <button type="submit" class="submit-btn">Login Securely</button>
+            <a onclick="openResetModal()" class="forgot-link">Forgot Password?</a>
+            
+            <div class="guest-section">
+                <p style="color: var(--neutral-gray); font-size: 0.9rem; margin-bottom: 10px;">Just browsing?</p>
+                <a href="index.html" class="guest-link">
+                    Continue as Guest <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <p class="message" id="login-error"></p>
+        </form>
+
+        <!-- Register Form -->
+        <form id="register-form" class="input-group">
+            <input type="text" id="reg-name" class="input-field" placeholder="Full Name" required>
+            <input type="email" id="reg-email" class="input-field" placeholder="Email Address" required>
+            <input type="password" id="reg-pass" class="input-field" placeholder="Create Password (6+ characters)" required minlength="6">
+            <button type="submit" class="submit-btn">Create Free Account</button>
+            <p class="message" id="reg-error"></p>
+        </form>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+    <script>
+        // Initialize page loader
+        const loader = document.getElementById('pageLoader');
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 800);
+        });
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyASK7lbjWDA50G3IJdzU2sEKubkdR0dwgY",
+            authDomain: "prabha-wellness.firebaseapp.com",
+            projectId: "prabha-wellness",
+            storageBucket: "prabha-wellness.firebasestorage.app",
+            messagingSenderId: "555332322398",
+            appId: "1:555332322398:web:57e29182b8693c35ef60cf",
+            measurementId: "G-EQ36VYT215"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Redirect if already logged in
+        auth.onAuthStateChanged(user => {
+            if (user && window.location.pathname.includes('login.html')) {
+                showToast("Already logged in! Redirecting...");
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 1000);
+            }
+        });
+
+        // === REGISTER LOGIC ===
+        document.getElementById('register-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('reg-email').value.trim();
+            const password = document.getElementById('reg-pass').value;
+            const errorMsg = document.getElementById('reg-error');
+            const btn = e.target.querySelector('.submit-btn');
+
+            btn.innerText = "Creating Account...";
+            btn.disabled = true;
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(() => {
+                    showToast("Account Created Successfully!");
+                    setTimeout(() => {
+                        window.location.href = "index.html";
+                    }, 1500);
+                })
+                .catch((error) => {
+                    btn.innerText = "Create Free Account";
+                    btn.disabled = false;
+                    errorMsg.style.display = 'block';
+                    errorMsg.innerText = getFriendlyErrorMessage(error.code);
+                });
+        });
+
+        // === LOGIN LOGIC ===
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-pass').value;
+            const errorMsg = document.getElementById('login-error');
+            const btn = e.target.querySelector('.submit-btn');
+
+            btn.innerText = "Verifying...";
+            btn.disabled = true;
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    showToast("Login Successful!");
+                    setTimeout(() => {
+                        window.location.href = "index.html";
+                    }, 1000);
+                })
+                .catch((error) => {
+                    btn.innerText = "Login Securely";
+                    btn.disabled = false;
+                    errorMsg.style.display = 'block';
+                    errorMsg.innerText = "Incorrect Email or Password";
+                });
+        });
+
+        // === PASSWORD RESET FUNCTIONS ===
+        function openResetModal() {
+            document.getElementById('resetModal').classList.add('active');
+        }
+
+        function closeResetModal() {
+            document.getElementById('resetModal').classList.remove('active');
+        }
+
+        function sendResetLink(e) {
+            e.preventDefault();
+            const email = document.getElementById('reset-email').value.trim();
+            const btn = e.target.querySelector('.submit-btn');
+
+            btn.innerText = "Sending...";
+            btn.disabled = true;
+
+            auth.sendPasswordResetEmail(email)
+                .then(() => {
+                    showToast("Password reset link sent! Check your email.");
+                    closeResetModal();
+                    btn.innerText = "Send Reset Link";
+                    btn.disabled = false;
+                    e.target.reset();
+                })
+                .catch((error) => {
+                    showToast(getFriendlyErrorMessage(error.code));
+                    btn.innerText = "Send Reset Link";
+                    btn.disabled = false;
+                });
+        }
+
+        // === TOGGLE VIEWS ===
+        function registerView() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('btn-bg').style.left = '50%';
+            document.querySelectorAll('.toggle-btn')[0].classList.remove('active-text');
+            document.querySelectorAll('.toggle-btn')[1].classList.add('active-text');
+            document.getElementById('login-error').style.display = 'none';
+        }
+
+        function loginView() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('btn-bg').style.left = '4px';
+            document.querySelectorAll('.toggle-btn')[0].classList.add('active-text');
+            document.querySelectorAll('.toggle-btn')[1].classList.remove('active-text');
+            document.getElementById('reg-error').style.display = 'none';
+        }
+
+        // === UTILITY FUNCTIONS ===
+        function getFriendlyErrorMessage(errorCode) {
+            switch (errorCode) {
+                case 'auth/email-already-in-use':
+                    return 'Email is already registered. Please Login.';
+                case 'auth/invalid-email':
+                    return 'Please enter a valid email address.';
+                case 'auth/weak-password':
+                    return 'Password is too weak (minimum 6 characters).';
+                case 'auth/user-not-found':
+                    return 'User not found. Please Sign Up.';
+                default:
+                    return 'Something went wrong. Please try again.';
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toastBox");
+            document.getElementById("toastMessage").innerText = message;
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 3000);
+        }
+
+        // Close modal on outside click
+        window.onclick = function (event) {
+            const modal = document.getElementById('resetModal');
+            if (event.target == modal) {
+                closeResetModal();
+            }
+        };
+    </script>
+</body>
+
+</html>
