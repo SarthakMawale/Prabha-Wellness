@@ -36,7 +36,7 @@ window.requireAdmin = function (callback) {
         if (isAdmin(user)) {
             callback(user);
         } else {
-            window.location.href = "admin-login.html";
+            window.location.href = "admin-login";
         }
     });
 };

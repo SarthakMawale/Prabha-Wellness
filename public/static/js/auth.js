@@ -115,7 +115,7 @@ window.logoutUser = function() {
         }
         
         alert("Logged out successfully!");
-        window.location.href = "login.html";
+        window.location.href = "login";
         
     }).catch((error) => {
         console.error("Logout Error:", error);
@@ -193,7 +193,7 @@ function updateProfilePhotoInUI(photoUrl) {
     });
 }
 
-// Function to upload profile photo (call from profile.html)
+// Function to upload profile photo (call from profile)
 window.uploadProfilePhoto = async function(file) {
     if (!auth.currentUser || !db || !file) return false;
     
